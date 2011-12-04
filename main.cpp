@@ -2,6 +2,8 @@
  *   Copyright (C) 2011 by Paolo Buono - IVU Lab.                          *
  *   http://ivu.di.uniba.it - buono@di.uniba.it                            *
  *                                                                         *
+ *   Modified by Domenico Monaco (monaco.d@gmail.com)                      *
+ *                                                                         *
  *   This file is part of ASD-dib.                                         *
  *   ASD-dib is free software; you can redistribute it and/or modify       *
  *   it under the terms of the GNU General Public License as published by  *
