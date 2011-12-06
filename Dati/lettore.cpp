@@ -43,6 +43,6 @@ Testo Lettore::restituisci(string titolo){
     return libroDaRestituire;//TODO: implementare il controllo che il testo non sia presente
 }
 
-Lista<Testo> Lettore::getElencoLibri(){
+ListaUnidirezionale<Testo> Lettore::getElencoLibri(){
     return testi;
 }

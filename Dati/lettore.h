@@ -22,7 +22,7 @@
 #include <string.h>
 #include "persone.h"
 #include "testo.h"
-#include "../Lista/lista.h"
+#include "../Lista/listaUnidirezionale.h"
 
 class Lettore : public Persona{
 
@@ -30,9 +30,9 @@ public:
     Lettore();
     void presta(Testo);
     Testo restituisci(string);
-    Lista<Testo> getElencoLibri();
+    ListaUnidirezionale<Testo> getElencoLibri();
 private: 
-    Lista <Testo> testi;
+    ListaUnidirezionale<Testo> testi;
 };
 
 #endif

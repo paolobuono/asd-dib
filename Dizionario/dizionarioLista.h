@@ -20,7 +20,7 @@
 #ifndef ASD_dizionarioLista_h
 #define ASD_dizionarioLista_h
 #include "dizionario.h"
-#include "../Lista/lista.h"
+#include "../Lista/listaUnidirezionale.h"
 #include "../Dati/testo.h"
 
 class DizionarioLista : public Dizionario{
@@ -30,7 +30,7 @@ public:
     elemento cerca(chiave);
     DizionarioLista();
 private:
-    Lista< Dato<string> > lista;
+    ListaUnidirezionale< Dato<string> > lista;
 };
 
 

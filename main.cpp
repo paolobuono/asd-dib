@@ -27,6 +27,7 @@
 #include "Dati/persone.h"
 
 #include "Lista/lista.h"
+#include "Lista/listaUnidirezionale.h"
 #include "Coda/coda.h"
 #include "Albero/alberobin.h"
 #include "Dizionario/dizionario.h"
@@ -44,17 +45,17 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     //    cout << "Creo lista di prestiti" << endl;
-        Lista<Lista<Prestiti> > libreria;
+	ListaUnidirezionale<ListaUnidirezionale<Prestiti> > libreria;
     //    CaricaLibreria(libreria);
     
     cout << "Carico e stampo elenco libri" << endl;
-    Lista <Testo> l;
+    ListaUnidirezionale <Testo> l;
     CaricaLista(l);
     Messaggio(l);
     stampaLista(l);
     
     cout << "Carico e stampo le persone" << endl;
-    Lista<Persona> p;
+    ListaUnidirezionale<Persona> p;
     CaricaLista(p);
     Messaggio(p);
     stampaLista(p);

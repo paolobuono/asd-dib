@@ -20,7 +20,7 @@
 
 #ifndef ASD_libreria_h
 #define ASD_libreria_h
-#include "../Lista/lista.h"
+#include "../Lista/listaUnidirezionale.h"
 #include "testo.h"
 #include "lettore.h"
 
@@ -37,12 +37,12 @@ public:
     void aggiungiTesto(Testo);
     void presta(Testo, Persona);
     void restituisci(Testo, Persona);
-    Lista<Testo> getElencoLibri();
-    Lista<Prestiti> getElencoPrestiti();
+    ListaUnidirezionale<Testo> getElencoLibri();
+    ListaUnidirezionale<Prestiti> getElencoPrestiti();
     
 private:
-    Lista<Testo> testiDisponibili;
-    Lista<Prestiti> prestiti;
+    ListaUnidirezionale<Testo> testiDisponibili;
+    ListaUnidirezionale<Prestiti> prestiti;
 };
 
 
