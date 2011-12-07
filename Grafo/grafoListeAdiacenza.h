@@ -36,8 +36,9 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 
 #include <stdlib.h>
 #include "lista.h"
-using namespace std;
+#include "grafo.h"
 
+using namespace std;
 typedef bool boolean;
 
 template <class T>
