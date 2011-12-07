@@ -17,8 +17,8 @@
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
 
-#ifndef _Grafo_h
-#define _Grafo_h
+#ifndef _nodoGrafo_h
+#define _nodoGrafo_h
 
 /*
 GRAFO 
@@ -36,15 +36,13 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 
 #include <stdlib.h>
 #include "../Lista/lista.h"
-#include "nodoGrafo.h"
+#include "grafo.h"
 
 using namespace std;
 typedef bool boolean;
 
-template <class T>
-class Grafo {
-private:
-    Lista<Lista<nodoGrafo>> listaNodi;
+class nodoGrafo{
+      
 };
 
 #endif
