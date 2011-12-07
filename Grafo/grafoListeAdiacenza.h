@@ -35,14 +35,14 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 */
 
 #include <stdlib.h>
-#include "lista.h"
+#include "../Lista/lista.h"
 #include "grafo.h"
 
 using namespace std;
 typedef bool boolean;
 
 template <class T>
-class GrafoListeAdiacenza : public Grafo {	
+class GrafoListeAdiacenza : public Grafo<T> {	
 private:
     Lista< Lista< nodoGrafo > > listaNodi;
 public:

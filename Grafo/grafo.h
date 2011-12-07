@@ -37,7 +37,7 @@ ESISTENODO	: (NODO) -> BOOLEAN
 ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 */
 
-temaaplte <class T>
+template <class T>
 class Grafo {
 
 };
