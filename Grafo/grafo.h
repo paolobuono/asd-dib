@@ -44,7 +44,7 @@ typedef bool boolean;
 template <class T, class infoArco>
 class Grafo {
 private:
-    Lista< Lista < nodoGrafo > > listaNodi;
+    Lista< Lista < nodoGrafo < T > > > listaNodi;
 };
 
 #endif

@@ -21,7 +21,7 @@
 #define _GrafoListeAdiacenza_H
 
 /*
-GRAFO 
+GRAFO
 SPECIFICA SINTATTICA
 CREAGRAFO	: () -> -
 GRAFOVUOTO	: () -> BOOLEAN
@@ -43,10 +43,10 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 using namespace std;
 typedef bool boolean;
 
-template <class T, class infoArco>
-class GrafoListeAdiacenza : public Grafo<T, infoArco> {
+template <class T, class A>
+class GrafoListeAdiacenza : public Grafo<T, A> {
 private:
-    Lista < Lista < nodoGrafo > > listaNodi;
+    Lista < Lista < nodoGrafo < T > > > listaNodi;
 
 public:
 	void creaGrafo();
@@ -54,19 +54,19 @@ public:
 	void setOrientato( boolean setOrientato );
 	void setPesato( boolean setPesato );
 
-    void insNodo(nodoGrafo, T);
-	void insArco(nodoGrafo, nodoGrafo);
-    void insArco(Nodo<T>, Nodo<T>, InfArco);
+    void insNodo(nodoGrafo< T >, T);
+	void insArco(nodoGrafo< T >, nodoGrafo< T >);
+    void insArco(nodoGrafo< T >, nodoGrafo< T >, arcoGrafo < A >);
     
-    void cancNodo(Nodo<T>);
-    void cancArco(Nodo<T>, Nodo<T>);
+    void cancNodo(nodoGrafo< T >);
+    void cancArco(nodoGrafo< T >, Nodo<T>);
 		
-    boolean esisteNodo(Nodo<T>);
-    boolean esisteArco(Nodo<T>, Nodo<T>);
-    Lista< Nodo<T> > *adiacenti(Nodo<T>);
+    boolean esisteNodo(nodoGrafo< T >);
+    boolean esisteArco(nodoGrafo< T >, nodoGrafo< T >);
+    Lista< Nodo<T> > *adiacenti(nodoGrafo< T >);
            
-    T leggiNodo(Nodo<T>);
-    InfArco leggiArco(Nodo<T>, Nodo<T>);
+    T leggiNodo(nodoGrafo< T >);
+    arcoGrafo < A > leggiArco(nodoGrafo< T >, nodoGrafo< T >);
 
 };
 #endif /* _GrafoListeAdiacenza_H */

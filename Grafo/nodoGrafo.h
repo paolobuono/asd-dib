@@ -35,14 +35,14 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 */
 
 #include <stdlib.h>
-#include "../Lista/lista.h"
-#include "grafo.h"
+
 
 using namespace std;
 typedef bool boolean;
 
+template <class T>
 class nodoGrafo{
-      
+      T infoNodo;
 };
 
 #endif
