@@ -25,8 +25,8 @@ public:
        ~Grafo();
        void CREAGRAFO();
        bool GRAFOVUOTO();
-       void INSNODO(Nodo, TN);
-       void INSARCO(Nodo, Nodo, TA);
+       void INSNODO(Nodo, NodoGrafo<TN>*);
+       void INSARCO(Nodo, Nodo, ArcoGrafo<TA>*);
        void CANCNODO(Nodo);
        void CANCARCO(Nodo,Nodo);
        Lista<Nodo>* ADIACENTI(Nodo);
@@ -69,14 +69,13 @@ bool Grafo<TN,TA>::GRAFOVUOTO()
 }
 
 template <class TN, class TA>
-void Grafo<TN,TA>::INSNODO(Nodo pos, TN elementoN)
+void Grafo<TN,TA>::INSNODO(Nodo pos, NodoGrafo<TN>* nodo)
 {
      if(pos >= 0 && pos < MAXNODI)
      {
           if(Array[pos] == NULL)
           {
-               Array[pos] = new NodoGrafo<TN>();
-               Array[pos]->setElemento(elementoN);
+               Array[pos] = nodo;
                numnodi++;
           }
           else
@@ -87,12 +86,11 @@ void Grafo<TN,TA>::INSNODO(Nodo pos, TN elementoN)
 }
 
 template <class TN, class TA>
-void Grafo<TN,TA>::INSARCO(Nodo pos1, Nodo pos2, TA elementoA)
+void Grafo<TN,TA>::INSARCO(Nodo pos1, Nodo pos2, ArcoGrafo<TA>* arco)
 {
      if(MatriceAdiacenza[pos1][pos2] == NULL)
      {
-          MatriceAdiacenza[pos1][pos2] = new ArcoGrafo<TA>();
-          MatriceAdiacenza[pos1][pos2]->setElemento(elementoA);
+          MatriceAdiacenza[pos1][pos2] = arco;
      }
      else
           cout<<"ERRORE: arco gia' esistente! in INSARCO"<<endl;
