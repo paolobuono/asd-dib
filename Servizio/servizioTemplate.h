@@ -19,17 +19,17 @@
 
 #ifndef ASD_servizioTemplate_h
 #define ASD_servizioTemplate_h
-#include "../Lista/listaUnidirezionale.h"
+#include "../Lista/lista.h"
 #include "../Coda/coda.h"
 
 //per creare la funzione di caricamento o stampa fare overloading della funzione per ogni tipo di dato gestito
 
 void caricaDizionario(Dizionario &);
 
-void CaricaLibreria(ListaUnidirezionale<Prestiti> &);
+void CaricaLibreria(Lista<Prestiti> &);
 
-void stampaLista(ListaUnidirezionale <Testo>);
-void stampaLista(ListaUnidirezionale <Persona>);
+void stampaLista(Lista <Testo> &);
+void stampaLista(Lista <Persona> &);
 void stampaCoda(Coda <Persona>);
 
 void CaricaLista(Lista <Testo> &);
@@ -39,13 +39,13 @@ void caricaCoda(Coda <Persona> &);
 template <class T>
 void Messaggio(ListaUnidirezionale <T> l){
     string messaggio;
-    messaggio = l.listaVuota()? "La lista è vuota":"La lista è piena";
+    messaggio = l.listaVuota()? "Lista vuota":"Lista piena";
     cout << endl << messaggio << endl;
 };
 
 
 //funzioni di caricamento
-void CaricaLibreria(ListaUnidirezionale<Prestiti> & libreria){
+void CaricaLibreria(Lista<Prestiti> & libreria){
 //    //Creazione lista di persone
 //    Testo testo("Il libro delle anime", 1);
 //    Persona persona("Glenn Cooper");
@@ -58,7 +58,7 @@ void CaricaLibreria(ListaUnidirezionale<Prestiti> & libreria){
 //    libreria.insLista(prestito, posPrestito);
 }
 
-void CaricaLista(ListaUnidirezionale<Testo> & l){
+void CaricaLista(Lista<Testo> & l){
     //acquisizione dati
     Testo t("Algoritmi e Strutture Dati", 1);
     Nodo<Testo>* p=l.primoLista();
@@ -73,7 +73,7 @@ void CaricaLista(ListaUnidirezionale<Testo> & l){
     l.insLista(t, p);
 };
 
-void CaricaLista(ListaUnidirezionale<Persona> & l){
+void CaricaLista(Lista<Persona> & l){
     Persona persona;
     persona.setNome("Pippo");
     
@@ -112,7 +112,7 @@ void caricaDizionario(Dizionario &d){
 }
 
 //funzioni di stampa
-void stampaLista(ListaUnidirezionale<Persona> l){
+void stampaLista(Lista<Persona> &l){
     Nodo<Persona>* p;
     Persona elemento;
     p=l.primoLista();
@@ -127,7 +127,7 @@ void stampaLista(ListaUnidirezionale<Persona> l){
     cout<<endl;
 }
 
-void stampaLista(ListaUnidirezionale<Testo> l){
+void stampaLista(Lista<Testo> &l){
     Nodo<Testo>* p;
     Testo elemento;
     p=l.primoLista();

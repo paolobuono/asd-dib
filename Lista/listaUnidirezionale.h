@@ -29,7 +29,7 @@ using namespace std;
 typedef bool boolean;
 
 template <class tipoelem>
-class ListaUnidirezionale : Lista<tipoelem>{
+class ListaUnidirezionale : public Lista<tipoelem>{
 
 public:
     typedef Nodo <tipoelem> * posizione;

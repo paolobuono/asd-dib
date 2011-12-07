@@ -44,8 +44,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    //    cout << "Creo lista di prestiti" << endl;
-	ListaUnidirezionale<ListaUnidirezionale<Prestiti> > libreria;
+	ListaUnidirezionale< ListaUnidirezionale<Prestiti> > libreria;
     //    CaricaLibreria(libreria);
     
     cout << "Carico e stampo elenco libri" << endl;
