@@ -41,7 +41,7 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 using namespace std;
 typedef bool boolean;
 
-template <class T>
+template <class T, class infoArco>
 class Grafo {
 private:
     Lista< Lista < nodoGrafo > > listaNodi;

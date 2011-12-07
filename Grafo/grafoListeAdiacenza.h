@@ -43,10 +43,11 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 using namespace std;
 typedef bool boolean;
 
-template <class T>
-class GrafoListeAdiacenza : public Grafo<T> {
+template <class T, class infoArco>
+class GrafoListeAdiacenza : public Grafo<T, infoArco> {
 private:
     Lista < Lista < nodoGrafo > > listaNodi;
+
 public:
 	void creaGrafo();
     boolean grafoVuoto();
