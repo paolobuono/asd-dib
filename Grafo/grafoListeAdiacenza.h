@@ -35,18 +35,19 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 */
 
 #include <stdlib.h>
+
 #include "../Lista/lista.h"
+
 #include "grafo.h"
 #include "nodoGrafo.h"
 #include "arcoGrafo.h"
 
 using namespace std;
 typedef bool boolean;
-
-template <class T, class A>
-class GrafoListeAdiacenza : public Grafo<T, A> {
+template <class tipoNodo, class tipoArco>
+class Grafo {
 private:
-    Lista < Lista < nodoGrafo < T > > > listaNodi;
+    Lista< Lista < nodoGrafo < tipoNodo > > > listaNodi;
 
 public:
 	void creaGrafo();
@@ -54,19 +55,20 @@ public:
 	void setOrientato( boolean setOrientato );
 	void setPesato( boolean setPesato );
 
-    void insNodo(nodoGrafo< T >, T);
-	void insArco(nodoGrafo< T >, nodoGrafo< T >);
-    void insArco(nodoGrafo< T >, nodoGrafo< T >, arcoGrafo < A >);
-    
-    void cancNodo(nodoGrafo< T >);
-    void cancArco(nodoGrafo< T >, Nodo<T>);
-		
-    boolean esisteNodo(nodoGrafo< T >);
-    boolean esisteArco(nodoGrafo< T >, nodoGrafo< T >);
-    Lista< Nodo<T> > *adiacenti(nodoGrafo< T >);
-           
-    T leggiNodo(nodoGrafo< T >);
-    arcoGrafo < A > leggiArco(nodoGrafo< T >, nodoGrafo< T >);
+    void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
+	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+    void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < A >);
+
+    void cancNodo(nodoGrafo< tipoNodo >);
+    void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+
+    boolean esisteNodo(nodoGrafo< tipoNodo >);
+    boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+    Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+
+    tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
+    arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
 
 };
+
 #endif /* _GrafoListeAdiacenza_H */

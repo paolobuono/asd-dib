@@ -41,10 +41,31 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 using namespace std;
 typedef bool boolean;
 
-template <class T, class infoArco>
+template <class tipoNodo, class tipoArco>
 class Grafo {
 private:
-    Lista< Lista < nodoGrafo < T > > > listaNodi;
+    Lista< Lista < nodoGrafo < tipoNodo > > > listaNodi;
+    
+public:
+	virtual void creaGrafo();
+    virtual boolean grafoVuoto();
+	virtual void setOrientato( boolean setOrientato );
+	virtual void setPesato( boolean setPesato );
+
+    virtual void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
+	virtual void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+    virtual void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < A >);
+    
+    virtual void cancNodo(nodoGrafo< tipoNodo >);
+    virtual void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+		
+    virtual boolean esisteNodo(nodoGrafo< tipoNodo >);
+    virtual boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+    virtual Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+           
+    virtual tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
+    virtual arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
+
 };
 
 #endif
