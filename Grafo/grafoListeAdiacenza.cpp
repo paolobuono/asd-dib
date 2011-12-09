@@ -47,5 +47,6 @@ void GrafoListeAdiacenza< tipoNodo, tipoArco >::insNodo(nodoGrafo< tipoNodo > no
 
 template < class tipoNodo, class tipoArco >
 void GrafoListeAdiacenza< tipoNodo, tipoArco >::insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >){
-	 }
+
+}
 
