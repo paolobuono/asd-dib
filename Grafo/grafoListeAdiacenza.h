@@ -21,32 +21,24 @@
 #define _GrafoListeAdiacenza_H
 
 /*
-GRAFO
-SPECIFICA SINTATTICA
-CREAGRAFO	: () -> -
+GRAFO - SPECIFICA SINTATTICA
+CREAGRAFO	 : () -> -
 GRAFOVUOTO	: () -> BOOLEAN
-INSNODO		: (NODO,TIPONODO) ->  - 
-INSARCO		: (NODO,NODO) ->  - 
-CANCNODO	: (NODO) ->  - 
-CANCARCO	: (NODO,NODO) ->  - 
-ADIACENTI	: (NODO) -> LISTA
+INSNODO		 : (NODO,TIPONODO) ->  - 
+INSARCO		 : (NODO,NODO) ->  - 
+CANCNODO	  : (NODO) ->  - 
+CANCARCO	  : (NODO,NODO) ->  - 
+ADIACENTI	 : (NODO) -> LISTA
 ESISTENODO	: (NODO) -> BOOLEAN
 ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 */
 
 #include <stdlib.h>
 
-//Utile per creare la lista di nodi del grafo
-#include "../Lista/lista.h"
-
-//Classe virtuale di Grafo
-#include "grafo.h"
-
-//Classe del nodo grafo, necessita di allegare un "tipoNodo"
-#include "nodoGrafo.h"
-
-//Classe dell'arco grafo, necessita di allegare un "tipo arco"
-#include "arcoGrafo.h"
+#include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
+#include "grafo.h"          //Classe virtuale di Grafo
+#include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
+#include "arcoGrafo.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
 
 using namespace std;
 typedef bool boolean;
@@ -58,24 +50,23 @@ private:
 
 public:
 	void creaGrafo();
-    boolean grafoVuoto();
+  boolean grafoVuoto();
 	void setOrientato( boolean setOrientato );
 	void setPesato( boolean setPesato );
 
-    void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
+  void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
 	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-    void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
+  void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
 
-    void cancNodo(nodoGrafo< tipoNodo >);
-    void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+  void cancNodo(nodoGrafo< tipoNodo >);
+  void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
 
-    boolean esisteNodo(nodoGrafo< tipoNodo >);
-    boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-    Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+  boolean esisteNodo(nodoGrafo< tipoNodo >);
+  boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+  Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
 
-    tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
-    arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
-
+  tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
+  arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
 };
 
 #endif /* _GrafoListeAdiacenza_H */
