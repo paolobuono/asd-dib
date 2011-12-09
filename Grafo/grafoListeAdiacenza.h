@@ -52,7 +52,7 @@ using namespace std;
 typedef bool boolean;
 
 template <class tipoNodo, class tipoArco>
-class GrafoListeAdiacneza : public Grafo< tipoNodo, tipoArco > {
+class GrafoListeAdiacenza : public Grafo< tipoNodo, tipoArco > {
 private:
     Lista< Lista < nodoGrafo < tipoNodo > > > listaNodi;
 

@@ -54,6 +54,7 @@ private:
     Lista< Lista < nodoGrafo < tipoNodo > > > listaNodi;
     
 public:
+
 	virtual void creaGrafo();
     virtual boolean grafoVuoto();
 	virtual void setOrientato( boolean setOrientato );

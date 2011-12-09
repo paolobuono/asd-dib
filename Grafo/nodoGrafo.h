@@ -36,12 +36,14 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 
 #include <stdlib.h>
 
-
 using namespace std;
 typedef bool boolean;
 
 template <class T>
 class nodoGrafo{
+
+	  int etichetta;
+	  
       T infoNodo;
 };
 
