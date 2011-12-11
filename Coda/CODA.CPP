@@ -70,7 +70,5 @@ int Coda:: leggi_fondo(){
     return fondo;
     }        
                    
-Tipoelem Coda:: chi_si_trova_in_fondo(){
-         return elementi[leggi_fondo()];
-         };                    
+            
                    
