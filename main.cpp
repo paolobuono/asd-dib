@@ -73,14 +73,14 @@ int main(int argc, char *argv[])
     
     DizionarioLista dl;
     caricaDizionario(dl);
-    dv.cancella(1);
+    dl.cancella(1);
     elemento el=dl.cerca(2);
     if(el!="") cout << "Trovato elemento dizionario lista: " << el << endl;
     else cout << "Elemento non trovato in dizionario lista"<<endl;
     
     DizionarioAlberoBinario db;
     caricaDizionario(db);
-    dv.cancella(1);
+    db.cancella(1);
     elemento eb=db.cerca(2);
     if(eb!="") cout << "Trovato elemento dizionario alberobin: " << eb << endl;
     else cout << "Elemento non trovato in dizionario alberobin"<<endl;
