@@ -86,7 +86,7 @@ Lista<T>:: ~Lista(){}
 /* Metodo osservatore che restituisce il valore del nodo successivo al nodo n */
 template<class T>
 Node<T>* Lista<T>:: succ_lista(Node<T>* n)
-{//restituisce null se non esiste un successivo o se il nodo non è valido
+{//restituisce null se non esiste un successivo o se il nodo non Ã¨ valido
  Node<T>* result=NULL;
  if (n!=NULL)
  {
@@ -98,7 +98,7 @@ Node<T>* Lista<T>:: succ_lista(Node<T>* n)
 /* Metodo osservatore che restituisce il valore del nodo precedente al nodo n */
 template<class T>
 Node<T>* Lista<T>:: pred_lista(Node<T>*n)
-{//restituisce null se non esiste un precedente o se il nodo non è valido
+{//restituisce null se non esiste un precedente o se il nodo non Ã¨ valido
  Node<T>* result=NULL;
  if (n!=NULL)
  {
@@ -294,7 +294,7 @@ int Lista<T>:: get_num_nd()
 /* Metodo che ordina la lista */
 template<class T>
 void Lista<T>:: order()
-{
+{/*
  Node<T>*n=primo_lista();
  Node<T>*temp;
  T a; 
@@ -325,137 +325,7 @@ void Lista<T>:: order()
        num--;     
  }
      
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Metodo che ordina la lista 
-void Lista:: mergesort(int start, int end)
-{
-  if (start<end)
-  {
-     int mid= (start+end)/2;
-     mergesort(start, mid);
-     mergesort(mid+1, end);
-     merge(start,mid,end);
-                
-  }   
-}
-
- Metodo ausiliario al metodo merge sort 
-void Lista:: merge(int left, int center, int right)
-{
- const int n=get_num_nd();
- int i;
- Lista* aux=new Lista();
- int j;
- int k;
- for (i=center+1; i>left; i--)
- {
-     aux->Ins_lista(leggi_lista(try_elem(i-1)),i-1);
- }
- for (j=center; j<right; j++)
- {
-     aux->Ins_lista(leggi_lista(try_elem(j+1)),right+center-j);
- }
- Node*first=primo_lista();
- while (!fine_lista(first))
- {
-    canc_lista(first);  
-    first=succ_lista(first); 
- }
- canc_lista(first);
- 
- for (k=left; k<=right; k++)
- {
-     if (aux->leggi_lista(try_elem(j))< (aux->leggi_lista(try_elem(i))))
-     {
-      Ins_lista(aux->try_elem(j--)->get_elem(),k);                                 
-     } 
-     else
-     {
-      Ins_lista(aux->try_elem(i++)->get_elem(),k);    
-     }
- }
- 
-}
-*/
-/*
-
-void merge(Item a[], int left, int center, int right) {
-const int n=8;
-static Item aux[n];
-int i,j;
-for (i = center+1; i > left; i--) aux[i-1] = a[i-1];
-for (j = center; j < right; j++) aux[right+center-j] = a[j+1];
-for (int k = left; k <= right; k++)
-if (aux[j] < aux[i]) a[k] = aux[j--];
-else a[k] = aux[i++];
-}
-
-
-void mergesort(Item a[], int left, int right) {
-if (left<right) {
-int center = (left+right)/2;
-mergesort(a, left, center);
-mergesort(a, center+1, right);
-merge(a, left, center, right);
-}
-}
-
-  
-
-
-
-
-
-
-
- Metodo osservatore che, inserito il valore per cui ciclare, restituisce il nodo in posizione pos 
-Node* Lista:: try_elem(int pos)
-{ //controllare la pos e che la lista non sia vuota
- Node*n=primo_lista();
- Node* result=NULL;
- 
- while (!fine_lista(n) && pos>0)
- {
-       n=succ_lista(n); 
-       pos--;     
- } 
- if (fine_lista(n))
- {
-  pos--;
-  result=n;
- }
- else
- {
-  if (pos==0)
-  {
-     result=pred_lista(n);
-  }
- }
-  return result;            
-}
-*/
+*/}
 
 
 #endif
