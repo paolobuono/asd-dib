@@ -46,27 +46,30 @@ typedef bool boolean;
 template <class tipoNodo, class tipoArco>
 class GrafoListeAdiacenza : public Grafo< tipoNodo, tipoArco > {
 private:
-    Lista< Lista < nodoGrafo < tipoNodo > > > listaNodi;
-
+    Lista< Lista < nodoGrafo < tipoNodo > > > listaAdiacenza;
 public:
-	void creaGrafo();
-  boolean grafoVuoto();
-	void setOrientato( boolean setOrientato );
-	void setPesato( boolean setPesato );
+	   void creaGrafo();
+	   boolean grafoVuoto();
+	   void setOrientato( boolean setOrientato );
+	   void setPesato( boolean setPesato );
 
-  void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
-	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-  void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
+	   void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
+	   
+	   void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+	   void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
 
-  void cancNodo(nodoGrafo< tipoNodo >);
-  void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+	   void cancNodo(nodoGrafo< tipoNodo >);
+	   void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
 
-  boolean esisteNodo(nodoGrafo< tipoNodo >);
-  boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-  Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+	   boolean esisteNodo(nodoGrafo< tipoNodo >);
+	   
+	   boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
 
-  tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
-  arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
+	   Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+
+	   tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
+
+	   arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
 };
 
 #endif /* _GrafoListeAdiacenza_H */
