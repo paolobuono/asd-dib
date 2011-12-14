@@ -20,6 +20,7 @@
 #ifndef ASD_dizionario_h
 #define ASD_dizionario_h
 #include "datoDizionario.h"
+#include <string>
 
 using namespace std;
 
