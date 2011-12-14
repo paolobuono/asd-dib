@@ -35,45 +35,36 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 */
 
 #include <stdlib.h>
-
-//Utile per creare la lista di nodi del grafo
-#include "../Lista/lista.h"
-
-//Classe del nodo grafo, necessita di allegare un "tipoNodo"
-#include "nodoGrafo.h"
-
-//Classe dell'arco grafo, necessita di allegare un "tipo arco"
-#include "arcoGrafo.h"
+#include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
+#include "nodoGrafo.h"      //Classe del nodo grafo, necessita di allegare un "tipoNodo"
+#include "arcoGrafo.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
 
 using namespace std;
+
 typedef bool boolean;
 
 template < class tipoNodo, class tipoArco >
 class Grafo {
 private:
     Lista< Lista < nodoGrafo < tipoNodo > > > listaNodi;
-    
 public:
-
 	virtual void creaGrafo();
     virtual boolean grafoVuoto();
 	virtual void setOrientato( boolean setOrientato );
 	virtual void setPesato( boolean setPesato );
 
     virtual void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
-	virtual void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-    virtual void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
-    
     virtual void cancNodo(nodoGrafo< tipoNodo >);
-    virtual void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-		
     virtual boolean esisteNodo(nodoGrafo< tipoNodo >);
-    virtual boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-    virtual Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
-           
     virtual tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
-    virtual arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
 
+    virtual void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+    virtual void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
+    virtual void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+    virtual boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+    virtual arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
+		
+    virtual Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
 };
 
 #endif
