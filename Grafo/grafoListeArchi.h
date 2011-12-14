@@ -37,6 +37,6 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 
 #include "grafo.h"          //Classe virtuale di Grafo
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
-#include "arcoGrafo.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
+#include "arcoGrafoListaArchi.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
 
 #endif
