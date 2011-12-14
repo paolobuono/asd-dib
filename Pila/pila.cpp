@@ -2,31 +2,31 @@
 using namespace std;
 
 pila:: pila(){
-            creapila();
-     };
-     
+	creapila();
+};
+
 void pila:: creapila(){
-          testa=0;
-      };
-      
+	testa=0;
+};
+
 bool pila:: pilavuota(){
-           return(testa==0);
-         }; 
-         
+	return(testa==0);
+};
+
 tipoelem pila:: leggipila(){
-        if (!pilavuota())
-              return elementi[testa]; 
-         };  
-         
+	if (!pilavuota())
+		return elementi[testa];
+};
+
 void pila:: fuoripila(){
-        if(!pilavuota())
-            testa--;
-     };                    
-  
+	if(!pilavuota())
+		testa--;
+};
+
 void pila:: inpila(tipoelem t){
-     
-     testa++;       
-     elementi[testa]=t;
-     };      
-  
- 
+
+	testa++;
+	elementi[testa]=t;
+};
+
+

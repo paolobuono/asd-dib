@@ -19,6 +19,7 @@
 
 #ifndef ASD_dizionarioLista_h
 #define ASD_dizionarioLista_h
+
 #include "dizionario.h"
 #include "../Lista/listaUnidirezionale.h"
 #include "../Dati/testo.h"

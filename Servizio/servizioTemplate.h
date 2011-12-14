@@ -24,7 +24,7 @@
 
 //per creare la funzione di caricamento o stampa fare overloading della funzione per ogni tipo di dato gestito
 
-//void caricaDizionario(Dizionario &);
+void caricaDizionario(Dizionario &);
 
 void CaricaLibreria(Lista<Prestiti> &);
 
@@ -43,8 +43,21 @@ void Messaggio(ListaUnidirezionale <T> l){
     cout << endl << messaggio << endl;
 };
 
-
 //funzioni di caricamento
+
+void caricaDizionario(Dizionario &d){
+    cout << endl << "Chiamato caricaDizionario" << endl;
+    chiave k=1;
+    elemento e="Cane";
+    d.inserisci(e,k);
+    k=2;
+    e="Gatto";
+    d.inserisci(e,k);
+    k=3;
+    e="Topo";
+    d.inserisci(e,k);
+}
+
 void CaricaLibreria(Lista<Prestiti> & libreria){
 //    //Creazione lista di persone
 //    Testo testo("Il libro delle anime", 1);
