@@ -35,13 +35,14 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 
 #include <stdlib.h>
 
-#include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
+using namespace std;
+typedef bool boolean;
+
 #include "grafo.h"          //Classe virtuale di Grafo
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
 #include "arcoGrafo.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
 
-using namespace std;
-typedef bool boolean;
+#include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
 
 template <class tipoNodo, class tipoArco>
 class GrafoListeAdiacenza : public Grafo< tipoNodo, tipoArco > {

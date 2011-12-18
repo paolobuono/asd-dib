@@ -35,8 +35,11 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 
 #include <stdlib.h>
 
+using namespace std;
+typedef bool boolean;
+
 #include "grafo.h"          //Classe virtuale di Grafo
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
-#include "arcoGrafoListaArchi.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
+#include "arcoGrafo.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
 
 #endif
