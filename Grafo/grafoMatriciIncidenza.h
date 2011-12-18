@@ -42,4 +42,8 @@ typedef bool boolean;
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
 #include "arcoGrafo.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
 
+template <class tipoNodo, class tipoArco>
+class GrafoListeMatriceIncidenza : public Grafo< tipoNodo, tipoArco > {
+}
+
 #endif

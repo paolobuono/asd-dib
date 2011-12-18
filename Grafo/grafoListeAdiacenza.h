@@ -66,8 +66,6 @@ public:
 	arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
 
 	Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
-
-
 };
 
 
