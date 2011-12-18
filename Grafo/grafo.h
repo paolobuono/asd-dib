@@ -40,13 +40,14 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 #include "arcoGrafo.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
 
 using namespace std;
-
 typedef bool boolean;
+
+//TODO vanno eliminati metodi e variabili dipendenti dall'implementazione del grafo.
 
 template < class tipoNodo, class tipoArco >
 class Grafo {
-private:
-    Lista< Lista < nodoGrafo < tipoNodo > > > listaNodi;
+//private:
+		  //Lista< Lista < nodoGrafo < tipoNodo > > > listaNodi;
 public:
 	virtual void creaGrafo();
     virtual boolean grafoVuoto();
