@@ -39,12 +39,12 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 using namespace std;
 typedef bool boolean;
 
-template <class T>
-class arcoGrafoListaArchi : public arcoGrafo< T >{
+template <class A, class N>
+class arcoGrafoListaArchi : public arcoGrafo< A >{
 
 	  //extension per usarlo in arco grafo lista archi
-	  nodoGrafo< T >* primoNodo;
-	  nodoGrafo< T >* secondoNodo;
+	  nodoGrafo< N >* primoNodo;
+	  nodoGrafo< N >* secondoNodo;
 };
 
 #endif

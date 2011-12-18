@@ -40,7 +40,7 @@
 
 #include "Servizio/servizioAlberobin.h"
 #include "Servizio/servizioTemplate.h"
-//#include "Servizio/testDizionario.h"
+#include "Servizio/testDizionario.h"
 
 using namespace std;
 
