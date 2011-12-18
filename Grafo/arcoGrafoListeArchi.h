@@ -42,7 +42,7 @@ typedef bool boolean;
 template <class T>
 class arcoGrafoListaArchi : public arcoGrafo< T >{
 
-	  //extension
+	  //extension per usarlo in arco grafo lista archi
 	  nodoGrafo< T >* primoNodo;
 	  nodoGrafo< T >* secondoNodo;
 };
