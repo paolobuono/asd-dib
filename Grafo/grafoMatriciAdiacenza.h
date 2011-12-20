@@ -34,16 +34,26 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
  */
 
 #include <stdlib.h>
+define RIGHe 100
+define COLONNE 1000
 
 using namespace std;
 typedef bool boolean;
 
 #include "grafo.h"          //Classe virtuale di Grafo
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
-#include "arcoGrafo.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
+
+//variante di arco Grafo per relizzare il grafo con liste di archi
+#include "arcoGrafoListeArchi.h"
+
+#include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
 
 template <class tipoNodo, class tipoArco>
 class GrafoListeMatriceIncidenza : public Grafo< tipoNodo, tipoArco > {
+
+	//Ho utilizzato una classe arco diverso, personalizzato come estens
+	//ASSUMO come NULL = 0, NULL != 1
+	Lista< *arcoGrafoListaArchi < tipoArco, tipoNodo > > matriceAdiacenza[RIGHE][COLONNE];
 }
 
 #endif
