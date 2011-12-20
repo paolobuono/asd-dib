@@ -40,11 +40,38 @@ typedef bool boolean;
 
 #include "grafo.h"          //Classe virtuale di Grafo
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
-#include "arcoGrafo.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
+
+//variante di arco Grafo per relizzare il grafo con liste di archi
+#include "arcoGrafoListeArchi.h"
+
+#include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
 
 template <class tipoNodo, class tipoArco>
 class GrafoListeIncidenza : public Grafo< tipoNodo, tipoArco > {
+private:
+    //Ho utilizzato una classe arco diverso, personalizzato come estens
+	Lista< arcoGrafoListaArchi < tipoArco, tipoNodo > > listaArchi;
+	
+    Lista< Lista < nodoGrafo < arcoGrafoListaArchi > > > listaIncidenza;
 
-}
+public:
+	void creaGrafo();
+	boolean grafoVuoto();
+	void setOrientato( boolean setOrientato );
+	void setPesato( boolean setPesato );
+
+	void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
+	void cancNodo(nodoGrafo< tipoNodo >);
+	boolean esisteNodo(nodoGrafo< tipoNodo >);
+	tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
+
+	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
+	void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+	boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+	arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
+
+	Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+};
 
 #endif

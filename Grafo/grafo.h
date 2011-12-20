@@ -42,12 +42,8 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 using namespace std;
 typedef bool boolean;
 
-//TODO vanno eliminati metodi e variabili dipendenti dall'implementazione del grafo.
-
 template < class tipoNodo, class tipoArco >
 class Grafo {
-//private:
-		  //Lista< Lista < nodoGrafo < tipoNodo > > > listaNodi;
 public:
 	virtual void creaGrafo();
     virtual boolean grafoVuoto();
