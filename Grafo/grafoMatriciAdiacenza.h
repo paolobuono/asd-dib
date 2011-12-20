@@ -43,17 +43,20 @@ typedef bool boolean;
 #include "grafo.h"          //Classe virtuale di Grafo
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
 
-//variante di arco Grafo per relizzare il grafo con liste di archi
-#include "arcoGrafoListeArchi.h"
+#include "arcoGrafo.h"
 
 #include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
 
 template <class tipoNodo, class tipoArco>
 class GrafoListeMatriceIncidenza : public Grafo< tipoNodo, tipoArco > {
 	  //LISTA NODI
+	  Lista < nodoGrafo < tipoNodo > > > listaNodi;
+
 	  //LISTA ARCHI
-	  
-	  //MATRICE DI INCIDENZA (1,0)
+	  Lista < arcoGrafo < tipoArco > > > listaArchi;
+
+	  //MATRICE INCIDENZA (1,0)
+	  bool matriceIncidenza[RIGHE][COLONNE];
 	  
 }
 
