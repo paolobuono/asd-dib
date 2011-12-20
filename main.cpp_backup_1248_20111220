@@ -18,13 +18,6 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
-//TODO ISSUE 3 (vedi google code)
-//COMMENTATO alcnce righe da errori di compilazione, decommentare solo se si
-//risolve il problema. Ho commentato alcuni inlucde ed una parte del codice
-//vedi fondo pagina e trovare lo stesso problema
-//#include "Dizionario/dizionarioAlberoBinario.h"
-//#include "Servizio/servizioAlberobin.h"
-//#include "Servizio/testDizionario.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -42,12 +35,12 @@
 #include "Dizionario/dizionarioLista.h"
 #include "Dizionario/dizionarioVettore.h"
 #include "Dizionario/dizionarioHash.h"
-//#include "Dizionario/dizionarioAlberoBinario.h"
+#include "Dizionario/dizionarioAlberoBinario.h"
 #include "Dizionario/datoDizionario.h"
 
-//#include "Servizio/servizioAlberobin.h"
+#include "Servizio/servizioAlberobin.h"
 #include "Servizio/servizioTemplate.h"
-//#include "Servizio/testDizionario.h"
+#include "Servizio/testDizionario.h"
 
 using namespace std;
 
@@ -87,13 +80,6 @@ int main(int argc, char *argv[])
     if(el!="") cout << "Trovato elemento dizionario lista: " << el << endl;
     else cout << "Elemento non trovato in dizionario lista"<<endl;
 
-/*
-	//COMMENTATO perchè da errori di compilazione, decommentare solo se si
-	//risolve il problema ho commentato anche alcuni inlucde
-	//#include "Dizionario/dizionarioAlberoBinario.h"
-	//#include "Servizio/servizioAlberobin.h"
-	//#include "Servizio/testDizionario.h"
-
     DizionarioAlberoBinario db;
     caricaDizionario(db);
     db.cancella(1);
@@ -107,7 +93,7 @@ int main(int argc, char *argv[])
     elemento eh=dh.cerca(2);
     if(eh!="") cout << "Trovato elemento dizionario hash: " << eh << endl;
     else cout << "Elemento non trovato in dizionario hash"<<endl;
-*/
+
 
     system("PAUSE");
     return EXIT_SUCCESS;
