@@ -10,6 +10,10 @@ void carica(albero<studente>&,Nodo&);
 void previsita(albero<studente>,Nodo);
 void postvisita(albero<studente>,Nodo);
 void ampiezza(albero<studente>,Nodo);
+int contanodi_albero_enn(Albero_enn<studente> &, Nodo<studente>*, int);
+int altezza(Albero_enn<studente> &, Nodo<studente>*, int);
+int calcolo(Albero_enn<studente> &, Nodo<studente>*, int , int);
+int conta_foglie(Albero_enn<studente> &, Nodo<studente>*, int);
 
 
 void carica(albero<studente> &a,Nodo &n1) {
@@ -119,5 +123,98 @@ void ampiezza(albero<studente> a,Nodo u)
      }
   }
 }
+
+
+
+
+
+int contanodi_albero_enn(Albero<studente> & t, Nodo<T>* u, int cont)   // restituisce il numero di sottoalberi dell'albero
+{
+   
+ if(!t.albero_vuoto()){
+                         Nodo<studente>* c;
+                         cont++;  
+                         
+                         if(!t.foglia(u))
+                           {
+                            c=t.primo_figlio(u);
+                            
+                            while(!t.ultimo_fratello(c))
+                                {
+                                  cont=contanodi_albero_enn(t, c, cont);
+                                  c=t.succ_fratello(c);                      
+                                }             
+                          cont=contanodi_albero_enn(t, c, cont);   
+                        }
+                      }                                  
+   return cont;                                                         
+};
+
+
+
+int conta_foglie(Albero_enn<studente> & t, Nodo<studente>* u, int cont)     //restituisce il numero delle foglie dell'albero
+{  
+ if(!t.albero_vuoto()){
+                         Nodo<studente>* c;
+                        
+                         if(t.foglia(u))
+                            cont++; 
+                         
+                         else
+                           {
+                            c=t.primo_figlio(u);
+                            
+                            while(!t.ultimo_fratello(c))
+                                {
+                                  cont=conta_foglie(t, c, cont);
+                                  c=t.succ_fratello(c);                      
+                                }             
+                          cont=conta_foglie(t, c, cont);   
+                        }
+                      }                                  
+   return cont;                                                         
+};
+
+
+
+int altezza(Albero_enn<sudente> & t, Nodo<studente>* u,int temp)  //restituisce l'altezza dell'albero
+{
+  int max=temp;  
+  if(!t.albero_vuoto())
+      max=calcolo(t,u, temp, max);                                  
+        return max;             
+};                      
+                           
+
+
+int calcolo(Albero_enn<studente> & t, Nodo<studente>* u,int temp, int max)
+{
+    Nodo<studente>* c;
+    if(t.foglia(u))
+      {
+       if(temp>=max) 
+          max=temp;          
+      }
+                         
+    else
+      {
+       temp++;
+        {
+          c=t.primo_figlio(u);
+          while(!t.ultimo_fratello(c))
+            {
+             max=calcolo(t, c, temp, max);
+             c=t.succ_fratello(c);                      
+            }             
+          max=calcolo(t, c, temp, max);      
+        }    
+     }
+return max;
+}
+
+
+
+
+
 
 #endif
