@@ -48,9 +48,27 @@ typedef bool boolean;
 
 template <class tipoNodo, class tipoArco>
 class GrafoListeArchi : public Grafo< tipoNodo, tipoArco > {
-	  public:
-			 Lista< arcoGrafoListaArchi < tipoArco, tipoNodo > > listaArchi;
+	public:
+	//Ho utilizzato una classe arco diverso, personalizzato come estens
+	Lista< arcoGrafoListaArchi < tipoArco, tipoNodo > > listaArchi;
 
+	void creaGrafo();
+	boolean grafoVuoto();
+	void setOrientato( boolean setOrientato );
+	void setPesato( boolean setPesato );
+
+	void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
+	void cancNodo(nodoGrafo< tipoNodo >);
+	boolean esisteNodo(nodoGrafo< tipoNodo >);
+	tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
+
+	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
+	void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+	boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+	arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
+
+	Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
 }
 
 #endif

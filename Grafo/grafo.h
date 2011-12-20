@@ -64,7 +64,7 @@ public:
     virtual void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
     virtual boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
     virtual arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
-		
+    
     virtual Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
 };
 
