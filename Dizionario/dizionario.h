@@ -24,9 +24,10 @@
 
 using namespace std;
 
-typedef int chiave;
-typedef string elemento;
+typedef int chiave;  //TODO:fare in modo che chiave sia un tipo generico
+//typedef string elemento;
 
+template <class elemento>
 class Dizionario{
 public:
     virtual void inserisci(elemento,chiave)=0;

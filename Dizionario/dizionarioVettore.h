@@ -22,15 +22,62 @@
 #include "dizionario.h"
 #define MAXDIM 100
 
-class DizionarioVettore : public Dizionario{
+template <class elemento>
+class DizionarioVettore : public Dizionario < elemento >{
 public:
     void inserisci(elemento,chiave);
     void cancella(chiave);
     elemento cerca(chiave);
     DizionarioVettore();
 private:
-    Dato<string> dati[MAXDIM];
+    Dato<elemento> dati[MAXDIM];
     int dimensione;
 };
+
+
+template <class elemento>
+void DizionarioVettore<elemento>::inserisci(elemento e, chiave k){
+    bool trovato=false;
+    for(int i=0;i<dimensione;i++){
+        if (k==dati[i].chiaveDato) trovato = true;
+    }
+    if (!trovato && dimensione<MAXDIM){
+        dati[dimensione].chiaveDato=k;
+        dati[dimensione].elementoDato=e;
+        dimensione++;
+    }
+}
+
+template <class elemento>
+DizionarioVettore<elemento>::DizionarioVettore(){
+    dimensione=0;
+}
+
+template <class elemento>
+void DizionarioVettore<elemento>::cancella(chiave k){
+    bool trovato=false;
+    for(int i=0;i<dimensione;i++){
+        if (k==dati[i].chiaveDato) {
+            trovato = true;
+        }
+        if (trovato){
+            dati[i].chiaveDato=dati[i+1].chiaveDato;
+            dati[i].elementoDato=dati[i+1].elementoDato;
+        }
+    }
+}
+
+template <class elemento>
+elemento DizionarioVettore<elemento>::cerca(chiave k){
+    string risposta="";
+    bool trovato=false;
+    for(int i=0;(i<dimensione) && (!trovato);i++){
+        if (k==dati[i].chiaveDato) {
+            risposta = dati[i].elementoDato;
+        }
+    }
+    return risposta;
+}
+
 
 #endif

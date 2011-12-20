@@ -28,15 +28,20 @@
 
 using namespace std;
 
-typedef elemento Vettore[MAX];
 typedef bool boolean;
 typedef int attributo;
 
-chiave H(chiave);
+chiave H(chiave ch) //TODO: definire delle funzioni hash meno banali di questa
+{
+    return(ch);
+}
 
 
-class DizionarioHash : public Dizionario {
+
+template <class elemento>
+class DizionarioHash : public Dizionario < elemento >{
 private:
+	typedef elemento Vettore[MAX];
     Vettore vettore;    
 public:
     void inserisci(elemento, chiave);
@@ -51,15 +56,16 @@ public:
     void aggiorna(chiave,chiave);
 };
 
-
-void DizionarioHash::inserisci(elemento e, chiave c){
+template <class elemento>
+void DizionarioHash<elemento>::inserisci(elemento e, chiave c){
     chiave a=H(c);
     if (vettore[a]=="") {
         vettore[a]=e;    
     }
 }
 
-void DizionarioHash::cancella(chiave c)
+template <class elemento>
+void DizionarioHash<elemento>::cancella(chiave c)
 {
     chiave a=H(c);
     if (vettore[a]!="") {
@@ -67,19 +73,22 @@ void DizionarioHash::cancella(chiave c)
     }
 }
 
-elemento DizionarioHash::cerca(chiave c)
+template <class elemento>
+elemento DizionarioHash<elemento>::cerca(chiave c)
 {
     chiave a=H(c);
     return vettore[a];
 }
 
 
-DizionarioHash::DizionarioHash()
+template <class elemento>
+DizionarioHash<elemento>::DizionarioHash()
 {
     creadiz();
 }
 
-void DizionarioHash::creadiz()
+template <class elemento>
+void DizionarioHash<elemento>::creadiz()
 {
     attributo i;
     
@@ -87,7 +96,8 @@ void DizionarioHash::creadiz()
         vettore[i]="";
 }
 
-boolean DizionarioHash::appartiene(chiave c)
+template <class elemento>
+boolean DizionarioHash<elemento>::appartiene(chiave c)
 {
 //    attributo i;
     boolean risultato=true;
@@ -104,7 +114,8 @@ boolean DizionarioHash::appartiene(chiave c)
 }
 
 
-void DizionarioHash::mostravettore()
+template <class elemento>
+void DizionarioHash<elemento>::mostravettore()
 {
 //    attributo i;
 //    chiave c;
@@ -117,7 +128,8 @@ void DizionarioHash::mostravettore()
 }
 
 
-void DizionarioHash::aggiorna(chiave c1,chiave c2)
+template <class elemento>
+void DizionarioHash<elemento>::aggiorna(chiave c1,chiave c2)
 {
 //    attributo a;
 //    
@@ -140,13 +152,7 @@ void DizionarioHash::aggiorna(chiave c1,chiave c2)
 //    else {
 //        cout << "La chiave '"<< c1 <<"' non esiste nel dizionario.\n";
 //        system ("pause");
-//    }
-}
-
-
-chiave H(chiave ch)
-{
-    return(ch);
+//
 }
 
 #endif

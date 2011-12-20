@@ -22,21 +22,23 @@
 
 #include "dizionario.h"
 #include "../Lista/listaUnidirezionale.h"
-#include "../Dati/testo.h"
+//#include "../Dati/testo.h"
 
-class DizionarioLista : public Dizionario{
+
+template <class elemento>
+class DizionarioLista : public Dizionario < elemento > {
 public:
     void inserisci(elemento,chiave);
     void cancella(chiave);
     elemento cerca(chiave);
     DizionarioLista();
 private:
-    ListaUnidirezionale< Dato<string> > lista;
+    ListaUnidirezionale< Dato<elemento> > lista;
 };
 
 
-//implementazione
-void DizionarioLista::inserisci(elemento e, chiave k){
+template <class elemento>
+void DizionarioLista<elemento>::inserisci(elemento e, chiave k){
     Dato<string> d;
     d.elementoDato = e;
     d.chiaveDato = k;
@@ -55,13 +57,15 @@ void DizionarioLista::inserisci(elemento e, chiave k){
     }
 }
 
-DizionarioLista::DizionarioLista(){
+template <class elemento>
+DizionarioLista<elemento>::DizionarioLista(){
     lista.creaLista();
 }
 
-void DizionarioLista::cancella(chiave k){
+template <class elemento>
+void DizionarioLista<elemento>::cancella(chiave k){
     boolean trovato=false;
-    Nodo< Dato<string> > * posizione;
+    Nodo< Dato<elemento> > * posizione;
     posizione = lista.primoLista();
     while ((!lista.fineLista(posizione)) && (!trovato)) {
         if (lista.leggiLista(posizione).chiaveDato==k){
@@ -73,9 +77,10 @@ void DizionarioLista::cancella(chiave k){
     cout << "Dato con chiave "<<k<<" cancellato"<<endl;
 }
 
-elemento DizionarioLista::cerca(chiave k){
+template <class elemento>
+elemento DizionarioLista<elemento>::cerca(chiave k){
     boolean trovato=false;
-    Nodo< Dato<string> > * posizione;
+    Nodo< Dato<elemento> > * posizione;
     posizione = lista.primoLista();
     elemento e;
     while ((!lista.fineLista(posizione)) && (!trovato)) {

@@ -21,10 +21,12 @@
 #define ASD_servizioTemplate_h
 #include "../Lista/lista.h"
 #include "../Coda/coda.h"
+#include "../Dizionario/dizionario.h"
 
 //per creare la funzione di caricamento o stampa fare overloading della funzione per ogni tipo di dato gestito
 
-void caricaDizionario(Dizionario &);
+template <class T>
+void caricaDizionario(Dizionario <T>&);
 
 void CaricaLibreria(Lista<Prestiti> &);
 
@@ -45,7 +47,8 @@ void Messaggio(ListaUnidirezionale <T> l){
 
 //funzioni di caricamento
 
-void caricaDizionario(Dizionario &d){
+template <class elemento>
+void caricaDizionario(Dizionario <elemento> &d){
     cout << endl << "Chiamato caricaDizionario" << endl;
     chiave k=1;
     elemento e="Cane";
