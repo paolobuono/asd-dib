@@ -50,10 +50,11 @@ typedef bool boolean;
 
 template <class tipoNodo, class tipoArco>
 class GrafoListeMatriceIncidenza : public Grafo< tipoNodo, tipoArco > {
-
-	//Ho utilizzato una classe arco diverso, personalizzato come estens
-	//ASSUMO come NULL = 0, NULL != 1
-	Lista< *arcoGrafoListaArchi < tipoArco, tipoNodo > > matriceAdiacenza[RIGHE][COLONNE];
+	  //LISTA NODI
+	  //LISTA ARCHI
+	  
+	  //MATRICE DI INCIDENZA (1,0)
+	  
 }
 
 #endif
