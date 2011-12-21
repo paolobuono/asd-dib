@@ -38,6 +38,9 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 using namespace std;
 typedef bool boolean;
 
+define RIGHe 100
+define COLONNE 100
+
 #include "grafo.h"          //Classe virtuale di Grafo
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
 
@@ -47,15 +50,28 @@ typedef bool boolean;
 
 template <class tipoNodo, class tipoArco>
 class GrafoListeMatriceIncidenza : public Grafo< tipoNodo, tipoArco > {
-	  //LISTA NODI
-	  Lista < nodoGrafo < tipoNodo > > > listaNodi;
-	  
-	  //LISTA ARCHI
-	  Lista < arcoGrafo < tipoArco > > > listaArchi;
-	  
-	  //MATRICE ADIACENZA (1,0)
-	  bool matriceIncidenza[RIGHE][COLONNE];
-	  
+	//LISTA NODI
+	/*assumiamo una lista ordinata dove le posizioni 0 >= i >= n
+	* corrispondono alle RIGHE della matrice di incidenza
+	*/
+	Lista < nodoGrafo < tipoNodo > > > listaNodi;
+
+	//LISTA ARCHI
+	/*assumiamo una lista ordinata dove le posizioni 0 >= i >= n
+	* corrispondono alle COLONNE della matrice di incidenza
+	*/
+	Lista < arcoGrafo < tipoArco > > > listaArchi;
+
+	//MATRICE ADIACENZA (1,0)
+	/**
+	* Matrice rettangolare nXm ,n numero di nodi, m numero di archi
+	* i esima riga corrisponde all'iesimo nodi della lista ordinata
+	* j esima colonna corrisponde all'j-esima colonna della lista ordinata
+	* la posizione A[ij] corrisponde all'informazione se il nodo i-esimo è
+	* collegato al j-esimo arco.
+	*/
+	bool matriceIncidenza[RIGHE][COLONNE];
+
 }
 
 #endif

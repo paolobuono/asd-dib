@@ -35,13 +35,13 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 
 #include <stdlib.h>
 define RIGHe 100
-define COLONNE 1000
+define COLONNE 100
 
 using namespace std;
 typedef bool boolean;
 
-#include "grafo.h"          //Classe virtuale di Grafo
-#include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
+#include "grafo.h" //Classe virtuale di Grafo
+#include "nodoGrafo.h" //Classe del nodo grafo, necessita di allegare un "tipoNodo"
 
 #include "arcoGrafo.h"
 
@@ -49,15 +49,46 @@ typedef bool boolean;
 
 template <class tipoNodo, class tipoArco>
 class GrafoListeMatriceIncidenza : public Grafo< tipoNodo, tipoArco > {
-	  //LISTA NODI
-	  Lista < nodoGrafo < tipoNodo > > > listaNodi;
+	public:
+	//LISTA NODI
+	/*
+	* Lista ordinata di nodi dove le posizioni 0 > i > n
+	* corrispondono alle 0 > i > n righe e colonne della mat. adiacenza
+	**/
+	Lista < nodoGrafo < tipoNodo > > > listaNodi;
 
-	  //LISTA ARCHI
-	  Lista < arcoGrafo < tipoArco > > > listaArchi;
+	//LISTA ARCHI
+	//TODO non so ancora come collegare l'informazione arco
+	//alla matrice di incidenza
+	//
+	Lista < arcoGrafo < tipoArco > > > listaArchi;
 
-	  //MATRICE INCIDENZA (1,0)
-	  bool matriceIncidenza[RIGHE][COLONNE];
-	  
+	//MATRICE INCIDENZA (1,0)
+	/*
+	* matrice quadrata n X n dove righe e colonne corrispondono ai nodi
+	* ordinati nella lista nodi
+	**/
+	bool matriceIncidenza[RIGHE][COLONNE];
+
+	//METODI di base
+	void creaGrafo();
+	boolean grafoVuoto();
+	void setOrientato( boolean setOrientato );
+	void setPesato( boolean setPesato );
+
+	void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
+	void cancNodo(nodoGrafo< tipoNodo >);
+	boolean esisteNodo(nodoGrafo< tipoNodo >);
+	tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
+
+	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
+	void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+	boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
+	arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
+
+	Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+
 }
 
 #endif
