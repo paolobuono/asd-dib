@@ -38,8 +38,8 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
 using namespace std;
 typedef bool boolean;
 
-define RIGHe 100
-define COLONNE 100
+#define RIGHe 100
+#define COLONNE 100
 
 #include "grafo.h"          //Classe virtuale di Grafo
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"

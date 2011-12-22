@@ -34,8 +34,8 @@ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
  */
 
 #include <stdlib.h>
-define RIGHe 100
-define COLONNE 100
+#define RIGHe 100
+#define COLONNE 100
 
 using namespace std;
 typedef bool boolean;
