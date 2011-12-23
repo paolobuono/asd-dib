@@ -212,7 +212,40 @@ int calcolo(Albero_enn<studente> & t, Nodo<studente>* u,int temp, int max)
 return max;
 }
 
-
+Nodo ricercaCodice(albero<studente> a,int c) {
+  studente s;
+  bool trovato=false;
+  Nodo temp,rad;
+  coda< Nodo > cod;
+  rad=a.Radice();
+     /*controllo subito se ho trovato l'elemento ritorno rad altrimenti faccio visita in ampiezza */
+       if(rad->leggiInfo().leggiCodice()==c)
+           return rad;
+  cod.inCoda(rad);
+    while(!cod.Codavuota() && trovato==false) {
+                            temp=cod.leggiCoda();
+                            s=temp->leggiInfo();
+                            cod.fuoriCoda();
+                             if(s.leggiCodice()!=c) {
+                                                    if(!a.Foglia(temp)) {
+                                                                        temp=a.primoFiglio(temp);
+                                                                         while(!a.ultimoFratello(temp)) {
+                                                                                                        cod.inCoda(temp);
+                                                                                                        temp=a.succFratello(temp);
+                                                                                                        }
+                                                                                                        cod.inCoda(temp);
+                                                                         }
+                                                    } else {
+                                                           trovato=true;
+                                                           }
+                             }
+            if(cod.Codavuota()) {
+                                cout<<"Nessun elemento trovato!"<<endl;
+                                return NULL;
+                                } else {
+                                    return temp;
+                                    }
+  } 
 
 
 
