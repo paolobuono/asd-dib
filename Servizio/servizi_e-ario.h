@@ -13,7 +13,7 @@ void ampiezza(albero<studente>,Nodo);
 int contanodi_albero_enn(Albero_enn<studente> &, Nodo<studente>*, int);
 int conta_foglie(Albero_enn<studente> &, Nodo<studente>*, int);
 void ricercaCodice(albero<studente>,int);
-int altezza(albero<studente> &, Nodo,int);
+int altezza(albero<studente> &, Nodo);
 int calcolo(albero<studente> &, Nodo,int,int);
 
 void carica(albero<studente> &a,Nodo &n1) {
@@ -178,9 +178,10 @@ int conta_foglie(Albero_enn<studente> & t, Nodo<studente>* u, int cont)     //re
 
 /*Perchè utilizzo di temp? l'altezza dell'albero è il cammino piu lungo dalla radice al nodo foglia quindi si dovrebbe passare la radice */
 
-int altezza(albero<sudente> & t, Nodo u,int temp)  //restituisce l'altezza dell'albero
+int altezza(albero<sudente> & t, Nodo u)  //restituisce l'altezza dell'albero
 {
-  int max=temp;  
+  int max,temp;
+  max=temp=0;
   if(!t.alberoVuoto())
       max=calcolo(t,u, temp, max);                                  
         return max;             
