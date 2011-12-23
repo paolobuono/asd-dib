@@ -11,8 +11,6 @@ void previsita(albero<studente>,Nodo);
 void postvisita(albero<studente>,Nodo);
 void ampiezza(albero<studente>,Nodo);
 int contanodi_albero_enn(Albero_enn<studente> &, Nodo<studente>*, int);
-int altezza(Albero_enn<studente> &, Nodo<studente>*, int);
-int calcolo(Albero_enn<studente> &, Nodo<studente>*, int , int);
 int conta_foglie(Albero_enn<studente> &, Nodo<studente>*, int);
 void ricercaCodice(albero<studente>,int);
 int altezza(albero<studente> &, Nodo,int);
@@ -182,7 +180,7 @@ int conta_foglie(Albero_enn<studente> & t, Nodo<studente>* u, int cont)     //re
 int altezza(albero<sudente> & t, Nodo u,int temp)  //restituisce l'altezza dell'albero
 {
   int max=temp;  
-  if(!t.albero_vuoto())
+  if(!t.alberoVuoto())
       max=calcolo(t,u, temp, max);                                  
         return max;             
 };                      
@@ -192,7 +190,7 @@ int altezza(albero<sudente> & t, Nodo u,int temp)  //restituisce l'altezza dell'
 int calcolo(albero<studente> & t, Nodo u,int temp, int max)
 {
     Nodo<studente>* c;
-    if(t.foglia(u))
+    if(t.Foglia(u))
       {
        if(temp>=max) 
           max=temp;          
@@ -202,11 +200,11 @@ int calcolo(albero<studente> & t, Nodo u,int temp, int max)
       {
        temp++;
         {
-          c=t.primo_figlio(u);
-          while(!t.ultimo_fratello(c))
+          c=t.primoFiglio(u);
+          while(!t.ultimoFratello(c))
             {
              max=calcolo(t, c, temp, max);
-             c=t.succ_fratello(c);                      
+             c=t.succFratello(c);                      
             }             
           max=calcolo(t, c, temp, max);      
         }    
