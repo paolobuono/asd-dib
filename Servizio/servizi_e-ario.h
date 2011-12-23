@@ -6,6 +6,8 @@
 using namespace std;
 typedef nodo<studente>* Nodo;
 
+/*TO DO: adeguare gli altri metodi con la struttura albero e-ario del repository e testare le modifiche*/
+
 void carica(albero<studente>&,Nodo&);
 void previsita(albero<studente>,Nodo);
 void postvisita(albero<studente>,Nodo);
