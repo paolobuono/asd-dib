@@ -176,6 +176,7 @@ int conta_foglie(Albero_enn<studente> & t, Nodo<studente>* u, int cont)     //re
 };
 
 
+/*Perchè utilizzo di temp? l'altezza dell'albero è il cammino piu lungo dalla radice al nodo foglia quindi si dovrebbe passare la radice */
 
 int altezza(albero<sudente> & t, Nodo u,int temp)  //restituisce l'altezza dell'albero
 {
