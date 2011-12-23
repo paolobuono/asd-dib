@@ -15,6 +15,8 @@ int altezza(Albero_enn<studente> &, Nodo<studente>*, int);
 int calcolo(Albero_enn<studente> &, Nodo<studente>*, int , int);
 int conta_foglie(Albero_enn<studente> &, Nodo<studente>*, int);
 void ricercaCodice(albero<studente>,int);
+int altezza(albero<studente> &, Nodo,int);
+int calcolo(albero<studente> &, Nodo,int,int);
 
 void carica(albero<studente> &a,Nodo &n1) {
     Nodo n2,n3,n4,n5,n6,n7,n8,n9;
@@ -177,7 +179,7 @@ int conta_foglie(Albero_enn<studente> & t, Nodo<studente>* u, int cont)     //re
 
 
 
-int altezza(Albero_enn<sudente> & t, Nodo<studente>* u,int temp)  //restituisce l'altezza dell'albero
+int altezza(albero<sudente> & t, Nodo u,int temp)  //restituisce l'altezza dell'albero
 {
   int max=temp;  
   if(!t.albero_vuoto())
@@ -187,7 +189,7 @@ int altezza(Albero_enn<sudente> & t, Nodo<studente>* u,int temp)  //restituisce 
                            
 
 
-int calcolo(Albero_enn<studente> & t, Nodo<studente>* u,int temp, int max)
+int calcolo(albero<studente> & t, Nodo u,int temp, int max)
 {
     Nodo<studente>* c;
     if(t.foglia(u))
