@@ -14,7 +14,7 @@ int contanodi_albero_enn(Albero_enn<studente> &, Nodo<studente>*, int);
 int altezza(Albero_enn<studente> &, Nodo<studente>*, int);
 int calcolo(Albero_enn<studente> &, Nodo<studente>*, int , int);
 int conta_foglie(Albero_enn<studente> &, Nodo<studente>*, int);
-
+void ricercaCodice(albero<studente>,int);
 
 void carica(albero<studente> &a,Nodo &n1) {
     Nodo n2,n3,n4,n5,n6,n7,n8,n9;
