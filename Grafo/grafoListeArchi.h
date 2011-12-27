@@ -46,6 +46,7 @@ typedef bool boolean;
 template <class tipoNodo, class tipoArco>
 class GrafoListeArchi : public Grafo< tipoNodo, tipoArco > {
 	public:
+
 	//Ho utilizzato una classe arco diverso, personalizzato come estens
 	Lista< arcoGrafoListaArchi < tipoArco, tipoNodo > > listaArchi;
 
@@ -68,4 +69,14 @@ class GrafoListeArchi : public Grafo< tipoNodo, tipoArco > {
 	Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
 }
 
+
+template < class tipoNodo, class tipoArco >
+void GrafoListeArchi< tipoNodo, tipoArco >::creaGrafo(){
+
+}
+
+boolean GrafoListeArchi::grafoVuoto(){
+}
+
+		
 #endif
