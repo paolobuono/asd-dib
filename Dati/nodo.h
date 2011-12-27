@@ -20,14 +20,54 @@
 #ifndef ASD_nodo_h
 #define ASD_nodo_h
 
-//TODO: rendere privati i dati della classe, eventualmente impostare Lista e Coda come classi friend di Nodo
+/*MODIFY BY Minerva Fabio ON 11-Dec-27*/
+
 template <class T>
 class Nodo{
-public:
+private:
     T elemento;
     Nodo<T>* succ;
-    //Nodo<T>* prec;
+    Nodo<T>* prec;
+public:
+    T leggiElem();
+    Nodo<T>* leggiSucc();
+    Nodo<T>* leggiPrec();
+    void scriviElem(T);
+    void scriviSucc(Nodo<T>*);
+    void scriviPrec(Nodo<T>*)
 };
+
+template <class T>
+T Nodo<T>::leggiElem() {
+            return elemento;
+            }
+            
+template <class T>
+Nodo<T>* Nodo<T>::leggiSucc() {
+          return succ;
+          }
+          
+template <class T>
+Nodo<T>* Nodo<T>::leggiPrec() {
+          return prec;
+          }
+          
+template <class T>
+void Nodo<T>::scriviElem(T e) {
+        elemento=e;
+        }
+        
+template <class T>
+void Nodo<T>::scriviSucc(Nodo<T>* s) {
+        succ=s;
+        }
+        
+template <class T>
+void Nodo<T>::scriviPrec(Nodo<T>* p) {
+        prec=p;
+        }
+        
+
 
 
 #endif
