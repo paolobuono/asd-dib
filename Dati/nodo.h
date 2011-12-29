@@ -34,7 +34,7 @@ public:
     Nodo<T>* leggiPrec();
     void scriviElem(T);
     void scriviSucc(Nodo<T>*);
-    void scriviPrec(Nodo<T>*)
+    void scriviPrec(Nodo<T>*);
 };
 
 template <class T>
@@ -66,8 +66,4 @@ template <class T>
 void Nodo<T>::scriviPrec(Nodo<T>* p) {
         prec=p;
         }
-        
-
-
-
 #endif

@@ -48,8 +48,6 @@ private:
     posizione testa;
 };
 
-
-
 template <class T> 
 ListaUnidirezionale<T>::ListaUnidirezionale(){
     creaLista();                           
@@ -67,12 +65,12 @@ boolean ListaUnidirezionale<T>::listaVuota(){
 
 template <class T>
 T ListaUnidirezionale<T>::leggiLista(posizione p){
-    return p->elemento;
+    return p->leggiElem();
 }
 
 template <class tipoelem>
 void ListaUnidirezionale<tipoelem>::scriviLista(tipoelem t,posizione p){
-    p->elemento=t;
+    p->scriviElem(t);
 }
 
 template <class T>
@@ -83,13 +81,13 @@ Nodo <T> * ListaUnidirezionale<T>::primoLista(){
 template <class tipoelem>
 void ListaUnidirezionale<tipoelem>::insLista(tipoelem t, posizione &p){
     Nodo<tipoelem> * temp = new Nodo<tipoelem>();
-    temp->elemento = t;
-    temp->succ=p;
+    temp->scriviElem(t);
+    temp->scriviSucc(p);
     if (p==primoLista()) {
         testa=temp;
     }else{
         posizione prec=predLista(p);
-        prec->succ=temp;
+        prec->scriviSucc(temp);
     }
 }
 
@@ -97,7 +95,7 @@ template <class T>
 void ListaUnidirezionale<T>::cancLista(posizione p){
     Nodo <T> * temp;
     temp = predLista(p);
-    temp->succ=p->succ;
+    temp->scriviSucc(p->leggiSucc());
     delete p;
 }
 
@@ -108,13 +106,13 @@ boolean ListaUnidirezionale<T>::fineLista(posizione p){
 
 template <class T>
 Nodo <T> * ListaUnidirezionale<T>::succLista(posizione p){
-    return p->succ;
+    return p->leggiSucc();
 }
 
 template <class T>
 Nodo <T> * ListaUnidirezionale<T>::predLista(posizione p){
     posizione p1=primoLista();
-    while (!fineLista(p1) && (p1->succ != p)) {
+    while (!fineLista(p1) && (p1->leggiSucc() != p)) {
         p1=succLista(p1);
     }
     return p1;

@@ -51,7 +51,7 @@ boolean Coda<T>::codaVuota() {
 
 template <class T>
 T Coda<T>::leggiCoda () {
-    return testa->elemento;
+    return testa->leggiElem();
 }
 
 template <class T>
@@ -60,11 +60,11 @@ void Coda<T>::inCoda (T a){
         fondo=new(Nodo<T>);
         testa=fondo;
     }else{
-        fondo->succ=new(Nodo<T>);
-        fondo=fondo->succ;
+        fondo->scriviSucc(new(Nodo<T>));
+        fondo=fondo->leggiSucc();
     }
-    fondo->elemento=a;
-    fondo->succ=NULL;
+    fondo->scriviElem(a);
+    fondo->scriviSucc(NULL);
 }
 
 template <class T>
@@ -72,7 +72,7 @@ void Coda<T>::fuoriCoda(){
 	Nodo <T> * temp;
 	if (!codaVuota()){
 		temp=testa;
-		testa=testa->succ;
+		testa=testa->leggiSucc();
    	    delete temp;
 	}
 }
