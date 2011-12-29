@@ -54,13 +54,13 @@ class GrafoListeMatriceIncidenza : public Grafo< tipoNodo, tipoArco > {
 	/*assumiamo una lista ordinata dove le posizioni 0 >= i >= n
 	* corrispondono alle RIGHE della matrice di incidenza
 	*/
-	Lista < nodoGrafo < tipoNodo > > > listaNodi;
+	Lista < nodoGrafo < tipoNodo > > listaNodi;
 
 	//LISTA ARCHI
 	/*assumiamo una lista ordinata dove le posizioni 0 >= i >= n
 	* corrispondono alle COLONNE della matrice di incidenza
 	*/
-	Lista < arcoGrafo < tipoArco > > > listaArchi;
+	Lista < arcoGrafo < tipoArco > > listaArchi;
 
 	//MATRICE ADIACENZA (1,0)
 	/**
