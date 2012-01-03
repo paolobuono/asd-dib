@@ -26,7 +26,4 @@ class Coda{
                    int leggi_numero();
                    int leggi_fondo();
                    int leggi_testa();
-                   
-                   
-                   
 };
