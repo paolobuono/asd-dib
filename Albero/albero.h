@@ -8,7 +8,7 @@
 using namespace std;
 
 template<class T>
-class albero {
+class albero : public viralbero<T> {
       private:
               nodo<T>* radice;
       public:
@@ -111,7 +111,7 @@ nodo<T>* albero<T>::succFratello(Nodo u) {
       
  template<class T>
  void albero<T>::insFratellosucc(T ele, Nodo u) {
-      if(!alberoVuoto() && ultimoFratello(u) && u!=radice) {  //u!=radice la radice nn può avere fratelli
+      if(!alberoVuoto() && ultimoFratello(u) && u!=radice) {  //u!=radice la radice nn puÃ² avere fratelli
           Nodo nuovo=new nodo<T>;
           scriviNodo(ele,nuovo);
           u->scriviSuccfr(nuovo);
