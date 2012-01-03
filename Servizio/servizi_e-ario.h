@@ -7,6 +7,7 @@ using namespace std;
 typedef nodo<studente>* Nodo;
 
 /*TO DO: adeguare gli altri metodi con la struttura albero e-ario del repository e testare le modifiche*/
+/*TO DO: rivedere la ricerca..problema sui nodi foglia*/
 
 void carica(albero<studente>&,Nodo&);
 void previsita(albero<studente>,Nodo);
