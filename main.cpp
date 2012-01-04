@@ -19,9 +19,8 @@
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
 //TODO ISSUE 3 (vedi google code)
-//COMMENTATO alcnce righe da errori di compilazione, decommentare solo se si
-//risolve il problema. Ho commentato alcuni inlucde ed una parte del codice
-//vedi fondo pagina e trovare lo stesso problema
+//COMMENTATE alcune righe che danno errori di compilazione, prima di ripristinare
+//assicurarsi che si siano risolti i problemi.
 //#include "Dizionario/dizionarioAlberoBinario.h"
 //#include "Servizio/servizioAlberobin.h"
 //#include "Servizio/testDizionario.h"
