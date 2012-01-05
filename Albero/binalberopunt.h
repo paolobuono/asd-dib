@@ -25,25 +25,25 @@
 template <class tipoelem>
 class Binalberopunt : public Alberobin<tipoelem>{
 public:
-    Binalberopunt();
-    ~Binalberopunt();
-    typedef CellaAlbero <tipoelem> * NodoAlbero;
-    void creaBinalbero();
-    boolean binalberoVuoto();
-    NodoAlbero binRadice();
-    NodoAlbero binPadre(NodoAlbero);
-    NodoAlbero figlioSinistro(NodoAlbero);
-    NodoAlbero figlioDestro(NodoAlbero);
-    boolean sinistroVuoto(NodoAlbero);
-    boolean destroVuoto(NodoAlbero);
-    tipoelem leggiNodo(NodoAlbero);
-    void scriviNodo(tipoelem,NodoAlbero);
-    void insRadice(); 
-    void insFiglioSinistro(NodoAlbero);
-    void insFiglioDestro(NodoAlbero);
-    void cancSottoBinalbero(NodoAlbero);
+	Binalberopunt();
+	~Binalberopunt();
+	typedef CellaAlbero <tipoelem> * NodoAlbero;
+	void creaBinalbero();
+	boolean binalberoVuoto();
+	NodoAlbero binRadice();
+	NodoAlbero binPadre(NodoAlbero);
+	NodoAlbero figlioSinistro(NodoAlbero);
+	NodoAlbero figlioDestro(NodoAlbero);
+	boolean sinistroVuoto(NodoAlbero);
+	boolean destroVuoto(NodoAlbero);
+	tipoelem leggiNodo(NodoAlbero);
+	void scriviNodo(tipoelem,NodoAlbero);
+	void insRadice();
+	void insFiglioSinistro(NodoAlbero);
+	void insFiglioDestro(NodoAlbero);
+	void cancSottoBinalbero(NodoAlbero);
 private:
-    NodoAlbero albero;
+	NodoAlbero albero;
 };
 
 //Implementazione
@@ -59,7 +59,7 @@ Binalberopunt<T>::~Binalberopunt(){
 
 template <class T>
 void Binalberopunt<T>::creaBinalbero(){
-    //rispetta le specifiche, ma va controllato.
+	//rispetta le specifiche, ma va controllato.
 	albero = NULL;
 };
 
@@ -70,30 +70,30 @@ boolean Binalberopunt<T>::binalberoVuoto(){
 
 template <class tipoelem>
 CellaAlbero <tipoelem> * Binalberopunt<tipoelem>::binRadice(){
-    if(!binalberoVuoto())//condizione messa per rispettare le specifiche, non necessaria
+	if(!binalberoVuoto())//condizione messa per rispettare le specifiche, non necessaria
 		return albero;
-    else return NULL;
+	else return NULL;
 };
 
 template <class tipoelem>
 CellaAlbero <tipoelem> * Binalberopunt<tipoelem>::binPadre(NodoAlbero u){
 	if(!binalberoVuoto() && u != albero)
-        return u->getGenitore();
-    else return NULL;
+		return u->getGenitore();
+	else return NULL;
 };
 
 template <class tipoelem>
 CellaAlbero <tipoelem> * Binalberopunt<tipoelem>::figlioSinistro(NodoAlbero u){
 	if(!binalberoVuoto() && !sinistroVuoto(u))
-        return u->getSinistro();
-    else return NULL;
+		return u->getSinistro();
+	else return NULL;
 };
 
 template <class tipoelem>
 CellaAlbero <tipoelem> * Binalberopunt<tipoelem>::figlioDestro(NodoAlbero u){
 	if(!binalberoVuoto() && !destroVuoto(u))
-        return u->getDestro();
-    else return NULL;
+		return u->getDestro();
+	else return NULL;
 };
 
 template <class T>
@@ -119,29 +119,29 @@ void Binalberopunt<tipoelem>::scriviNodo(tipoelem elem, NodoAlbero u){
 template <class T>
 void Binalberopunt<T>::insRadice(){
 	if(binalberoVuoto())
-        albero = new CellaAlbero<T>;
+		albero = new CellaAlbero<T>;
 };
 
 template <class T>
 void Binalberopunt<T>::insFiglioSinistro(NodoAlbero u){
 	if((!binalberoVuoto()) && (sinistroVuoto(u)))
-    {
-        NodoAlbero temp;
-        temp = new CellaAlbero<T>;
-        u->setSinistro(temp);
-        temp->setGenitore(u);
-    };
+	{
+		NodoAlbero temp;
+		temp = new CellaAlbero<T>;
+		u->setSinistro(temp);
+		temp->setGenitore(u);
+	};
 };
 
 template <class T>
 void Binalberopunt<T>::insFiglioDestro(NodoAlbero u){
 	if((!binalberoVuoto()) && (destroVuoto(u)))
-    {
-        NodoAlbero temp;
-        temp = new CellaAlbero<T>;
-        u->setDestro(temp);
-        temp->setGenitore(u);
-    };
+	{
+		NodoAlbero temp;
+		temp = new CellaAlbero<T>;
+		u->setDestro(temp);
+		temp->setGenitore(u);
+	};
 };
 
 /**
@@ -150,14 +150,14 @@ void Binalberopunt<T>::insFiglioDestro(NodoAlbero u){
 template <class T>
 void Binalberopunt<T>::cancSottoBinalbero(NodoAlbero u){
 	if (!binalberoVuoto()){
-        if (u == albero) delete albero;
-        else{
-            NodoAlbero padre; // nodo d'appoggio
-            padre = u->getGenitore();
-            if (padre->getSinistro() == u) delete padre->getSinistro();
-            else delete padre->getDestro();
-        };
-    };
+		if (u == albero) delete albero;
+		else{
+			NodoAlbero padre; // nodo d'appoggio
+			padre = u->getGenitore();
+			if (padre->getSinistro() == u) delete padre->getSinistro();
+			else delete padre->getDestro();
+		};
+	};
 };
 
 

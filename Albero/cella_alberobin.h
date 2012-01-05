@@ -25,35 +25,35 @@ using namespace std;
 template <class tipoelem>
 class CellaAlbero{
 public:
-    CellaAlbero();
-    ~CellaAlbero();
-    
-    void setEtichetta(tipoelem);
-    tipoelem getEtichetta();
-    
-    void setSinistro(CellaAlbero *);
-    CellaAlbero *getSinistro();
-    
-    void setDestro(CellaAlbero *);
-    CellaAlbero *getDestro();
-    
-    void setGenitore(CellaAlbero *);
-    CellaAlbero *getGenitore();
-    
+	CellaAlbero();
+	~CellaAlbero();
+
+	void setEtichetta(tipoelem);
+	tipoelem getEtichetta();
+
+	void setSinistro(CellaAlbero *);
+	CellaAlbero *getSinistro();
+
+	void setDestro(CellaAlbero *);
+	CellaAlbero *getDestro();
+
+	void setGenitore(CellaAlbero *);
+	CellaAlbero *getGenitore();
+
 private:
-    tipoelem etichetta;
-    CellaAlbero *sinistro;
-    CellaAlbero *destro;
-    CellaAlbero *genitore;
-    
+	tipoelem etichetta;
+	CellaAlbero *sinistro;
+	CellaAlbero *destro;
+	CellaAlbero *genitore;
+
 };
 
 //Implementazione
 
 template <class tipoelem>
 CellaAlbero<tipoelem>::CellaAlbero(){
-//	etichetta = 0;
-    sinistro=destro=genitore=NULL;
+	//	etichetta = 0;
+	sinistro=destro=genitore=NULL;
 };
 
 template <class tipoelem>
@@ -68,8 +68,8 @@ tipoelem CellaAlbero<tipoelem>::getEtichetta(){
 
 template <class tipoelem>
 void CellaAlbero<tipoelem>::setSinistro(CellaAlbero *sx){
-    if (sx==NULL) delete sinistro;
-    else sinistro = sx;
+	if (sx==NULL) delete sinistro;
+	else sinistro = sx;
 };
 
 template <class tipoelem>
@@ -101,9 +101,9 @@ CellaAlbero<tipoelem> * CellaAlbero<tipoelem>::getGenitore(){
 
 template <class tipoelem>
 CellaAlbero<tipoelem>::~CellaAlbero(){
-    delete sinistro;
-    delete destro;
-    delete genitore;
+	delete sinistro;
+	delete destro;
+	delete genitore;
 };
 
 
