@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2011 by Paolo Buono - IVU Lab.                          *
  *   http://ivu.di.uniba.it - buono@di.uniba.it                            *
- *                                                                         *
+ *   Modify by Minerva Fabio in a virtual structure                                                                      *
  *   This file is part of ASD-dib.                                         *
  *   ASD-dib is free software; you can redistribute it and/or modify       *
  *   it under the terms of the GNU General Public License as published by  *
@@ -20,145 +20,27 @@
 #ifndef ALBEROBIN_H
 #define ALBEROBIN_H
 #include <iostream>
-#include "cella_albero.h"
+#include "cella_alberobin.h"
 
 template <class tipoelem>
 class Alberobin{
-public:
-    Alberobin();
-    ~Alberobin();
+public:   
     typedef CellaAlbero <tipoelem> * NodoAlbero;
-    void creaBinalbero();
-    boolean binalberoVuoto();
-    NodoAlbero binRadice();
-    NodoAlbero binPadre(NodoAlbero);
-    NodoAlbero figlioSinistro(NodoAlbero);
-    NodoAlbero figlioDestro(NodoAlbero);
-    boolean sinistroVuoto(NodoAlbero);
-    boolean destroVuoto(NodoAlbero);
-    tipoelem leggiNodo(NodoAlbero);
-    void scriviNodo(tipoelem,NodoAlbero);
-    void insRadice(); 
-    void insFiglioSinistro(NodoAlbero);
-    void insFiglioDestro(NodoAlbero);
-    void cancSottoBinalbero(NodoAlbero);
-private:
-    NodoAlbero albero;
+    typedef bool boolean;
+    virtual void creaBinalbero()=0;
+    virtual boolean binalberoVuoto()=0;
+    virtual NodoAlbero binRadice()=0;
+    virtual NodoAlbero binPadre(NodoAlbero)=0;
+    virtual NodoAlbero figlioSinistro(NodoAlbero)=0;
+    virtual NodoAlbero figlioDestro(NodoAlbero)=0;
+    virtual boolean sinistroVuoto(NodoAlbero)=0;
+    virtual boolean destroVuoto(NodoAlbero)=0;
+    virtual tipoelem leggiNodo(NodoAlbero)=0;
+    virtual void scriviNodo(tipoelem,NodoAlbero)=0;
+    virtual void insRadice()=0; 
+    virtual void insFiglioSinistro(NodoAlbero)=0;
+    virtual void insFiglioDestro(NodoAlbero)=0;
+    virtual void cancSottoBinalbero(NodoAlbero)=0;
 };
-
-//Implementazione
-
-template <class T>
-Alberobin<T>::Alberobin(){
-	creaBinalbero();
-};
-
-template <class T>
-Alberobin<T>::~Alberobin(){
-};
-
-template <class T>
-void Alberobin<T>::creaBinalbero(){
-    //rispetta le specifiche, ma va controllato.
-	albero = NULL;
-};
-
-template <class T>
-boolean Alberobin<T>::binalberoVuoto(){
-	return (albero == NULL);
-};
-
-template <class tipoelem>
-CellaAlbero <tipoelem> * Alberobin<tipoelem>::binRadice(){
-    if(!binalberoVuoto())//condizione messa per rispettare le specifiche, non necessaria
-		return albero;
-    else return NULL;
-};
-
-template <class tipoelem>
-CellaAlbero <tipoelem> * Alberobin<tipoelem>::binPadre(NodoAlbero u){
-	if(!binalberoVuoto() && u != albero)
-        return u->getGenitore();
-    else return NULL;
-};
-
-template <class tipoelem>
-CellaAlbero <tipoelem> * Alberobin<tipoelem>::figlioSinistro(NodoAlbero u){
-	if(!binalberoVuoto() && !sinistroVuoto(u))
-        return u->getSinistro();
-    else return NULL;
-};
-
-template <class tipoelem>
-CellaAlbero <tipoelem> * Alberobin<tipoelem>::figlioDestro(NodoAlbero u){
-	if(!binalberoVuoto() && !destroVuoto(u))
-        return u->getDestro();
-    else return NULL;
-};
-
-template <class T>
-boolean Alberobin<T>::sinistroVuoto(NodoAlbero u){
-	return (u->getSinistro() == NULL);
-};
-
-template <class T>
-boolean Alberobin<T>::destroVuoto(NodoAlbero u){
-	return (u->getDestro() == NULL);
-};
-
-template <class tipoelem>
-tipoelem Alberobin<tipoelem>::leggiNodo(CellaAlbero <tipoelem> * u){
-	return u->getEtichetta();
-};
-
-template <class tipoelem>
-void Alberobin<tipoelem>::scriviNodo(tipoelem elem, NodoAlbero u){
-	u->setEtichetta(elem);
-};
-
-template <class T>
-void Alberobin<T>::insRadice(){
-	if(binalberoVuoto())
-        albero = new CellaAlbero<T>;
-};
-
-template <class T>
-void Alberobin<T>::insFiglioSinistro(NodoAlbero u){
-	if((!binalberoVuoto()) && (sinistroVuoto(u)))
-    {
-        NodoAlbero temp;
-        temp = new CellaAlbero<T>;
-        u->setSinistro(temp);
-        temp->setGenitore(u);
-    };
-};
-
-template <class T>
-void Alberobin<T>::insFiglioDestro(NodoAlbero u){
-	if((!binalberoVuoto()) && (destroVuoto(u)))
-    {
-        NodoAlbero temp;
-        temp = new CellaAlbero<T>;
-        u->setDestro(temp);
-        temp->setGenitore(u);
-    };
-};
-
-/**
-    restituisce il nodo padre del nodo u da cancellare, se u è radice allora restituisce NULL
- */
-template <class T>
-void Alberobin<T>::cancSottoBinalbero(NodoAlbero u){
-	if (!binalberoVuoto()){
-        if (u == albero) delete albero;
-        else{
-            NodoAlbero padre; // nodo d'appoggio
-            padre = u->getGenitore();
-            if (padre->getSinistro() == u) delete padre->getSinistro();
-            else delete padre->getDestro();
-        };
-    };
-};
-
 
 #endif

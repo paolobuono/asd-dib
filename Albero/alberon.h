@@ -1,6 +1,6 @@
 #ifndef VIRTUAL_ENNARIO_H
 #define VIRTUAL_ENNARIO_H
-#include "../Albero/nodo.h"
+#include "../Albero/nodoenn.h"
 
 using namespace std;
 
