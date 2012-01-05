@@ -6,16 +6,16 @@
 using namespace std;
 typedef nodo<studente>* Nodo;
 
-/*TO DO: adeguare gli altri metodi con la struttura albero e-ario del repository e testare le modifiche*/
+/*TO DO: testare il contanodi*/
 
 
 void carica(albero<studente>&,Nodo&);
 void previsita(albero<studente>,Nodo);
 void postvisita(albero<studente>,Nodo);
 void ampiezza(albero<studente>,Nodo);
-int contanodi_albero_enn(Albero_enn<studente> &, Nodo<studente>*, int);
-int conta_foglie(Albero_enn<studente> &, Nodo<studente>*, int);
-void ricercaCodice(albero<studente>,int);
+int contanodi(albero<studente> &, Nodo, int);
+int contaFoglie(albero<studente> &, Nodo, int);
+Nodo ricercaCodice(albero<studente>,int);
 int altezza(albero<studente> &, Nodo);
 int calcolo(albero<studente> &, Nodo,int,int);
 
@@ -59,7 +59,6 @@ void carica(albero<studente> &a,Nodo &n1) {
      a.insFratellosucc(s,n8);
      n9=a.succFratello(n8);
      
-      a.cancSottoalbero(n1);
      
 }
 
@@ -131,23 +130,23 @@ void ampiezza(albero<studente> a,Nodo u)
 
 
 
-int contanodi_albero_enn(Albero<studente> & t, Nodo<T>* u, int cont)   // restituisce il numero di sottoalberi dell'albero
+int contanodi(albero<studente>& t, Nodo u, int cont)   // restituisce il numero di sottoalberi dell'albero
 {
    
- if(!t.albero_vuoto()){
-                         Nodo<studente>* c;
+ if(!t.alberoVuoto()){
+                         Nodo c;
                          cont++;  
                          
-                         if(!t.foglia(u))
+                         if(!t.Foglia(u))
                            {
-                            c=t.primo_figlio(u);
+                            c=t.primoFiglio(u);
                             
-                            while(!t.ultimo_fratello(c))
+                            while(!t.ultimoFratello(c))
                                 {
-                                  cont=contanodi_albero_enn(t, c, cont);
-                                  c=t.succ_fratello(c);                      
+                                  cont=contanodi(t, c, cont);
+                                  c=t.succFratello(c);                      
                                 }             
-                          cont=contanodi_albero_enn(t, c, cont);   
+                          cont=contanodi(t, c, cont);   
                         }
                       }                                  
    return cont;                                                         
@@ -155,24 +154,24 @@ int contanodi_albero_enn(Albero<studente> & t, Nodo<T>* u, int cont)   // restit
 
 
 
-int conta_foglie(Albero_enn<studente> & t, Nodo<studente>* u, int cont)     //restituisce il numero delle foglie dell'albero
+int contaFoglie(albero<studente>& t, Nodo u, int cont)     //restituisce il numero delle foglie dell'albero
 {  
- if(!t.albero_vuoto()){
-                         Nodo<studente>* c;
+ if(!t.alberoVuoto() && u!=NULL){
+                         Nodo c;
                         
-                         if(t.foglia(u))
+                         if(t.Foglia(u))
                             cont++; 
                          
                          else
                            {
-                            c=t.primo_figlio(u);
+                            c=t.primoFiglio(u);
                             
-                            while(!t.ultimo_fratello(c))
+                            while(!t.ultimoFratello(c))
                                 {
-                                  cont=conta_foglie(t, c, cont);
-                                  c=t.succ_fratello(c);                      
+                                  cont=contaFoglie(t, c, cont);
+                                  c=t.succFratello(c);                      
                                 }             
-                          cont=conta_foglie(t, c, cont);   
+                          cont=contaFoglie(t, c, cont);   
                         }
                       }                                  
    return cont;                                                         
@@ -181,7 +180,7 @@ int conta_foglie(Albero_enn<studente> & t, Nodo<studente>* u, int cont)     //re
 
 /*Modifica parametrei del metodo altezza*/
 
-int altezza(albero<sudente> & t, Nodo u)  //restituisce l'altezza dell'albero
+int altezza(albero<studente>& t, Nodo u)  //restituisce l'altezza dell'albero
 {
   int max,temp;
   max=temp=0;
@@ -192,9 +191,9 @@ int altezza(albero<sudente> & t, Nodo u)  //restituisce l'altezza dell'albero
                            
 
 
-int calcolo(albero<studente> & t, Nodo u,int temp, int max)
+int calcolo(albero<studente>& t, Nodo u,int temp, int max)
 {
-    Nodo<studente>* c;
+    Nodo c;
     if(t.Foglia(u))
       {
        if(temp>=max) 
