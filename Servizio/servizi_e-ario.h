@@ -6,7 +6,7 @@
 using namespace std;
 typedef nodo<studente>* Nodo;
 
-/*TO DO: testare il contanodi*/
+
 
 
 void carica(albero<studente>&,Nodo&);
