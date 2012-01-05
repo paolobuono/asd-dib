@@ -7,7 +7,7 @@ using namespace std;
 typedef nodo<studente>* Nodo;
 
 /*TO DO: adeguare gli altri metodi con la struttura albero e-ario del repository e testare le modifiche*/
-/*TO DO: rivedere la ricerca..problema sui nodi foglia*/
+
 
 void carica(albero<studente>&,Nodo&);
 void previsita(albero<studente>,Nodo);
@@ -231,25 +231,24 @@ Nodo ricercaCodice(albero<studente> a,int c) {
                             temp=cod.leggiCoda();
                             s=temp->leggiInfo();
                             cod.fuoriCoda();
-                             if(s.leggiCodice()!=c) {
-                                                    if(!a.Foglia(temp)) {
-                                                                        temp=a.primoFiglio(temp);
-                                                                         while(!a.ultimoFratello(temp)) {
-                                                                                                        cod.inCoda(temp);
-                                                                                                        temp=a.succFratello(temp);
-                                                                                                        }
-                                                                                                        cod.inCoda(temp);
-                                                                         }
-                                                    } else {
-                                                           trovato=true;
-                                                           }
+                             if(s.leggiCodice()==c) { 
+                                  trovato=true;
+                                  return temp;
+                                       } else if(!a.Foglia(temp)) {
+                                             temp=a.primoFiglio(temp);
+                                                  while(!a.ultimoFratello(temp)) 
+                                                      {
+                                                         cod.inCoda(temp);
+                                                         temp=a.succFratello(temp);
+                                                         }//end while
+                                                         cod.inCoda(temp);
+                                                         }//end if
+                                                     
                              }
             if(cod.Codavuota()) {
                                 cout<<"Nessun elemento trovato!"<<endl;
                                 return NULL;
-                                } else {
-                                    return temp;
-                                    }
+                                } 
   } 
 
 
