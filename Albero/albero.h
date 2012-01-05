@@ -136,23 +136,32 @@ void albero<T>::scriviNodo(T ele,Nodo u) {
 template<class T>
 void albero<T>::cancSottoalbero(Nodo u) {
   /*   Nodo fg,t;
-     if(Foglia(u)) {
-        delete u;
-        u=NULL; }
-        else {
-             fg=primoFiglio(u);
-            // t=fg;
-           //  cancSottoalbero(fg);
-             cout<<"val fg:"<<fg->leggiInfo().leggiCodice()<<endl;
-              while(!ultimoFratello(fg)) {
-                        fg=succFratello(fg);
-                           cancSottoalbero(fg);
-                            } 
-                            fg=primoFiglio(u);
-                            cancSottoalbero(fg);   
-                            delete u;
-                            u=NULL;          
-     }*/
+        if(!Foglia(u)) {
+			 fg = primoFiglio(u);
+
+			 //CI posizioniamo sempre sull'ultimo fraello
+			 //ad ogni istanza di CancSottoAlbero fg contiene un valore diverso
+			 //quando ultimo fratello richiama cancSottoAlvero
+			 //se è foglia verrà eliminato
+			 //si chiude un istanza di cacnSottoAlbero
+			 // e leggeremo un cancSottoAlbero di una istanza precedente
+			 while(!ultimoFratello(fg)) {
+				 fg = succFratello(fg);
+				 cancSottoAlbero(fg);
+			 }
+			 cancSottoAlbero(fg);
+     } else {
+       //CANCELLIAMO FISICAMENTE IL NODO
+	   DELETE(u);
+	 }
+	 */
+}
+
+
+
+while(!ultimoFratello(fg)){
+succ_fg =succfratello(fg);
+cancSottoalbero(sfg);
 }
      
 #endif
