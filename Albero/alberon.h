@@ -6,7 +6,7 @@ using namespace std;
 
 
 template<class T>
-class viralbero {
+class alberon {
       public: 
              virtual void creaAlbero()=0;
              virtual bool alberoVuoto()=0;

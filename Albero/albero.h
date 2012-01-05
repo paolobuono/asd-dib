@@ -8,7 +8,7 @@
 using namespace std;
 
 template<class T>
-class albero : public viralbero<T> {
+class albero : public alberon<T> {
       private:
               nodo<T>* radice;
       public:
