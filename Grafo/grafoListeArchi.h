@@ -57,5 +57,4 @@ class GrafoListeAdiacenza : public Grafo< tipoNodo, tipoArco > {
 	ListaUnidirezionale< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
 };
 
-		
 #endif
