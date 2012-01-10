@@ -1,5 +1,5 @@
-#ifndef Lista_h
-#define Lista_h
+#ifndef ListaDoppiamenteConcatenata_h
+#define ListaDoppiamenteConcatenata_h
 #include <cstdlib>
 #include <iostream>
 #define TRUE 1
@@ -7,14 +7,14 @@
 #include "Node.h"
 using namespace std;
 
-template <class T>
-class Lista
+template <class tipoelem>
+class ListaDoppiamenteConcatenata : public Lista<tipoelem>
 {
  private:
          Node<T>* testa;
          int nd;
  public:
-        Lista(); //operatore costruttore
+        ListaDoppiamenteConcatenata(); //operatore costruttore
         Node<T>* primo_lista();
         int fine_lista(Node<T>*);
         int lista_vuota();
@@ -30,7 +30,7 @@ class Lista
         //void mergesort(int, int );
         int get_num_nd();
         void order();
-        ~Lista(); 
+        ~ListaDoppiamenteConcatenata();
 
          //void merge(int , int, int);
          //Node* try_elem(int);
@@ -39,7 +39,7 @@ class Lista
 
 /* Metodo costruttore che costruisce un nuovo oggetto di classe lista */
 template<class T>
-Lista<T>:: Lista()
+ListaDoppiamenteConcatenata<T>:: Lista()
 {
  testa=NULL;
  //nd=0;
@@ -47,14 +47,14 @@ Lista<T>:: Lista()
 
 /*Metodo osservatore che restituisce il valore del membro attributo testa */
 template<class T>
-Node<T>* Lista<T>:: primo_lista()
+Node<T>* ListaDoppiamenteConcatenata<T>:: primo_lista()
 {
  return testa;     
 }
 
 /* Metodo osservatore che verifica che un nodo sia di fine lista */
 template<class T>
-int Lista<T>:: fine_lista(Node<T>* n)
+int ListaDoppiamenteConcatenata<T>:: fine_lista(Node<T>* n)
 {
    int result=FALSE;
     if (n!=NULL && !(lista_vuota()))
@@ -69,7 +69,7 @@ int Lista<T>:: fine_lista(Node<T>* n)
 
 /* Metodo osservatore che verifica che la lista sia vuota */
 template<class T>
-int Lista<T>:: lista_vuota()
+int ListaDoppiamenteConcatenata<T>:: lista_vuota()
 {
  int result=FALSE;
  if (primo_lista()==NULL)
@@ -81,11 +81,11 @@ int Lista<T>:: lista_vuota()
 
 /* Metodo distruttore che distrugge un oggetto di classe lista */
 template<class T>
-Lista<T>:: ~Lista(){}
+ListaDoppiamenteConcatenata<T>:: ~ListaDoppiamenteConcatenata(){}
 
 /* Metodo osservatore che restituisce il valore del nodo successivo al nodo n */
 template<class T>
-Node<T>* Lista<T>:: succ_lista(Node<T>* n)
+Node<T>* ListaDoppiamenteConcatenata<T>:: succ_lista(Node<T>* n)
 {//restituisce null se non esiste un successivo o se il nodo non è valido
  Node<T>* result=NULL;
  if (n!=NULL)
@@ -97,7 +97,7 @@ Node<T>* Lista<T>:: succ_lista(Node<T>* n)
 
 /* Metodo osservatore che restituisce il valore del nodo precedente al nodo n */
 template<class T>
-Node<T>* Lista<T>:: pred_lista(Node<T>*n)
+Node<T>* ListaDoppiamenteConcatenata<T>:: pred_lista(Node<T>*n)
 {//restituisce null se non esiste un precedente o se il nodo non è valido
  Node<T>* result=NULL;
  if (n!=NULL)
@@ -109,7 +109,7 @@ Node<T>* Lista<T>:: pred_lista(Node<T>*n)
 
 /* Metodo costruttore che avvalora la lista */
 template<class T>
-void Lista<T>:: Ins_lista(T i/*, unsigned pos*/)
+void ListaDoppiamenteConcatenata<T>:: Ins_lista(T i/*, unsigned pos*/)
 {
  Node<T>* n;
  Node<T>* node;
@@ -160,7 +160,7 @@ void Lista<T>:: Ins_lista(T i/*, unsigned pos*/)
 
 /* Metodo osservatore che stampa la lista */
 template<class T>
-void Lista<T>:: Print_lista()
+void ListaDoppiamenteConcatenata<T>:: Print_lista()
 {
   Node<T>*n;
   n=primo_lista();
@@ -176,14 +176,14 @@ void Lista<T>:: Print_lista()
 
 /* Metodo osservatore che restituisce il contenuto dell'informazione del nodo n */
 template<class T>
-T Lista<T>:: leggi_lista(Node<T>*n)
+T ListaDoppiamenteConcatenata<T>:: leggi_lista(Node<T>*n)
 {
  return n->get_elem();          
 }
 
 /* Metodo osservatore che restituisce il nodo in posizione pos */
 template <class T>
-Node<T>* Lista<T>:: cerca_elemento(unsigned pos)
+Node<T>* ListaDoppiamenteConcatenata<T>:: cerca_elemento(unsigned pos)
 { //se la posizione pos non esiste il metodo restituisce null
  Node<T>* n=primo_lista();
  Node<T>* result=NULL;
@@ -201,7 +201,7 @@ Node<T>* Lista<T>:: cerca_elemento(unsigned pos)
 
 /* Metodo osservatore che sostituisce ad un nodo n il valore dell'informazione i */
 template<class T>
-void Lista<T>:: scrivi_lista(Node<T>*n, T i)
+void ListaDoppiamenteConcatenata<T>:: scrivi_lista(Node<T>*n, T i)
 {
  if (n!=NULL)
  {
@@ -215,7 +215,7 @@ void Lista<T>:: scrivi_lista(Node<T>*n, T i)
 
 /* Metodo osservatore che elimina il nodo n dalla lista */
 template <class T>
-void Lista<T>:: canc_lista(Node<T>*n)
+void ListaDoppiamenteConcatenata<T>:: canc_lista(Node<T>*n)
 {
  if (!lista_vuota())
  {
@@ -247,7 +247,7 @@ void Lista<T>:: canc_lista(Node<T>*n)
 
 /* Metodo che elimina i duplicati nella lista */
 template <class T>
-void Lista<T>:: epurazione()
+void ListaDoppiamenteConcatenata<T>:: epurazione()
 {
  Node<T>* n;
  Node<T>*h;
@@ -286,14 +286,14 @@ void Lista<T>:: epurazione()
 
 /* Metodo osservatore che restituisce il numero di nodi */
 template<class T>
-int Lista<T>:: get_num_nd()
+int ListaDoppiamenteConcatenata<T>:: get_num_nd()
 {
  return nd;   
 }
 
 /* Metodo che ordina la lista */
 template<class T>
-void Lista<T>:: order()
+void ListaDoppiamenteConcatenata<T>:: order()
 {/*
  Node<T>*n=primo_lista();
  Node<T>*temp;
