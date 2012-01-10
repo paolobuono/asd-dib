@@ -20,19 +20,6 @@
 #ifndef _GrafoListeIncidenza_H
 #define _GrafoListeIncidenza_H
 
-/*
-GRAFO - SPECIFICA SINTATTICA
-CREAGRAFO	: () -> -
-GRAFOVUOTO	: () -> BOOLEAN
-INSNODO		: (NODO,TIPONODO) ->  -
-INSARCO		: (NODO,NODO) ->  -
-CANCNODO	: (NODO) ->  -
-CANCARCO	: (NODO,NODO) ->  -
-ADIACENTI	: (NODO) -> LISTA
-ESISTENODO	: (NODO) -> BOOLEAN
-ESISTEARCO	: (NODO,NODO) -> BOOLEAN
- */
-
 #include <stdlib.h>
 
 using namespace std;
@@ -44,7 +31,7 @@ typedef bool boolean;
 //variante di arco Grafo per relizzare il grafo con liste di archi
 #include "arcoGrafoListeArchi.h"
 
-#include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
+#include "../Lista/listaUnidirezionale.h" //Utile per creare la lista di nodi del grafo
 
 template <class tipoNodo, class tipoArco>
 class GrafoListeIncidenza : public Grafo< tipoNodo, tipoArco > {
@@ -52,7 +39,7 @@ private:
     //Ho utilizzato una classe arco diverso, personalizzato come estens
 	Lista< arcoGrafoListaArchi < tipoArco, tipoNodo > > listaArchi;
 	
-    Lista< Lista < nodoGrafo < arcoGrafoListaArchi > > > listaIncidenza;
+	ListaUnidirezionale <ListaUnidirezionale < nodoGrafo < arcoGrafoListaArchi < nodoGrafo <tipoNodo>, nodoGrafo <tipoNodo> > > > > listaIncidenza;
 
 public:
 	void creaGrafo();
@@ -71,7 +58,7 @@ public:
 	boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
 	arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
 
-	Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+	ListaUnidirezionale< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
 };
 
 #endif

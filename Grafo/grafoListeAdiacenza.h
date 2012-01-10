@@ -29,12 +29,12 @@ typedef bool boolean;
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
 #include "arcoGrafo.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
 
-#include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
+#include "../Lista/listaUnidirezionale.h" //Utile per creare la lista di nodi del grafo
 
 template <class tipoNodo, class tipoArco>
 class GrafoListeAdiacenza : public Grafo< tipoNodo, tipoArco > {
 private:
-	Lista< Lista < nodoGrafo < tipoNodo > > > listaAdiacenza;
+	ListaUnidirezionale <ListaUnidirezionale < nodoGrafo < tipoNodo > > > listaAdiacenza;
 public:
 	void creaGrafo();
 	boolean grafoVuoto();
@@ -52,7 +52,7 @@ public:
 	boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
 	arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
 
-	Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+	ListaUnidirezionale< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
 };
 
 

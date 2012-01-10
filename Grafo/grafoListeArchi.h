@@ -25,17 +25,18 @@
 using namespace std;
 typedef bool boolean;
 
-#include "grafo.h"              //Classe virtuale di Grafo
-#include "nodoGrafo.h"          //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
 #include "arcoGrafoListeArchi.h"//variante di arco Grafo per relizzare il grafo con liste di archi
-#include "../Lista/lista.h"     //Utile per creare la lista di nodi del grafo
+#include "grafo.h"          //Classe virtuale di Grafo
+#include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
 
-template < class tipoNodo, class tipoArco >
-class GrafoListeArchi : public Grafo< tipoNodo, tipoArco > {
+#include "../Lista/listaUnidirezionale.h" //Utile per creare la lista di nodi del grafo
+
+template <class tipoNodo, class tipoArco>
+class GrafoListeAdiacenza : public Grafo< tipoNodo, tipoArco > {
 	public:
 
 	//Ho utilizzato una classe arco diverso, personalizzato come estens
-	Lista< arcoGrafoListaArchi < tipoArco, tipoNodo > > listaArchi;
+	ListaUnidirezionale < arcoGrafoListaArchi < tipoArco, tipoNodo > > listaArchi;
 
 	void creaGrafo();
 	boolean grafoVuoto();
@@ -53,17 +54,8 @@ class GrafoListeArchi : public Grafo< tipoNodo, tipoArco > {
 	boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
 	arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
 
-	Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
-}
-
-
-template < class tipoNodo, class tipoArco >
-void GrafoListeArchi< tipoNodo, tipoArco >::creaGrafo(){
-
-}
-
-boolean GrafoListeArchi::grafoVuoto(){
-}
+	ListaUnidirezionale< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+};
 
 		
 #endif
