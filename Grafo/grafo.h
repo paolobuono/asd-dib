@@ -20,22 +20,9 @@
 #ifndef _Grafo_h
 #define _Grafo_h
 
-/*
-GRAFO 
-SPECIFICA SINTATTICA
-CREAGRAFO	: () -> -
-GRAFOVUOTO	: () -> BOOLEAN
-INSNODO		: (NODO,TIPONODO) ->  - 
-INSARCO		: (NODO,NODO) ->  - 
-CANCNODO	: (NODO) ->  - 
-CANCARCO	: (NODO,NODO) ->  - 
-ADIACENTI	: (NODO) -> LISTA
-ESISTENODO	: (NODO) -> BOOLEAN
-ESISTEARCO	: (NODO,NODO) -> BOOLEAN
-*/
-
 #include <stdlib.h>
 #include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
+
 #include "nodoGrafo.h"      //Classe del nodo grafo, necessita di allegare un "tipoNodo"
 #include "arcoGrafo.h"      //Classe dell'arco grafo, necessita di allegare un "tipo arco"
 
@@ -45,8 +32,14 @@ typedef bool boolean;
 template < class tipoNodo, class tipoArco >
 class Grafo {
 public:
+
+	//NOTA: Costruttore non pu˜ essere virtuale
+	Grafo();
+	//NOTA per qualche motivo mi chiede obbligatoriamente il distruttore virtuale;
+	virtual ~Grafo();
+
 	virtual void creaGrafo();
-    virtual boolean grafoVuoto();
+	virtual boolean grafoVuoto();
 	virtual void setOrientato( boolean setOrientato );
 	virtual void setPesato( boolean setPesato );
 

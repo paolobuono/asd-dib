@@ -20,19 +20,6 @@
 #ifndef _GrafoListeArchi_H
 #define _GrafoListeArchi_H
 
-/*
-GRAFO - SPECIFICA SINTATTICA
-CREAGRAFO	: () -> -
-GRAFOVUOTO	: () -> BOOLEAN
-INSNODO		: (NODO,TIPONODO) ->  -
-INSARCO		: (NODO,NODO) ->  -
-CANCNODO	: (NODO) ->  -
-CANCARCO	: (NODO,NODO) ->  -
-ADIACENTI	: (NODO) -> LISTA
-ESISTENODO	: (NODO) -> BOOLEAN
-ESISTEARCO	: (NODO,NODO) -> BOOLEAN
-**/
-
 #include <stdlib.h>
 
 using namespace std;
@@ -43,7 +30,7 @@ typedef bool boolean;
 #include "arcoGrafoListeArchi.h"//variante di arco Grafo per relizzare il grafo con liste di archi
 #include "../Lista/lista.h"     //Utile per creare la lista di nodi del grafo
 
-template <class tipoNodo, class tipoArco>
+template < class tipoNodo, class tipoArco >
 class GrafoListeArchi : public Grafo< tipoNodo, tipoArco > {
 	public:
 

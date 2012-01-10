@@ -20,19 +20,6 @@
 #ifndef _GrafoListeAdiacenza_H
 #define _GrafoListeAdiacenza_H
 
-/*
-GRAFO - SPECIFICA SINTATTICA
-CREAGRAFO	: () -> -
-GRAFOVUOTO	: () -> BOOLEAN
-INSNODO		: (NODO,TIPONODO) ->  -
-INSARCO		: (NODO,NODO) ->  -
-CANCNODO	: (NODO) ->  -
-CANCARCO	: (NODO,NODO) ->  -
-ADIACENTI	: (NODO) -> LISTA
-ESISTENODO	: (NODO) -> BOOLEAN
-ESISTEARCO	: (NODO,NODO) -> BOOLEAN
- */
-
 #include <stdlib.h>
 
 using namespace std;

@@ -20,29 +20,16 @@
 #ifndef _arcoGrafo_ListaArchi_h
 #define _arcoGrafo_ListaArchi_h
 
-/*
-GRAFO
-SPECIFICA SINTATTICA
-CREAGRAFO	: () -> -
-GRAFOVUOTO	: () -> BOOLEAN
-INSNODO		: (NODO,TIPONODO) ->  -
-INSARCO		: (NODO,NODO) ->  -
-CANCNODO	: (NODO) ->  -
-CANCARCO	: (NODO,NODO) ->  -
-ADIACENTI	: (NODO) -> LISTA
-ESISTENODO	: (NODO) -> BOOLEAN
-ESISTEARCO	: (NODO,NODO) -> BOOLEAN
-*/
-
 #include <stdlib.h>
+#include "arcoGrafo.h"
+#include "nodoGrafo.h"
 
 using namespace std;
 typedef bool boolean;
 
 template <class A, class N>
 class arcoGrafoListaArchi : public arcoGrafo< A >{
-
-	  //extension per usarlo in arco grafo lista archi
+	  //estensione per usarlo in arco grafo lista archi
 	  nodoGrafo< N >* primoNodo;
 	  nodoGrafo< N >* secondoNodo;
 };
