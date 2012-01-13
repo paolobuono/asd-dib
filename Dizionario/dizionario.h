@@ -17,22 +17,28 @@
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
 
-#ifndef ASD_dizionario_h
-#define ASD_dizionario_h
+#ifndef _dizionario_h
+#define _dizionario_h
+
 #include "datoDizionario.h"
 #include <string>
 
 using namespace std;
 
-typedef int chiave;  //TODO:fare in modo che chiave sia un tipo generico
+//typedef int chiave;
+//TODO:fare in modo che chiave sia un tipo generico
 //typedef string elemento;
 
-template <class elemento>
-class Dizionario{
+template<class elemento, class chiave>
+class Dizionario {
 public:
-    virtual void inserisci(elemento,chiave)=0;
-    virtual void cancella(chiave)=0;
-    virtual elemento cerca(chiave)=0;
+	Dizionario();
+	virtual void inserisci(elemento, chiave)=0;
+	virtual void cancella(chiave)=0;
+	virtual elemento cerca(chiave)=0;
 };
+template<class elemento, class chiave>
+Dizionario<elemento, chiave>::Dizionario() {
+}
 
 #endif

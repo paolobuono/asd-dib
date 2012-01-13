@@ -17,80 +17,77 @@
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
 
-#ifndef ASD_dizionarioLista_h
-#define ASD_dizionarioLista_h
+#ifndef _dizionarioLista_h
+#define _dizionarioLista_h
 
 #include "dizionario.h"
 #include "../Lista/listaUnidirezionale.h"
-//#include "../Dati/testo.h"
 
-
-template <class elemento>
-class DizionarioLista : public Dizionario < elemento > {
+template<class elemento, class chiave>
+class DizionarioLista: public Dizionario<elemento, chiave> {
 public:
-    void inserisci(elemento,chiave);
-    void cancella(chiave);
-    elemento cerca(chiave);
-    DizionarioLista();
+	void inserisci(elemento, chiave);
+	void cancella(chiave);
+	elemento cerca(chiave);
+	DizionarioLista();
 private:
-    ListaUnidirezionale< Dato<elemento> > lista;
+	ListaUnidirezionale<Dato<elemento> > lista;
 };
 
-
-template <class elemento>
-void DizionarioLista<elemento>::inserisci(elemento e, chiave k){
-    Dato<string> d;
-    d.elementoDato = e;
-    d.chiaveDato = k;
-    Nodo< Dato<string> > * posizione;
-    boolean trovato=false;
-    posizione=lista.primoLista();
-    while (!lista.fineLista(posizione)) {
-        if (lista.leggiLista(posizione).chiaveDato==d.chiaveDato)
-            trovato=true;
-        posizione=lista.succLista(posizione);
-    }
-    //inserisce sempre in testa, ottimizzare effettuando l'inserimento ordinato della lista
-    if (!trovato){ 
-        posizione=lista.primoLista();
-        lista.insLista(d,posizione);   
-    }
+template<class elemento, class chiave>
+void DizionarioLista<elemento, chiave>::inserisci(elemento e, chiave k) {
+	Dato<string> d;
+	d.elementoDato = e;
+	d.chiaveDato = k;
+	NodoLista<Dato<string> > *posizione;
+	boolean trovato = false;
+	posizione = lista.primoLista();
+	while (!lista.fineLista(posizione)) {
+		if (lista.leggiLista(posizione).chiaveDato == d.chiaveDato)
+			trovato = true;
+		posizione = lista.succLista(posizione);
+	}
+	//inserisce sempre in testa, ottimizzare effettuando l'inserimento ordinato della lista
+	if (!trovato) {
+		posizione = lista.primoLista();
+		lista.insLista(d, posizione);
+	}
 }
 
-template <class elemento>
-DizionarioLista<elemento>::DizionarioLista(){
-    lista.creaLista();
+template<class elemento, class chiave>
+DizionarioLista<elemento, chiave>::DizionarioLista() {
+	lista.creaLista();
 }
 
-template <class elemento>
-void DizionarioLista<elemento>::cancella(chiave k){
-    boolean trovato=false;
-    Nodo< Dato<elemento> > * posizione;
-    posizione = lista.primoLista();
-    while ((!lista.fineLista(posizione)) && (!trovato)) {
-        if (lista.leggiLista(posizione).chiaveDato==k){
-            lista.cancLista(posizione);
-            trovato=true;
-        }
-        posizione=lista.succLista(posizione);
-    }
-    cout << "Dato con chiave "<<k<<" cancellato"<<endl;
+template<class elemento, class chiave>
+void DizionarioLista<elemento, chiave>::cancella(chiave k) {
+	boolean trovato = false;
+	NodoLista<Dato<elemento> > *posizione;
+	posizione = lista.primoLista();
+	while ((!lista.fineLista(posizione)) && (!trovato)) {
+		if (lista.leggiLista(posizione).chiaveDato == k) {
+			lista.cancLista(posizione);
+			trovato = true;
+		}
+		posizione = lista.succLista(posizione);
+	}
+	cout << "Dato con chiave " << k << " cancellato" << endl;
 }
 
-template <class elemento>
-elemento DizionarioLista<elemento>::cerca(chiave k){
-    boolean trovato=false;
-    Nodo< Dato<elemento> > * posizione;
-    posizione = lista.primoLista();
-    elemento e;
-    while ((!lista.fineLista(posizione)) && (!trovato)) {
-        if (lista.leggiLista(posizione).chiaveDato==k){
-            e=(lista.leggiLista(posizione)).elementoDato;
-            trovato=true;
-        }
-        posizione=lista.succLista(posizione);
-    }
-    return e;
+template<class elemento, class chiave>
+elemento DizionarioLista<elemento, chiave>::cerca(chiave k) {
+	boolean trovato = false;
+	NodoLista<Dato<elemento> > *posizione;
+	posizione = lista.primoLista();
+	elemento e;
+	while ((!lista.fineLista(posizione)) && (!trovato)) {
+		if (lista.leggiLista(posizione).chiaveDato == k) {
+			e = (lista.leggiLista(posizione)).elementoDato;
+			trovato = true;
+		}
+		posizione = lista.succLista(posizione);
+	}
+	return e;
 }
 
 #endif
