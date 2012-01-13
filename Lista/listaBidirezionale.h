@@ -17,8 +17,8 @@
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
 
-#ifndef _listaunidirezionale_h
-#define _listaunidirezionale_h
+#ifndef _listabidirezionale_h
+#define _listabidirezionale_h
 
 #include <cstdlib>
 #include <iostream>
@@ -31,12 +31,12 @@ using namespace std;
 typedef bool boolean;
 
 template<class tipoelem>
-class ListaUnidirezionale: public Lista<tipoelem> {
+class ListaBidirezionale: public Lista<tipoelem> {
 public:
 	//posizione come untatore a nodo
 	typedef NodoLista<tipoelem> * posizione;
 
-	ListaUnidirezionale();
+	ListaBidirezionale();
 
 	void creaLista();
 
@@ -63,50 +63,98 @@ private:
 };
 
 template<class T>
-ListaUnidirezionale<T>::ListaUnidirezionale() {
+ListaBidirezionale<T>::ListaBidirezionale() {
 	creaLista();
 }
 
 template<class T>
-void ListaUnidirezionale<T>::creaLista() {
+void ListaBidirezionale<T>::creaLista() {
 	testa = NULL;
 }
 
 template<class T>
-boolean ListaUnidirezionale<T>::listaVuota() {
+boolean ListaBidirezionale<T>::listaVuota() {
 	return (testa == NULL);
 }
 
 template<class T>
-T ListaUnidirezionale<T>::leggiLista(posizione p) {
+T ListaBidirezionale<T>::leggiLista(posizione p) {
 	return p->leggiElem();
 }
 
 template<class tipoelem>
-void ListaUnidirezionale<tipoelem>::scriviLista(tipoelem t, posizione p) {
+void ListaBidirezionale<tipoelem>::scriviLista(tipoelem t, posizione p) {
 	p->scriviElem(t);
 }
 
 template<class T>
-NodoLista<T> * ListaUnidirezionale<T>::primoLista() {
+NodoLista<T> * ListaBidirezionale<T>::primoLista() {
 	return testa;
 }
 
+/**
+ * @title: insLista
+ * @param: tipoelem t
+ * @param: posizione &p
+ *
+ * @desc:Inserisce l'elemento t in posizione p
+ * se la posizione é NULL assumo per scelta che venga posto a fine lista,
+ * questo perchè è facile recuperare il primo lista pertanto risulta altrettanto facile
+ * posizionarlo volontariamente in cima alla lista
+ */
 template<class tipoelem>
-void ListaUnidirezionale<tipoelem>::insLista(tipoelem t, posizione &p) {
+void ListaBidirezionale<tipoelem>::insLista(tipoelem t, posizione &p) {
+
 	NodoLista<tipoelem> * temp = new NodoLista<tipoelem>();
+	posizione prec;
+
 	temp->scriviElem(t);
 	temp->scriviSucc(p);
+	temp->scriviPrec(NULL);
+
 	if (p == primoLista()) {
 		testa = temp;
+
+		//se P è DIVERSO da NULL vuol dire che ce almeno un elemento in LISTA
+		// va sostituito il PREC di P con TEMP, che sta ora in testa
+		if (p != NULL) {
+			p->scriviPrec(temp);
+		}
 	} else {
-		posizione prec = predLista(p);
-		prec->scriviSucc(temp);
+
+		if (p != NULL) {
+			prec = predLista(p);
+			prec->scriviSucc(temp);
+			temp->scriviPrec(prec);
+			p->scriviPrec(temp);
+
+		} else if (p == NULL) {
+
+			p = primoLista();
+
+			while (!fineLista(p)) {
+				p = succLista(p);
+			}
+
+			prec = predLista(p);
+
+			if (primoLista() != p) {
+				p->scriviSucc(temp);
+				temp->scriviPrec(p);
+			} else {
+				temp->scriviPrec(p);
+				p->scriviSucc(temp);
+				temp->scriviSucc(NULL);
+			}
+		} else {
+			temp->scriviPrec(predLista(p));
+			p->scriviPrec(temp);
+		}
 	}
 }
 
 template<class T>
-void ListaUnidirezionale<T>::cancLista(posizione p) {
+void ListaBidirezionale<T>::cancLista(posizione p) {
 	NodoLista<T> * temp;
 	temp = predLista(p);
 	temp->scriviSucc(p->leggiSucc());
@@ -114,22 +162,18 @@ void ListaUnidirezionale<T>::cancLista(posizione p) {
 }
 
 template<class T>
-boolean ListaUnidirezionale<T>::fineLista(posizione p) {
-	return (succLista(p) == NULL) ? true : false; //todo: da specifiche: vero se posizione è oltre l'ultimo elemento (n+1)
+boolean ListaBidirezionale<T>::fineLista(posizione p) {
+	return (succLista(p) == NULL) ? true : false;
 }
 
 template<class T>
-NodoLista<T> * ListaUnidirezionale<T>::succLista(posizione p) {
+NodoLista<T> * ListaBidirezionale<T>::succLista(posizione p) {
 	return p->leggiSucc();
 }
 
 template<class T>
-NodoLista<T> * ListaUnidirezionale<T>::predLista(posizione p) {
-	posizione p1 = primoLista();
-	while (!fineLista(p1) && (p1->leggiSucc() != p)) {
-		p1 = succLista(p1);
-	}
-	return p1;
+NodoLista<T> * ListaBidirezionale<T>::predLista(posizione p) {
+	return p->leggiPrec();
 }
 
-#endif //listaunidir_h
+#endif //listabidir_h

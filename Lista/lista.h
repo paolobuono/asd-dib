@@ -19,26 +19,32 @@
 
 #ifndef lista_h
 #define lista_h
-#include "../Dati/nodo.h"
 
 using namespace std;
-
 typedef bool boolean;
 
-template <class tipoelem>
-class Lista{
+//contiene la classe Nodo
+#include "nodolista.h"
+
+template<class tipoelem>
+class Lista {
 public:
-    typedef Nodo <tipoelem> * posizione;
-    virtual void creaLista ()=0;
-    virtual boolean listaVuota()=0;
-    virtual tipoelem leggiLista(posizione)=0;
-    virtual void scriviLista(tipoelem,posizione)=0;
-    virtual void insLista(tipoelem, posizione&)=0;
-    virtual posizione primoLista()=0;
-    virtual boolean fineLista(posizione)=0;
-    virtual posizione succLista(posizione)=0;
-    virtual posizione predLista(posizione)=0;
-    virtual void cancLista(posizione)=0;
+	Lista();
+	typedef NodoLista<tipoelem> * posizione;
+	virtual void creaLista()=0;
+	virtual boolean listaVuota()=0;
+	virtual tipoelem leggiLista(posizione)=0;
+	virtual void scriviLista(tipoelem, posizione)=0;
+	virtual void insLista(tipoelem, posizione&)=0;
+	virtual posizione primoLista()=0;
+	virtual boolean fineLista(posizione)=0;
+	virtual posizione succLista(posizione)=0;
+	virtual posizione predLista(posizione)=0;
+	virtual void cancLista(posizione)=0;
 };
+
+template<class tipoelem>
+Lista<tipoelem>::Lista() {
+}
 
 #endif //lista_h
