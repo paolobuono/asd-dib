@@ -18,19 +18,17 @@
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
 
-#ifndef LISTAVETTORE_H
-#define LISTAVETTORE_H
-#include "lista.h"
-//#include "cella.h"
-#include <iostream>
+#ifndef _LISTAVETTORE_H
+#define _LISTAVETTORE_H
 
+#include "lista.h"
+#include <iostream>
 using namespace std;
 
 #define SIZE 12
 
-
-template <class tipoelem>
-class listaVettore : public Lista<tipoelem>{
+template<class tipoelem>
+class listaVettore: public Lista<tipoelem> {
 private:
 	cella vet[SIZE];
 	int i;
@@ -44,108 +42,94 @@ public:
 	void scrivilista(tipoelem, int); // DA TESTARE
 	int primolista();
 	bool finelista(int);
-	int succlista (int);
+	int succlista(int);
 	int predlista(int);
 	void inslista(int, tipoelem);
 	void canclista(int);
 };
 
-template <class T>
-listaVettore<T>:: lista(){
+template<class T>
+listaVettore<T>::lista() {
 	crealista();
 }
 
-template <class T>
-void listaVettore<T>:: crealista(){
-	primo=0;
-	lunghezza=0;
+template<class T>
+void listaVettore<T>::crealista() {
+	primo = 0;
+	lunghezza = 0;
 }
 
-template <class T>
-bool listaVettore<T>:: listavuota(){
-	return(lunghezza==0);
+template<class T>
+bool listaVettore<T>::listavuota() {
+	return (lunghezza == 0);
 }
 
-template <class T>
-T listaVettore<T>:: leggilista(int i) //DA TESTARE
-{
-	if(!listavuota())
-		return   vet[i];
+template<class T>
+T listaVettore<T>::leggilista(int i) //DA TESTARE
+		{
+	if (!listavuota())
+		return vet[i];
 }
 
-template <class T>
-void listaVettore<T>:: scrivilista(T v, int i) // DA TESTARE
-{
-	if(!listavuota())
-		vet[i]=v;
+template<class T>
+void listaVettore<T>::scrivilista(T v, int i) // DA TESTARE
+		{
+	if (!listavuota())
+		vet[i] = v;
 
 }
 
-template <class T>
-int listaVettore:: primolista()
-{
+template<class T>
+int listaVettore<T>::primolista() {
 	return primo;
 }
 
-template <class T>
-bool listaVettore:: finelista(int i)
-{
-	return (i==lunghezza);
+template<class T>
+bool listaVettore<T>::finelista(int i) {
+	return (i == lunghezza);
 }
 
-template <class T>
-int listaVettore:: succlista(int i)
-{
-	if(!finelista(i))
-		return (i+1);
+template<class T>
+int listaVettore<T>::succlista(int i) {
+	if (!finelista(i))
+		return (i + 1);
 }
 
-template <class T>
-int listaVettore:: predlista(int i)
-{
-	if(i!=primolista())
-		return (i-1);
+template<class T>
+int listaVettore<T>::predlista(int i) {
+	if (i != primolista())
+		return (i - 1);
 }
 
-template <class T>
-void listaVettore:: inslista(int i, tipoelem v)
-{
-	if(lunghezza< SIZE)
-	{
-		if (listavuota())
-		{
-			lunghezza=1;
+template<class T>
+void listaVettore<T>::insLista(int i, tipoelem v) {
+	if (lunghezza < SIZE) {
+		if (listavuota()) {
+			lunghezza = 1;
 			scrivilista(v, primo);
+		} else if (i >= lunghezza)
+			scrivilista(v, lunghezza++);
+		else {
+			lunghezza++;
+			for (int k = lunghezza; k > i; k--)
+				scrivilista(vet[k - 1].leggi_valore(), k);
+			scrivilista(v, i);
 		}
-		else
-			if(i>=lunghezza)
-				scrivilista(v, lunghezza++);
-			else
-			{
-				lunghezza++;
-				for(int k=lunghezza; k>i; k--)
-					scrivilista(vet[k-1].leggi_valore(), k);
-				scrivilista(v,i);
-			}
 	}
 }
 
-template <class T>
-void listaVettore:: canclista(int n)
-{
-	if(!listavuota())
-	{
-		if(n<lunghezza)
-		{
-			int j=primolista();
-			while(!finelista(j))
-				j=succlista(j); //SI POSIZIONA ALL'ULTIMO ELEMENTO
+template<class T>
+void listaVettore<T>::canclista(int n) {
+	if (!listavuota()) {
+		if (n < lunghezza) {
+			int j = primolista();
+			while (!finelista(j))
+				j = succlista(j); //SI POSIZIONA ALL'ULTIMO ELEMENTO
 
-				for(int i=n;i<j;i++)
-					scrivilista(vet[i+1],i);
-				lunghezza--;
-		}
-		else if(n==lunghezza)
+			for (int i = n; i < j; i++)
+				scrivilista(vet[i + 1], i);
+			lunghezza--;
+		} else if (n == lunghezza)
 			lunghezza--;
 	}
 }
