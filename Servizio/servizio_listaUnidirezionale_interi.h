@@ -15,7 +15,7 @@
 //DEFINIAMO IL TIPO ELEM DA ALLEGARE
 typedef NodoLista<int> NodoInteri;
 
-typedef ListaUnidirezionale<int> ListaInteri;
+typedef ListaUnidirezionale<int, NodoInteri*> ListaInteri;
 
 //DICHIARAZIONI DELLE FUNZIONI DI SERVIZIO
 void servizio_listaUnidirezionale_interi();

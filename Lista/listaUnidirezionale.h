@@ -30,11 +30,11 @@ using namespace std;
 
 typedef bool boolean;
 
-template<class tipoelem>
-class ListaUnidirezionale: public Lista<tipoelem> {
+template<class tipoelem, class posizione>
+class ListaUnidirezionale: public Lista<tipoelem, posizione> {
 public:
 	//posizione come untatore a nodo
-	typedef NodoLista<tipoelem> * posizione;
+	//typedef NodoLista<tipoelem> * posizione;
 
 	ListaUnidirezionale();
 
@@ -62,39 +62,45 @@ private:
 	posizione testa;
 };
 
-template<class T>
-ListaUnidirezionale<T>::ListaUnidirezionale() {
+template<class T, class posizione>
+ListaUnidirezionale<T,posizione>::ListaUnidirezionale() {
 	creaLista();
 }
 
-template<class T>
-void ListaUnidirezionale<T>::creaLista() {
+
+template<class T, class posizione>
+void ListaUnidirezionale<T,posizione>::creaLista() {
 	testa = NULL;
 }
 
-template<class T>
-boolean ListaUnidirezionale<T>::listaVuota() {
+
+template<class T, class posizione>
+boolean ListaUnidirezionale<T,posizione>::listaVuota() {
 	return (testa == NULL);
 }
 
-template<class T>
-T ListaUnidirezionale<T>::leggiLista(posizione p) {
+
+template<class T, class posizione>
+T ListaUnidirezionale<T,posizione>::leggiLista(posizione p) {
 	return p->leggiElem();
 }
 
-template<class tipoelem>
-void ListaUnidirezionale<tipoelem>::scriviLista(tipoelem t, posizione p) {
+
+template<class tipoelem, class posizione>
+void ListaUnidirezionale<tipoelem,posizione>::scriviLista(tipoelem t, posizione p) {
 	p->scriviElem(t);
 }
 
-template<class T>
-NodoLista<T> * ListaUnidirezionale<T>::primoLista() {
+
+template<class T, class posizione>
+posizione ListaUnidirezionale<T,posizione>::primoLista() {
 	return testa;
 }
 
-template<class tipoelem>
-void ListaUnidirezionale<tipoelem>::insLista(tipoelem t, posizione &p) {
-	NodoLista<tipoelem> * temp = new NodoLista<tipoelem>();
+
+template<class tipoelem, class posizione>
+void ListaUnidirezionale<tipoelem,posizione>::insLista(tipoelem t, posizione &p) {
+	posizione temp = new NodoLista<tipoelem>();
 	temp->scriviElem(t);
 	temp->scriviSucc(p);
 	if (p == primoLista()) {
@@ -105,26 +111,31 @@ void ListaUnidirezionale<tipoelem>::insLista(tipoelem t, posizione &p) {
 	}
 }
 
-template<class T>
-void ListaUnidirezionale<T>::cancLista(posizione p) {
+
+
+template<class T, class posizione>
+void ListaUnidirezionale<T,posizione>::cancLista(posizione p) {
 	NodoLista<T> * temp;
 	temp = predLista(p);
 	temp->scriviSucc(p->leggiSucc());
 	delete p;
 }
 
-template<class T>
-boolean ListaUnidirezionale<T>::fineLista(posizione p) {
+
+template<class T, class posizione>
+boolean ListaUnidirezionale<T,posizione>::fineLista(posizione p) {
 	return (succLista(p) == NULL) ? true : false; //todo: da specifiche: vero se posizione è oltre l'ultimo elemento (n+1)
 }
 
-template<class T>
-NodoLista<T> * ListaUnidirezionale<T>::succLista(posizione p) {
+
+template<class T, class posizione>
+posizione ListaUnidirezionale<T,posizione>::succLista(posizione p) {
 	return p->leggiSucc();
 }
 
-template<class T>
-NodoLista<T> * ListaUnidirezionale<T>::predLista(posizione p) {
+
+template<class T, class posizione>
+posizione ListaUnidirezionale<T,posizione>::predLista(posizione p) {
 	posizione p1 = primoLista();
 	while (!fineLista(p1) && (p1->leggiSucc() != p)) {
 		p1 = succLista(p1);

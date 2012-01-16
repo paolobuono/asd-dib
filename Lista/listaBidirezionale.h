@@ -22,19 +22,20 @@
 
 #include <cstdlib>
 #include <iostream>
+using namespace std;
+
+
+typedef bool boolean;
 
 #include "lista.h"
 #include "nodolista.h"
 
-using namespace std;
 
-typedef bool boolean;
-
-template<class tipoelem>
-class ListaBidirezionale: public Lista<tipoelem> {
+template<class tipoelem, class posizione>
+class ListaBidirezionale: public Lista<tipoelem, posizione> {
 public:
 	//posizione come untatore a nodo
-	typedef NodoLista<tipoelem> * posizione;
+	//typedef NodoLista<tipoelem> * posizione;
 
 	ListaBidirezionale();
 
@@ -62,33 +63,34 @@ private:
 	posizione testa;
 };
 
-template<class T>
-ListaBidirezionale<T>::ListaBidirezionale() {
+template<class T, class posizione>
+ListaBidirezionale<T, posizione>::ListaBidirezionale() {
 	creaLista();
 }
 
-template<class T>
-void ListaBidirezionale<T>::creaLista() {
+template<class T, class posizione>
+void ListaBidirezionale<T, posizione>::creaLista() {
 	testa = NULL;
 }
 
-template<class T>
-boolean ListaBidirezionale<T>::listaVuota() {
+template<class T, class posizione>
+boolean ListaBidirezionale<T, posizione>::listaVuota() {
 	return (testa == NULL);
 }
 
-template<class T>
-T ListaBidirezionale<T>::leggiLista(posizione p) {
+template<class T, class posizione>
+T ListaBidirezionale<T, posizione>::leggiLista(posizione p) {
 	return p->leggiElem();
 }
 
-template<class tipoelem>
-void ListaBidirezionale<tipoelem>::scriviLista(tipoelem t, posizione p) {
+template<class tipoelem, class posizione>
+void ListaBidirezionale<tipoelem, posizione>::scriviLista(tipoelem t,
+		posizione p) {
 	p->scriviElem(t);
 }
 
-template<class T>
-NodoLista<T> * ListaBidirezionale<T>::primoLista() {
+template<class T, class posizione>
+posizione ListaBidirezionale<T, posizione>::primoLista() {
 	return testa;
 }
 
@@ -102,10 +104,11 @@ NodoLista<T> * ListaBidirezionale<T>::primoLista() {
  * questo perchè è facile recuperare il primo lista pertanto risulta altrettanto facile
  * posizionarlo volontariamente in cima alla lista
  */
-template<class tipoelem>
-void ListaBidirezionale<tipoelem>::insLista(tipoelem t, posizione &p) {
+template<class tipoelem, class posizione>
+void ListaBidirezionale<tipoelem, posizione>::insLista(tipoelem t,
+		posizione &p) {
 
-	NodoLista<tipoelem> * temp = new NodoLista<tipoelem>();
+	NodoLista<tipoelem> *temp = new NodoLista<tipoelem>();
 	posizione prec;
 
 	temp->scriviElem(t);
@@ -153,26 +156,26 @@ void ListaBidirezionale<tipoelem>::insLista(tipoelem t, posizione &p) {
 	}
 }
 
-template<class T>
-void ListaBidirezionale<T>::cancLista(posizione p) {
-	NodoLista<T> * temp;
+template<class T, class posizione>
+void ListaBidirezionale<T, posizione>::cancLista(posizione p) {
+	NodoLista<T> *temp;
 	temp = predLista(p);
 	temp->scriviSucc(p->leggiSucc());
 	delete p;
 }
 
-template<class T>
-boolean ListaBidirezionale<T>::fineLista(posizione p) {
+template<class T, class posizione>
+boolean ListaBidirezionale<T, posizione>::fineLista(posizione p) {
 	return (succLista(p) == NULL) ? true : false;
 }
 
-template<class T>
-NodoLista<T> * ListaBidirezionale<T>::succLista(posizione p) {
+template<class T, class posizione>
+posizione ListaBidirezionale<T, posizione>::succLista(posizione p) {
 	return p->leggiSucc();
 }
 
-template<class T>
-NodoLista<T> * ListaBidirezionale<T>::predLista(posizione p) {
+template<class T, class posizione>
+posizione ListaBidirezionale<T, posizione>::predLista(posizione p) {
 	return p->leggiPrec();
 }
 
