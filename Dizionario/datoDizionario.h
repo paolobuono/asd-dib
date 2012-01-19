@@ -20,28 +20,28 @@
 #ifndef ASD_datoDizionario_h
 #define ASD_datoDizionario_h
 
-#include <string.h>
+#include <string>
+#include <iostream>
 using namespace std;
 
-
-template <class T>
+template<class T>
 class Dato {
 public:
-    Dato();
-    Dato(int,T);
-    int chiaveDato;
-    T elementoDato;
+	Dato();
+	Dato(int, T);
+	int chiaveDato;
+	T elementoDato;
 };
 
-template <class T>
-Dato<T>::Dato(){
-    chiaveDato=0;
+template<class T>
+Dato<T>::Dato() {
+	chiaveDato = 0;
 }
 
-template <class T>
-Dato<T>::Dato(int k, T s){
-    chiaveDato=k;
-    elementoDato=s;
+template<class T>
+Dato<T>::Dato(int k, T s) {
+	chiaveDato = k;
+	elementoDato = s;
 }
 
 #endif

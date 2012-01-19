@@ -20,17 +20,17 @@
 #ifndef studente_h
 #define studente_h
 
-class Studente{
+class Studente {
 public:
-    Studente();
-    Studente (int,int);
-    int getEta();
-    int getMatricola();
-    void setStudente(int,int);
-    void setMatricola(int);
+	Studente();
+	Studente(int, int);
+	int getEta();
+	int getMatricola();
+	void setStudente(int, int);
+	void setMatricola(int);
 private:
-    int eta;    
-    int matricola;
+	int eta;
+	int matricola;
 };
 
 #endif

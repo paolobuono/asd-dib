@@ -5,33 +5,42 @@
  *      Author: kiuzhack
  */
 
-#ifndef SERVIZIO_DIZIONARIOLISTA_H_
-#define SERVIZIO_DIZIONARIOLISTA_H_
+#ifndef SERVIZIO_DIZIONARIOVETTORE_H_
+#define SERVIZIO_DIZIONARIOVETTORE_H_
 
-#include "../Dizionario/dizionarioLista.h"
+#include "../Dizionario/dizionarioVettore.h"
 #include "../Dizionario/dizionario.h"
 #include "../Dizionario/datoDizionario.h"
 
 #include "../Dati/studente.h"
 
+//DEFINIAMO IL TIPO ELEM DA ALLEGARE
+
 //template<class elemento, class chiave>
-typedef DizionarioLista<Studente, int> Corso;
+typedef DizionarioVettore<Studente, int> Corso;
 
 //DICHIARAZIONI DELLE FUNZIONI DI SERVIZIO
-void servizio_dizionarioLista();
+void servizio_dizionarioVettore();
 void caricaTutto(Corso&);
 void stampaTutto(Corso);
 void cercaCancella(Corso&, int);
 
-void servizio_dizionarioLista() {
-	cout << " Dizionario Lista " << endl;
+/*  NodoInteri* cerca(ListaInteri, int);
+ void cercaSostituisci(ListaInteri, int interodacercare , int interodasostituire);
+
+ */
+
+void servizio_dizionarioVettore() {
+
 	Corso CorsoInformatica;
 
 	//CorsoInformatica = caricaTutto(CorsoInformatica);
 	caricaTutto(CorsoInformatica);
+
 	stampaTutto(CorsoInformatica);
 
 	cercaCancella(CorsoInformatica, 3248);
+
 	stampaTutto(CorsoInformatica);
 
 }
@@ -92,8 +101,9 @@ void caricaTutto(Corso& CorsoInit) {
 	//	return CorsoInit;
 }
 
-void cercaCancella(Corso& CorsoInformatica, int matricola) {
+void cercaCancella(Corso& CorsoInformatica, int matricola){
 	CorsoInformatica.cancella(matricola);
 }
 
-#endif /* SERVIZIO_DIZIONARIOLISTA_H_ */
+
+#endif /* SERVIZIO_DIZIONARIOVETTORE_H_ */

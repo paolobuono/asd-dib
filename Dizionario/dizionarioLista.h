@@ -20,8 +20,16 @@
 #ifndef _dizionarioLista_h
 #define _dizionarioLista_h
 
+#include <string>
+#include <iostream>
+
+using namespace std;
+
 #include "dizionario.h"
-#include "../Lista/listaUnidirezionale.h"
+#include "datoDizionario.h"
+
+#include "../Lista/listaBidirezionale.h"
+#include "../Lista/nodolista.h"
 
 template<class elemento, class chiave>
 class DizionarioLista: public Dizionario<elemento, chiave> {
@@ -31,26 +39,38 @@ public:
 	elemento cerca(chiave);
 	DizionarioLista();
 private:
-	ListaUnidirezionale<Dato<elemento> > lista;
+	typedef Dato<elemento> DatoDiz;
+	typedef NodoLista<DatoDiz>* posizione;
+
+	ListaBidirezionale<DatoDiz, posizione> lista;
+
 };
 
 template<class elemento, class chiave>
 void DizionarioLista<elemento, chiave>::inserisci(elemento e, chiave k) {
-	Dato<string> d;
-	d.elementoDato = e;
-	d.chiaveDato = k;
-	NodoLista<Dato<string> > *posizione;
-	boolean trovato = false;
-	posizione = lista.primoLista();
-	while (!lista.fineLista(posizione)) {
-		if (lista.leggiLista(posizione).chiaveDato == d.chiaveDato)
+
+	bool trovato = false;
+
+	posizione pos = lista.primoLista();
+	NodoLista<DatoDiz> nodo;
+	DatoDiz dato;
+
+	while (pos != NULL && trovato != true) {
+
+		dato = lista.leggiLista(pos);
+
+		if (k == dato.chiaveDato) {
 			trovato = true;
-		posizione = lista.succLista(posizione);
+		} else {
+			pos = lista.succLista(pos);
+		}
 	}
-	//inserisce sempre in testa, ottimizzare effettuando l'inserimento ordinato della lista
+
 	if (!trovato) {
-		posizione = lista.primoLista();
-		lista.insLista(d, posizione);
+		dato.chiaveDato = k;
+		dato.elementoDato = e;
+		pos = lista.primoLista();
+		lista.insLista(dato, pos);
 	}
 }
 
@@ -61,34 +81,43 @@ DizionarioLista<elemento, chiave>::DizionarioLista() {
 
 template<class elemento, class chiave>
 void DizionarioLista<elemento, chiave>::cancella(chiave k) {
-	boolean trovato = false;
-	NodoLista<Dato<elemento> > *posizione;
-	posizione = lista.primoLista();
-	while ((!lista.fineLista(posizione)) && (!trovato)) {
-		if (lista.leggiLista(posizione).chiaveDato == k) {
-			lista.cancLista(posizione);
+	bool trovato;
+	posizione pos = lista.primoLista();
+	NodoLista<DatoDiz> nodo;
+	DatoDiz dato;
+
+	while (pos != NULL && trovato != true) {
+		dato = lista.leggiLista(pos);
+		if (k == dato.chiaveDato) {
+			lista.cancLista(pos);
 			trovato = true;
+		} else {
+			pos = lista.succLista(pos);
 		}
-		posizione = lista.succLista(posizione);
 	}
-	cout << "Dato con chiave " << k << " cancellato" << endl;
 }
 
 template<class elemento, class chiave>
 elemento DizionarioLista<elemento, chiave>::cerca(chiave k) {
-	boolean trovato = false;
-	NodoLista<Dato<elemento> > *posizione;
-	posizione = lista.primoLista();
-	elemento e;
-	while ((!lista.fineLista(posizione)) && (!trovato)) {
-		if (lista.leggiLista(posizione).chiaveDato == k) {
-			e = (lista.leggiLista(posizione)).elementoDato;
+
+	elemento risposta;
+	bool trovato;
+
+	posizione pos = lista.primoLista();
+	NodoLista<DatoDiz> nodo;
+	DatoDiz dato;
+
+	while (pos != NULL && trovato != true) {
+		dato = lista.leggiLista(pos);
+		if (k == dato.chiaveDato) {
+			risposta = dato.elementoDato;
 			trovato = true;
+		} else {
+			pos = lista.succLista(pos);
 		}
-		posizione = lista.succLista(posizione);
 	}
-	return e;
+
+	return risposta;
 }
 
 #endif
-

@@ -27,7 +27,7 @@ using namespace std;
 #include "lista.h"
 #include "cellalistavettore.h"
 
-#define SIZE 12
+#define SIZE 100
 
 template<class tipoelem, class posizione>
 class listaVettore: public Lista<tipoelem, posizione> {
