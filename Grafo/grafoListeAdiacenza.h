@@ -139,10 +139,10 @@ boolean GrafoListeAdiacenza<tipoNodo, tipoArco>::esisteNodo(
 		nodoGrafo<tipoNodo> n) {
 	boolean out;
 	/*if (listaAdiacenza.cerca(n)) {
-		out = true;
-	} else {
-		out = false;
-	}*/
+	 out = true;
+	 } else {
+	 out = false;
+	 }*/
 	return (out);
 }
 

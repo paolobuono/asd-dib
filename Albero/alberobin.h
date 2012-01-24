@@ -22,25 +22,25 @@
 #include <iostream>
 #include "cella_alberobin.h"
 
-template <class tipoelem>
-class Alberobin{
-public:   
-    typedef CellaAlbero <tipoelem> * NodoAlbero;
-    typedef bool boolean;
-    virtual void creaBinalbero()=0;
-    virtual boolean binalberoVuoto()=0;
-    virtual NodoAlbero binRadice()=0;
-    virtual NodoAlbero binPadre(NodoAlbero)=0;
-    virtual NodoAlbero figlioSinistro(NodoAlbero)=0;
-    virtual NodoAlbero figlioDestro(NodoAlbero)=0;
-    virtual boolean sinistroVuoto(NodoAlbero)=0;
-    virtual boolean destroVuoto(NodoAlbero)=0;
-    virtual tipoelem leggiNodo(NodoAlbero)=0;
-    virtual void scriviNodo(tipoelem,NodoAlbero)=0;
-    virtual void insRadice()=0; 
-    virtual void insFiglioSinistro(NodoAlbero)=0;
-    virtual void insFiglioDestro(NodoAlbero)=0;
-    virtual void cancSottoBinalbero(NodoAlbero)=0;
+template<class tipoelem>
+class Alberobin {
+public:
+	typedef CellaAlbero<tipoelem> * NodoAlbero;
+	typedef bool boolean;
+	virtual void creaBinalbero()=0;
+	virtual boolean binalberoVuoto()=0;
+	virtual NodoAlbero binRadice()=0;
+	virtual NodoAlbero binPadre(NodoAlbero)=0;
+	virtual NodoAlbero figlioSinistro(NodoAlbero)=0;
+	virtual NodoAlbero figlioDestro(NodoAlbero)=0;
+	virtual boolean sinistroVuoto(NodoAlbero)=0;
+	virtual boolean destroVuoto(NodoAlbero)=0;
+	virtual tipoelem leggiNodo(NodoAlbero)=0;
+	virtual void scriviNodo(tipoelem, NodoAlbero)=0;
+	virtual void insRadice()=0;
+	virtual void insFiglioSinistro(NodoAlbero)=0;
+	virtual void insFiglioDestro(NodoAlbero)=0;
+	virtual void cancSottoBinalbero(NodoAlbero)=0;
 };
 
 #endif

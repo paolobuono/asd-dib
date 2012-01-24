@@ -25,7 +25,6 @@ public:
 	void scriviPadre(nodo<T>*);
 };
 
-
 template<class T>
 nodo<T>::nodo() {
 }
@@ -56,21 +55,21 @@ nodo<T>* nodo<T>::leggiPadre() {
 
 template<class T>
 void nodo<T>::scriviInfo(T i) {
-	info=i;
+	info = i;
 }
 
 template<class T>
 void nodo<T>::scriviPrimofg(nodo<T>* fg) {
-	primofg=fg;
+	primofg = fg;
 }
 
 template<class T>
 void nodo<T>::scriviSuccfr(nodo<T>* fr) {
-	succfr=fr;
+	succfr = fr;
 }
 
 template<class T>
 void nodo<T>::scriviPadre(nodo<T>* p) {
-	padre=p;
+	padre = p;
 }
 #endif

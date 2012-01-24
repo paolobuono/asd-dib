@@ -21,30 +21,30 @@
 #define _nodoGrafo_h
 
 /*
-GRAFO 
-SPECIFICA SINTATTICA
-CREAGRAFO	: () -> -
-GRAFOVUOTO	: () -> BOOLEAN
-INSNODO		: (NODO,TIPONODO) ->  - 
-INSARCO		: (NODO,NODO) ->  - 
-CANCNODO	: (NODO) ->  - 
-CANCARCO	: (NODO,NODO) ->  - 
-ADIACENTI	: (NODO) -> LISTA
-ESISTENODO	: (NODO) -> BOOLEAN
-ESISTEARCO	: (NODO,NODO) -> BOOLEAN
-*/
+ GRAFO 
+ SPECIFICA SINTATTICA
+ CREAGRAFO	: () -> -
+ GRAFOVUOTO	: () -> BOOLEAN
+ INSNODO		: (NODO,TIPONODO) ->  - 
+ INSARCO		: (NODO,NODO) ->  - 
+ CANCNODO	: (NODO) ->  - 
+ CANCARCO	: (NODO,NODO) ->  - 
+ ADIACENTI	: (NODO) -> LISTA
+ ESISTENODO	: (NODO) -> BOOLEAN
+ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
+ */
 
 #include <stdlib.h>
 
 using namespace std;
 typedef bool boolean;
 
-template <class T>
-class nodoGrafo{
+template<class T>
+class nodoGrafo {
 
-	  int etichetta;
-	  
-      T infoNodo;
+	int etichetta;
+
+	T infoNodo;
 };
 
 #endif

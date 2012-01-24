@@ -23,9 +23,9 @@
 using namespace std;
 typedef bool boolean;
 
-template <class T>
-class arcoGrafo{
-      T infoArco;
+template<class T>
+class arcoGrafo {
+	T infoArco;
 };
 
 #endif

@@ -18,31 +18,37 @@
  ***************************************************************************/
 
 #include <iostream>
+#include <string.h>
+#include "persone.h"
+#include "testo.h"
+#include "../Lista/lista.h"
+#include "../Lista/nodolista.h"
 #include "lettore.h"
 
-Lettore::Lettore(){
-    
-};
+Lettore::Lettore() {
 
-void Lettore::presta(Testo t){
-    Nodo<Testo> * posizione=testi.primoLista();
-    testi.insLista(t, posizione); 
+}
+;
+
+void Lettore::presta(Testo t) {
+	NodoLista<Testo> * posizione = testi.primoLista();
+	testi.insLista(t, posizione);
 }
 
-Testo Lettore::restituisci(string titolo){
-    Nodo<Testo> * posizione=testi.primoLista();
-    Testo libroDaRestituire;
-    while (!testi.fineLista(posizione)) {
-        if(testi.leggiLista(posizione).getTitolo()==titolo){
-            libroDaRestituire = testi.leggiLista(posizione);
-            //testi.cancLista(posizione);        //TODO: qui da errore
-        }else{
-            posizione=testi.succLista(posizione);
-        }
-    }
-    return libroDaRestituire;//TODO: implementare il controllo che il testo non sia presente
+Testo Lettore::restituisci(string titolo) {
+	NodoLista<Testo> * posizione = testi.primoLista();
+	Testo libroDaRestituire;
+	while (!testi.fineLista(posizione)) {
+		if (testi.leggiLista(posizione).getTitolo() == titolo) {
+			libroDaRestituire = testi.leggiLista(posizione);
+			//testi.cancLista(posizione);        //TODO: qui da errore
+		} else {
+			posizione = testi.succLista(posizione);
+		}
+	}
+	return libroDaRestituire; //TODO: implementare il controllo che il testo non sia presente
 }
 
-ListaUnidirezionale<Testo> Lettore::getElencoLibri(){
-    return testi;
+ListaUnidirezionale<Testo, NodoLista<Testo>*> Lettore::getElencoLibri() {
+	return testi;
 }

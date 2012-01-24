@@ -5,30 +5,32 @@
 #include "listaPuntatoriServ.h"
 
 void caricaGrafo(GrafoListeAd<Stanza *, Direzione *> &);
-void stampaAdiacenti(ListaPunt< GNodo<Stanza *, Direzione *> *> &);
+void stampaAdiacenti(ListaPunt<GNodo<Stanza *, Direzione *> *> &);
 
-int main(int argc, char *argv[])
-{
+int main_gioco(int argc, char *argv[]) {
 	GrafoListeAd<Stanza *, Direzione *> g;
 	caricaGrafo(g);
 
 	cout << endl;
-    system("PAUSE");
-    return EXIT_SUCCESS;
+	system("PAUSE");
+	return EXIT_SUCCESS;
 }
 
-void caricaGrafo(GrafoListeAd<Stanza *, Direzione *> &g)
-{
+void caricaGrafo(GrafoListeAd<Stanza *, Direzione *> &g) {
 	Stanza *cucina = new Stanza("cucina");
 	Stanza *salagiochi = new Stanza("sala giochi");
 	Stanza *saloneingresso = new Stanza("salone di ingresso");
 	Stanza *cantina = new Stanza("cantina");
 	Stanza *esterno = new Stanza("esterno");
 
-	salagiochi->getLista()->inslista("chiavecantina", salagiochi->getLista()->primolista());
-	saloneingresso->getLista()->inslista("binocolo", saloneingresso->getLista()->primolista());
-	saloneingresso->getLista()->inslista("maniglia", saloneingresso->getLista()->primolista());
-	cantina->getLista()->inslista("chiaveportone", cantina->getLista()->primolista());
+	salagiochi->getLista()->inslista("chiavecantina",
+			salagiochi->getLista()->primolista());
+	saloneingresso->getLista()->inslista("binocolo",
+			saloneingresso->getLista()->primolista());
+	saloneingresso->getLista()->inslista("maniglia",
+			saloneingresso->getLista()->primolista());
+	cantina->getLista()->inslista("chiaveportone",
+			cantina->getLista()->primolista());
 
 	Direzione *cucina_salagiochi = new Direzione("ovest", "");
 	Direzione *salagiochi_cucina = new Direzione("est", "maniglia");
@@ -60,15 +62,16 @@ void caricaGrafo(GrafoListeAd<Stanza *, Direzione *> &g)
 	stampaAdiacenti(*g.adiacenti(cucina));
 }
 
-void stampaAdiacenti(ListaPunt< GNodo<Stanza *, Direzione *> *> &l)
-{
-	if( !l.listavuota() ){
+void stampaAdiacenti(ListaPunt<GNodo<Stanza *, Direzione *> *> &l) {
+	if (!l.listavuota()) {
 		int i = 1;
-		while ( !l.finelista(mappapos(l, i)) ){
-			cout<< l.leggilista(mappapos(l, i))->getNodo()->getDescrizione() << " ";
+		while (!l.finelista(mappapos(l, i))) {
+			cout << l.leggilista(mappapos(l, i))->getNodo()->getDescrizione()
+					<< " ";
 			i++;
 		}
 		cout << endl;
+	} else {
+		cout << "EMPTY!" << endl;
 	}
-	else { cout<< "EMPTY!" << endl; }
 }

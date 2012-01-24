@@ -26,13 +26,13 @@ using namespace std;
 
 class Testo {
 private:
-    string titolo; 
-    int codice;
+	string titolo;
+	int codice;
 public:
-    Testo();
-    Testo(string, int);
-    void setTesto(string, int);
-    int getCodice();
-    string getTitolo();
+	Testo();
+	Testo(string, int);
+	void setTesto(string, int);
+	int getCodice();
+	string getTitolo();
 };
 #endif

@@ -21,7 +21,6 @@
 #ifndef _CELLALISTAVETTORE_H
 #define _CELLALISTAVETTORE_H
 
-
 #include <cstdlib>
 #include <iostream>
 using namespace std;

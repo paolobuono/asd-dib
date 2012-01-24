@@ -27,38 +27,40 @@ typedef bool boolean;
 
 #include "grafo.h"          //Classe virtuale di Grafo
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
-
 //variante di arco Grafo per relizzare il grafo con liste di archi
 #include "arcoGrafoListeArchi.h"
 
 #include "../Lista/listaUnidirezionale.h" //Utile per creare la lista di nodi del grafo
-
-template <class tipoNodo, class tipoArco>
-class GrafoListeIncidenza : public Grafo< tipoNodo, tipoArco > {
+template<class tipoNodo, class tipoArco>
+class GrafoListeIncidenza: public Grafo<tipoNodo, tipoArco> {
 private:
-    //Ho utilizzato una classe arco diverso, personalizzato come estens
-	Lista< arcoGrafoListaArchi < tipoArco, tipoNodo > > listaArchi;
-	
-	ListaUnidirezionale <ListaUnidirezionale < nodoGrafo < arcoGrafoListaArchi < nodoGrafo <tipoNodo>, nodoGrafo <tipoNodo> > > > > listaIncidenza;
+	//Ho utilizzato una classe arco diverso, personalizzato come estens
+	Lista<arcoGrafoListaArchi<tipoArco, tipoNodo> > listaArchi;
+
+	ListaUnidirezionale<
+			ListaUnidirezionale<
+					nodoGrafo<
+							arcoGrafoListaArchi<nodoGrafo<tipoNodo>,
+									nodoGrafo<tipoNodo> > > > > listaIncidenza;
 
 public:
 	void creaGrafo();
 	boolean grafoVuoto();
-	void setOrientato( boolean setOrientato );
-	void setPesato( boolean setPesato );
+	void setOrientato(boolean setOrientato);
+	void setPesato(boolean setPesato);
 
-	void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
-	void cancNodo(nodoGrafo< tipoNodo >);
-	boolean esisteNodo(nodoGrafo< tipoNodo >);
-	tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
+	void insNodo(nodoGrafo<tipoNodo>, tipoNodo);
+	void cancNodo(nodoGrafo<tipoNodo>);
+	boolean esisteNodo(nodoGrafo<tipoNodo>);
+	tipoNodo leggiNodo(nodoGrafo<tipoNodo>);
 
-	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
-	void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-	boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-	arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
+	void insArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
+	void insArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>, arcoGrafo<tipoArco>);
+	void cancArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
+	boolean esisteArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
+	arcoGrafo<tipoArco> leggiArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoArco>);
 
-	ListaUnidirezionale< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+	ListaUnidirezionale<Nodo<tipoNodo> > *adiacenti(nodoGrafo<tipoNodo>);
 };
 
 #endif

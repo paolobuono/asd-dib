@@ -101,34 +101,33 @@ void servizio_listaBidirezionale_interi() {
 
 	stampaTutto(ListaI);
 
-	 cercaintero = cerca(ListaI, 49805);
-	 element = ListaI.leggiLista(cercaintero);
-	 cout << "cercato e trovato l'elemento con dato: " << element << endl;
+	cercaintero = cerca(ListaI, 49805);
+	element = ListaI.leggiLista(cercaintero);
+	cout << "cercato e trovato l'elemento con dato: " << element << endl;
 
-	 cercaintero = cerca(ListaI, 10);
-	 element = ListaI.leggiLista(cercaintero);
-	 cout << "cercato e trovato l'elemento con dato: " << element << endl;
+	cercaintero = cerca(ListaI, 10);
+	element = ListaI.leggiLista(cercaintero);
+	cout << "cercato e trovato l'elemento con dato: " << element << endl;
 
-	 cercaintero = cerca(ListaI, 6);
-	 if (cercaintero != NULL) {
-	 element = ListaI.leggiLista(cercaintero);
-	 cout << "cercato e trovato l'elemento con dato: " << element << endl;
-	 } else {
-	 cout << "non trovato 6 " << endl;
-	 }
+	cercaintero = cerca(ListaI, 6);
+	if (cercaintero != NULL) {
+		element = ListaI.leggiLista(cercaintero);
+		cout << "cercato e trovato l'elemento con dato: " << element << endl;
+	} else {
+		cout << "non trovato 6 " << endl;
+	}
 
+	cercaSostituisci(ListaI, 10, 11);
+	stampaTutto(ListaI);
 
-	 cercaSostituisci(ListaI, 10, 11);
-	 stampaTutto(ListaI);
+	cercaSostituisci(ListaI, 460, 64);
+	stampaTutto(ListaI);
 
-	 cercaSostituisci(ListaI, 460, 64);
-	 stampaTutto(ListaI);
+	cercaSostituisci(ListaI, 11111, 64);
+	stampaTutto(ListaI);
 
-	 cercaSostituisci(ListaI, 11111, 64);
-	 stampaTutto(ListaI);
-
-	 cercaSostituisci(ListaI, 49805, 66);
-	 stampaTutto(ListaI);
+	cercaSostituisci(ListaI, 49805, 66);
+	stampaTutto(ListaI);
 }
 
 #endif

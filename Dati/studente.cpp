@@ -20,22 +20,22 @@
 #include <iostream>
 #include "studente.h"
 
-Studente::Studente(){
-    setStudente(0, 0);
+Studente::Studente() {
+	setStudente(0, 0);
 }
-Studente::Studente(int e, int m){
-    setStudente(e, m);
+Studente::Studente(int e, int m) {
+	setStudente(e, m);
 }
-int Studente::getEta(){
-    return eta;
+int Studente::getEta() {
+	return eta;
 }
-int Studente::getMatricola(){
-    return matricola;
+int Studente::getMatricola() {
+	return matricola;
 }
-void Studente::setStudente(int e, int m){
-    eta=e;
-    matricola=m;    
+void Studente::setStudente(int e, int m) {
+	eta = e;
+	matricola = m;
 }
-void Studente::setMatricola(int m){
-    matricola=m;    
+void Studente::setMatricola(int m) {
+	matricola = m;
 }

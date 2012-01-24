@@ -13,8 +13,8 @@
 #include "../Lista/nodolista.h"
 
 //DEFINIAMO IL TIPO ELEM DA ALLEGARE
-typedef NodoLista<int> NodoInteri;
 
+typedef NodoLista<int> NodoInteri;
 typedef ListaUnidirezionale<int, NodoInteri*> ListaInteri;
 
 //DICHIARAZIONI DELLE FUNZIONI DI SERVIZIO
@@ -22,7 +22,7 @@ void servizio_listaUnidirezionale_interi();
 ListaInteri caricaTutto();
 void stampaTutto(ListaInteri);
 NodoInteri* cerca(ListaInteri, int);
-void cercaSostituisci(ListaInteri, int interodacercare , int interodasostituire);
+void cercaSostituisci(ListaInteri, int interodacercare, int interodasostituire);
 void cercaCancella(ListaInteri, int);
 
 //IMPLEMENTAZIONI

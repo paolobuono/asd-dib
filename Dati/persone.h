@@ -23,15 +23,15 @@
 
 using namespace std;
 
-class Persona{
+class Persona {
 private:
-    string nome;
-    
+	string nome;
+
 public:
-    Persona();
-    Persona(string);
-    string getNome();
-    void setNome(string);
+	Persona();
+	Persona(string);
+	string getNome();
+	void setNome(string);
 };
 
 #endif

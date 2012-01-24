@@ -136,7 +136,6 @@ void servizio_listaVettore_interi() {
 	cercaSostituisci(&ListaVI, 102, 1222);
 	stampaTutto(ListaVI);
 
-
 	cercaSostituisci(&ListaVI, 4003, 999);
 	stampaTutto(ListaVI);
 

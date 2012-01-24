@@ -22,21 +22,20 @@
 #include <string.h>
 #include "persone.h"
 #include "testo.h"
+#include "../Lista/lista.h"
+#include "../Lista/nodolista.h"
 #include "../Lista/listaUnidirezionale.h"
 
-class Lettore : public Persona{
+class Lettore: public Persona {
 
 public:
-    Lettore();
-    void presta(Testo);
-    Testo restituisci(string);
-    ListaUnidirezionale<Testo> getElencoLibri();
-private: 
-    ListaUnidirezionale<Testo> testi;
+	Lettore();
+	void presta(Testo);
+	Testo restituisci(string);
+	ListaUnidirezionale<Testo, NodoLista<Testo>*> getElencoLibri();
+private:
+	ListaUnidirezionale<Testo, NodoLista<Testo>*> testi;
 };
 
 #endif
-
-
-
 

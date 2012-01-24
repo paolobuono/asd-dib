@@ -6,7 +6,7 @@ using namespace std;
 
 typedef int tipoelem;
 
-class pila{
+class pila {
 private:
 	tipoelem elementi[MAX_LUNG];
 	int testa;

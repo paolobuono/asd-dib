@@ -21,6 +21,7 @@
 #define _dizionarioHash_h
 
 #include "dizionario.h"
+
 #include<iostream>
 #include<iomanip>
 #include<string>
@@ -31,77 +32,68 @@ using namespace std;
 typedef bool boolean;
 typedef int attributo;
 
-chiave H(chiave ch) //TODO: definire delle funzioni hash meno banali di questa
-{
-    return(ch);
-}
-
-
-
-template <class elemento>
-class DizionarioHash : public Dizionario < elemento >{
+template<class elemento, class chiave>
+class DizionarioHash: public Dizionario<elemento, chiave> {
 private:
 	typedef elemento Vettore[MAX];
-    Vettore vettore;    
+	Vettore vettore;
 public:
-    void inserisci(elemento, chiave);
-    void cancella(chiave);
-    elemento cerca(chiave);
-    
-    //funzioni aggiuntive
-    DizionarioHash(); 
-    boolean appartiene(chiave);
-    void mostravettore();
-    void creadiz();
-    void aggiorna(chiave,chiave);
+	chiave H(chiave ch) //TODO: definire delle funzioni hash meno banali di questa
+			{
+		return (ch);
+	}
+	void inserisci(elemento, chiave);
+	void cancella(chiave);
+	elemento cerca(chiave);
+
+	//funzioni aggiuntive
+	DizionarioHash();
+	boolean appartiene(chiave);
+	void mostravettore();
+	void creadiz();
+	void aggiorna(chiave, chiave);
 };
 
-template <class elemento>
-void DizionarioHash<elemento>::inserisci(elemento e, chiave c){
-    chiave a=H(c);
-    if (vettore[a]=="") {
-        vettore[a]=e;    
-    }
+template<class elemento, class chiave>
+void DizionarioHash<elemento, chiave>::inserisci(elemento e, chiave c) {
+	chiave a = H(c);
+	if (vettore[a] == "") {
+		vettore[a] = e;
+	}
 }
 
-template <class elemento>
-void DizionarioHash<elemento>::cancella(chiave c)
-{
-    chiave a=H(c);
-    if (vettore[a]!="") {
-        vettore[a]="";
-    }
+template<class elemento, class chiave>
+void DizionarioHash<elemento, chiave>::cancella(chiave c) {
+	chiave a = H(c);
+	if (vettore[a] != "") {
+		vettore[a] = "";
+	}
 }
 
-template <class elemento>
-elemento DizionarioHash<elemento>::cerca(chiave c)
-{
-    chiave a=H(c);
-    return vettore[a];
+template<class elemento, class chiave>
+elemento DizionarioHash<elemento, chiave>::cerca(chiave c) {
+	chiave a = H(c);
+	return vettore[a];
 }
 
-
-template <class elemento>
-DizionarioHash<elemento>::DizionarioHash()
-{
-    creadiz();
+template<class elemento, class chiave>
+DizionarioHash<elemento, chiave>::DizionarioHash() {
+	creadiz();
 }
 
-template <class elemento>
-void DizionarioHash<elemento>::creadiz()
-{
-    attributo i;
-    
-    for (i=0;i<MAX;i++)
-        vettore[i]="";
+template<class elemento, class chiave>
+void DizionarioHash<elemento, chiave>::creadiz() {
+	attributo i;
+
+	for (i = 0; i < MAX; i++)
+		vettore[i] = "";
 }
 
-template <class elemento>
-boolean DizionarioHash<elemento>::appartiene(chiave c)
-{
+template<class elemento, class chiave>
+boolean DizionarioHash<elemento, chiave>::appartiene(chiave c) {
 //    attributo i;
-    boolean risultato=true;
-    
+	boolean risultato = true;
+
 //    risultato=false;
 //    i=H(c);
 //    
@@ -109,14 +101,12 @@ boolean DizionarioHash<elemento>::appartiene(chiave c)
 //        if(vettore[i]==c) risultato=true;    
 //        i++;
 //    }
-    
-    return(risultato);
+
+	return (risultato);
 }
 
-
-template <class elemento>
-void DizionarioHash<elemento>::mostravettore()
-{
+template<class elemento, class chiave>
+void DizionarioHash<elemento, chiave>::mostravettore() {
 //    attributo i;
 //    chiave c;
 //    for (i=0;i<MAX;i++) {
@@ -127,10 +117,8 @@ void DizionarioHash<elemento>::mostravettore()
 //    system ("pause");
 }
 
-
-template <class elemento>
-void DizionarioHash<elemento>::aggiorna(chiave c1,chiave c2)
-{
+template<class elemento, class chiave>
+void DizionarioHash<elemento, chiave>::aggiorna(chiave c1, chiave c2) {
 //    attributo a;
 //    
 //    if (appartiene(c1)) {

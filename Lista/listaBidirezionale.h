@@ -24,12 +24,10 @@
 #include <iostream>
 using namespace std;
 
-
 typedef bool boolean;
 
 #include "lista.h"
 #include "nodolista.h"
-
 
 template<class tipoelem, class posizione>
 class ListaBidirezionale: public Lista<tipoelem, posizione> {

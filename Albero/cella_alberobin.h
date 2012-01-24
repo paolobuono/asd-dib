@@ -22,8 +22,8 @@
 typedef bool boolean;
 using namespace std;
 
-template <class tipoelem>
-class CellaAlbero{
+template<class tipoelem>
+class CellaAlbero {
 public:
 	CellaAlbero();
 	~CellaAlbero();
@@ -50,61 +50,73 @@ private:
 
 //Implementazione
 
-template <class tipoelem>
-CellaAlbero<tipoelem>::CellaAlbero(){
+template<class tipoelem>
+CellaAlbero<tipoelem>::CellaAlbero() {
 	//	etichetta = 0;
-	sinistro=destro=genitore=NULL;
-};
+	sinistro = destro = genitore = NULL;
+}
+;
 
-template <class tipoelem>
-void CellaAlbero<tipoelem>::setEtichetta(tipoelem elem){
+template<class tipoelem>
+void CellaAlbero<tipoelem>::setEtichetta(tipoelem elem) {
 	etichetta = elem;
-};
+}
+;
 
-template <class tipoelem>
-tipoelem CellaAlbero<tipoelem>::getEtichetta(){
+template<class tipoelem>
+tipoelem CellaAlbero<tipoelem>::getEtichetta() {
 	return etichetta;
-};
+}
+;
 
-template <class tipoelem>
-void CellaAlbero<tipoelem>::setSinistro(CellaAlbero *sx){
-	if (sx==NULL) delete sinistro;
-	else sinistro = sx;
-};
+template<class tipoelem>
+void CellaAlbero<tipoelem>::setSinistro(CellaAlbero *sx) {
+	if (sx == NULL)
+		delete sinistro;
+	else
+		sinistro = sx;
+}
+;
 
-template <class tipoelem>
-CellaAlbero<tipoelem> * CellaAlbero<tipoelem>::getSinistro(){
+template<class tipoelem>
+CellaAlbero<tipoelem> * CellaAlbero<tipoelem>::getSinistro() {
 	return sinistro;
-};
+}
+;
 
-template <class tipoelem>
-void CellaAlbero<tipoelem>::setDestro(CellaAlbero *dx){
-	if (dx==NULL) delete destro;
+template<class tipoelem>
+void CellaAlbero<tipoelem>::setDestro(CellaAlbero *dx) {
+	if (dx == NULL)
+		delete destro;
 	destro = dx;
-};
+}
+;
 
-template <class tipoelem>
-CellaAlbero<tipoelem> * CellaAlbero<tipoelem>::getDestro(){
+template<class tipoelem>
+CellaAlbero<tipoelem> * CellaAlbero<tipoelem>::getDestro() {
 	return destro;
-};
+}
+;
 
-template <class tipoelem>
-void CellaAlbero<tipoelem>::setGenitore(CellaAlbero *father){
+template<class tipoelem>
+void CellaAlbero<tipoelem>::setGenitore(CellaAlbero *father) {
 	//per definizione non bisogna settare il genitore del  nodo radice !!!
 	genitore = father;
-};
+}
+;
 
-template <class tipoelem>
-CellaAlbero<tipoelem> * CellaAlbero<tipoelem>::getGenitore(){
+template<class tipoelem>
+CellaAlbero<tipoelem> * CellaAlbero<tipoelem>::getGenitore() {
 	return genitore;
-};
+}
+;
 
-template <class tipoelem>
-CellaAlbero<tipoelem>::~CellaAlbero(){
+template<class tipoelem>
+CellaAlbero<tipoelem>::~CellaAlbero() {
 	delete sinistro;
 	delete destro;
 	delete genitore;
-};
-
+}
+;
 
 #endif //CELLA_ALBERO_H

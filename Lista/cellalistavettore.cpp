@@ -18,14 +18,11 @@
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
 
-
 #include <cstdlib>
 #include <iostream>
 using namespace std;
 
-
 typedef bool boolean;
-
 
 #include "cellalistavettore.h"
 
@@ -42,5 +39,4 @@ template<class tipoelem>
 void CellaListaVettori<tipoelem>::scrivi_valore(tipoelem v) {
 	valore = v;
 }
-
 

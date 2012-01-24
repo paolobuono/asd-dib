@@ -27,11 +27,11 @@
 using namespace std;
 typedef bool boolean;
 
-template <class A, class N>
-class arcoGrafoListaArchi : public arcoGrafo< A >{
-	  //estensione per usarlo in arco grafo lista archi
-	  nodoGrafo< N >* primoNodo;
-	  nodoGrafo< N >* secondoNodo;
+template<class A, class N>
+class arcoGrafoListaArchi: public arcoGrafo<A> {
+	//estensione per usarlo in arco grafo lista archi
+	nodoGrafo<N>* primoNodo;
+	nodoGrafo<N>* secondoNodo;
 };
 
 #endif

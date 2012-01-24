@@ -101,9 +101,8 @@ void caricaTutto(Corso& CorsoInit) {
 	//	return CorsoInit;
 }
 
-void cercaCancella(Corso& CorsoInformatica, int matricola){
+void cercaCancella(Corso& CorsoInformatica, int matricola) {
 	CorsoInformatica.cancella(matricola);
 }
-
 
 #endif /* SERVIZIO_DIZIONARIOVETTORE_H_ */

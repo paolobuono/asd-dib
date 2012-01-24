@@ -22,17 +22,19 @@
 #include "persone.h"
 using namespace std;
 
-Persona::Persona(){
-    nome="";
+Persona::Persona() {
+	nome = "";
 }
-Persona::Persona(string s){
-    nome=s;
+Persona::Persona(string s) {
+	nome = s;
 }
 
-string Persona::getNome(){
-    return nome;
-};
+string Persona::getNome() {
+	return nome;
+}
+;
 
-void Persona::setNome(string s){
-    nome=s;
-}; 
+void Persona::setNome(string s) {
+	nome = s;
+}
+;

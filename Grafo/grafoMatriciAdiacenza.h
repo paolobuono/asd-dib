@@ -21,16 +21,16 @@
 #define _GrafoMatriceAdiacenza_H
 
 /*
-GRAFO - SPECIFICA SINTATTICA
-CREAGRAFO	: () -> -
-GRAFOVUOTO	: () -> BOOLEAN
-INSNODO		: (NODO,TIPONODO) ->  -
-INSARCO		: (NODO,NODO) ->  -
-CANCNODO	: (NODO) ->  -
-CANCARCO	: (NODO,NODO) ->  -
-ADIACENTI	: (NODO) -> LISTA
-ESISTENODO	: (NODO) -> BOOLEAN
-ESISTEARCO	: (NODO,NODO) -> BOOLEAN
+ GRAFO - SPECIFICA SINTATTICA
+ CREAGRAFO	: () -> -
+ GRAFOVUOTO	: () -> BOOLEAN
+ INSNODO		: (NODO,TIPONODO) ->  -
+ INSARCO		: (NODO,NODO) ->  -
+ CANCNODO	: (NODO) ->  -
+ CANCARCO	: (NODO,NODO) ->  -
+ ADIACENTI	: (NODO) -> LISTA
+ ESISTENODO	: (NODO) -> BOOLEAN
+ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
  */
 
 #include <stdlib.h>
@@ -42,19 +42,17 @@ typedef bool boolean;
 
 #include "grafo.h" //Classe virtuale di Grafo
 #include "nodoGrafo.h" //Classe del nodo grafo, necessita di allegare un "tipoNodo"
-
 #include "arcoGrafo.h"
 
 #include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
-
 template <class tipoNodo, class tipoArco>
-class GrafoListeMatriceIncidenza : public Grafo< tipoNodo, tipoArco > {
-	public:
+class GrafoListeMatriceIncidenza: public Grafo<tipoNodo, tipoArco> {
+public:
 	//LISTA NODI
 	/*
-	* Lista ordinata di nodi dove le posizioni 0 > i > n
-	* corrispondono alle 0 > i > n righe e colonne della mat. adiacenza
-	**/
+	 * Lista ordinata di nodi dove le posizioni 0 > i > n
+	 * corrispondono alle 0 > i > n righe e colonne della mat. adiacenza
+	 **/
 	Lista < nodoGrafo < tipoNodo > > > listaNodi;
 
 	//LISTA ARCHI
@@ -65,29 +63,29 @@ class GrafoListeMatriceIncidenza : public Grafo< tipoNodo, tipoArco > {
 
 	//MATRICE INCIDENZA (1,0)
 	/*
-	* matrice quadrata n X n dove righe e colonne corrispondono ai nodi
-	* ordinati nella lista nodi
-	**/
+	 * matrice quadrata n X n dove righe e colonne corrispondono ai nodi
+	 * ordinati nella lista nodi
+	 **/
 	bool matriceIncidenza[RIGHE][COLONNE];
 
 	//METODI di base
 	void creaGrafo();
 	boolean grafoVuoto();
-	void setOrientato( boolean setOrientato );
-	void setPesato( boolean setPesato );
+	void setOrientato(boolean setOrientato);
+	void setPesato(boolean setPesato);
 
-	void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
-	void cancNodo(nodoGrafo< tipoNodo >);
-	boolean esisteNodo(nodoGrafo< tipoNodo >);
-	tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
+	void insNodo(nodoGrafo<tipoNodo>, tipoNodo);
+	void cancNodo(nodoGrafo<tipoNodo>);
+	boolean esisteNodo(nodoGrafo<tipoNodo>);
+	tipoNodo leggiNodo(nodoGrafo<tipoNodo>);
 
-	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
-	void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-	boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-	arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
+	void insArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
+	void insArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>, arcoGrafo<tipoArco>);
+	void cancArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
+	boolean esisteArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
+	arcoGrafo<tipoArco> leggiArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoArco>);
 
-	Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+	Lista<Nodo<tipoNodo> > *adiacenti(nodoGrafo<tipoNodo>);
 
 }
 

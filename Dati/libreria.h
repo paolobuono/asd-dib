@@ -17,33 +17,32 @@
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
 
-
 #ifndef ASD_libreria_h
 #define ASD_libreria_h
+#include "../Lista/lista.h"
+#include "../Lista/nodolista.h"
 #include "../Lista/listaUnidirezionale.h"
 #include "testo.h"
 #include "lettore.h"
 
-class Prestiti{
-    
+class Prestiti {
+
 public:
-    Testo libro;
-    Persona lettore;
+	Testo libro;
+	Persona lettore;
 };
 
-
-class Libreria{
+class Libreria {
 public:
-    void aggiungiTesto(Testo);
-    void presta(Testo, Persona);
-    void restituisci(Testo, Persona);
-    ListaUnidirezionale<Testo> getElencoLibri();
-    ListaUnidirezionale<Prestiti> getElencoPrestiti();
-    
+	void aggiungiTesto(Testo);
+	void presta(Testo, Persona);
+	void restituisci(Testo, Persona);
+	ListaUnidirezionale<Testo, NodoLista<Testo>*> getElencoLibri();
+	ListaUnidirezionale<Prestiti, NodoLista<Prestiti>*> getElencoPrestiti();
+
 private:
-    ListaUnidirezionale<Testo> testiDisponibili;
-    ListaUnidirezionale<Prestiti> prestiti;
+	ListaUnidirezionale<Testo, NodoLista<Testo>*> testiDisponibili;
+	ListaUnidirezionale<Prestiti, NodoLista<Prestiti>*> prestiti;
 };
-
 
 #endif

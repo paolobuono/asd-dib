@@ -24,61 +24,57 @@
 #include "../Dati/testo.h"
 #include "../Servizio/servizioAlberobin.h"
 
-class DizionarioAlberoBinario : public Dizionario{
+class DizionarioAlberoBinario: public Dizionario {
 public:
-    void inserisci(elemento,chiave);
-    void cancella(chiave);
-    elemento cerca(chiave);
-    DizionarioAlberoBinario();
+	void inserisci(elemento, chiave);
+	void cancella(chiave);
+	elemento cerca(chiave);
+	DizionarioAlberoBinario();
 private:
-    Alberobin< Dato<string> > alberobin;
+	Alberobin<Dato<string> > alberobin;
 };
 
-
-
-
-
-
 //Implementazione.. da migliorare
-void DizionarioAlberoBinario::inserisci(elemento e, chiave k){
-	 Dato<string>  d(k,e);
-    CellaAlbero < Dato<string> > * u=alberobin.binRadice();
-    inserimentOrdinato(d, u, alberobin);
+void DizionarioAlberoBinario::inserisci(elemento e, chiave k) {
+	Dato<string> d(k, e);
+	CellaAlbero<Dato<string> > * u = alberobin.binRadice();
+	inserimentOrdinato(d, u, alberobin);
 }
 
-DizionarioAlberoBinario::DizionarioAlberoBinario(){
-    alberobin.creaBinalbero();
+DizionarioAlberoBinario::DizionarioAlberoBinario() {
+	alberobin.creaBinalbero();
 }
 
-void DizionarioAlberoBinario::cancella(chiave k){
-    CellaAlbero < Dato<string> > * u;
-    u=alberobin.binRadice();
-    bool trovato=false;
-    while ((u!=NULL) && (!trovato)) {
-        if(k==u->getEtichetta().chiaveDato) {
-            if(u->getSinistro()!=NULL){
-                //                sostituisci il sinistro al nodo
-            }else{
-                if(u->getDestro()!=NULL){
-                    //                sostituisci il destro al nodo
-                }   
-                delete u;//cancellare il nodo temporaneo che assume il valore di u
-            }
-        }
-    }
+void DizionarioAlberoBinario::cancella(chiave k) {
+	CellaAlbero<Dato<string> > * u;
+	u = alberobin.binRadice();
+	bool trovato = false;
+	while ((u != NULL) && (!trovato)) {
+		if (k == u->getEtichetta().chiaveDato) {
+			if (u->getSinistro() != NULL) {
+				//                sostituisci il sinistro al nodo
+			} else {
+				if (u->getDestro() != NULL) {
+					//                sostituisci il destro al nodo
+				}
+				delete u; //cancellare il nodo temporaneo che assume il valore di u
+			}
+		}
+	}
 }
 
-elemento DizionarioAlberoBinario::cerca(chiave k){
-    CellaAlbero < Dato<string> > * u;
-    u=alberobin.binRadice();
-    while (u!=NULL) {
-        if(k==u->getEtichetta().chiaveDato) return u->getEtichetta().elementoDato;
-        else if(k<u->getEtichetta().chiaveDato) 
-            u=alberobin.figlioSinistro(u);
-        else
-            u=alberobin.figlioDestro(u);
-    }
-    return "";
+elemento DizionarioAlberoBinario::cerca(chiave k) {
+	CellaAlbero<Dato<string> > * u;
+	u = alberobin.binRadice();
+	while (u != NULL) {
+		if (k == u->getEtichetta().chiaveDato)
+			return u->getEtichetta().elementoDato;
+		else if (k < u->getEtichetta().chiaveDato)
+			u = alberobin.figlioSinistro(u);
+		else
+			u = alberobin.figlioDestro(u);
+	}
+	return "";
 }
 
 #endif

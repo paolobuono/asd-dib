@@ -20,7 +20,7 @@ void servizio_grafoListeAdiacenza() {
 
 	grafo.insNodo(nodo, 20);
 
-    cout << "fine" << endl;
+	cout << "fine" << endl;
 
 }
 

@@ -22,48 +22,48 @@
 
 /*MODIFY BY Minerva Fabio ON 11-Dec-27*/
 
-template <class T>
-class Nodo{
+template<class T>
+class Nodo {
 private:
-    T elemento;
-    Nodo<T>* succ;
-    Nodo<T>* prec;
+	T elemento;
+	Nodo<T>* succ;
+	Nodo<T>* prec;
 public:
-    T leggiElem();
-    Nodo<T>* leggiSucc();
-    Nodo<T>* leggiPrec();
-    void scriviElem(T);
-    void scriviSucc(Nodo<T>*);
-    void scriviPrec(Nodo<T>*);
+	T leggiElem();
+	Nodo<T>* leggiSucc();
+	Nodo<T>* leggiPrec();
+	void scriviElem(T);
+	void scriviSucc(Nodo<T>*);
+	void scriviPrec(Nodo<T>*);
 };
 
-template <class T>
+template<class T>
 T Nodo<T>::leggiElem() {
-            return elemento;
-            }
-            
-template <class T>
+	return elemento;
+}
+
+template<class T>
 Nodo<T>* Nodo<T>::leggiSucc() {
-          return succ;
-          }
-          
-template <class T>
+	return succ;
+}
+
+template<class T>
 Nodo<T>* Nodo<T>::leggiPrec() {
-          return prec;
-          }
-          
-template <class T>
+	return prec;
+}
+
+template<class T>
 void Nodo<T>::scriviElem(T e) {
-        elemento=e;
-        }
-        
-template <class T>
+	elemento = e;
+}
+
+template<class T>
 void Nodo<T>::scriviSucc(Nodo<T>* s) {
-        succ=s;
-        }
-        
-template <class T>
+	succ = s;
+}
+
+template<class T>
 void Nodo<T>::scriviPrec(Nodo<T>* p) {
-        prec=p;
-        }
+	prec = p;
+}
 #endif

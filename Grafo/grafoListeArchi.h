@@ -28,33 +28,31 @@ typedef bool boolean;
 #include "arcoGrafoListeArchi.h"//variante di arco Grafo per relizzare il grafo con liste di archi
 #include "grafo.h"          //Classe virtuale di Grafo
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
-
 #include "../Lista/listaUnidirezionale.h" //Utile per creare la lista di nodi del grafo
-
-template <class tipoNodo, class tipoArco>
-class GrafoListeAdiacenza : public Grafo< tipoNodo, tipoArco > {
-	public:
+template<class tipoNodo, class tipoArco>
+class GrafoListeAdiacenza: public Grafo<tipoNodo, tipoArco> {
+public:
 
 	//Ho utilizzato una classe arco diverso, personalizzato come estens
-	ListaUnidirezionale < arcoGrafoListaArchi < tipoArco, tipoNodo > > listaArchi;
+	ListaUnidirezionale<arcoGrafoListaArchi<tipoArco, tipoNodo> > listaArchi;
 
 	void creaGrafo();
 	boolean grafoVuoto();
-	void setOrientato( boolean setOrientato );
-	void setPesato( boolean setPesato );
+	void setOrientato(boolean setOrientato);
+	void setPesato(boolean setPesato);
 
-	void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
-	void cancNodo(nodoGrafo< tipoNodo >);
-	boolean esisteNodo(nodoGrafo< tipoNodo >);
-	tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
+	void insNodo(nodoGrafo<tipoNodo>, tipoNodo);
+	void cancNodo(nodoGrafo<tipoNodo>);
+	boolean esisteNodo(nodoGrafo<tipoNodo>);
+	tipoNodo leggiNodo(nodoGrafo<tipoNodo>);
 
-	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
-	void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-	boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-	arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
+	void insArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
+	void insArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>, arcoGrafo<tipoArco>);
+	void cancArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
+	boolean esisteArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
+	arcoGrafo<tipoArco> leggiArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoArco>);
 
-	ListaUnidirezionale< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+	ListaUnidirezionale<Nodo<tipoNodo> > *adiacenti(nodoGrafo<tipoNodo>);
 };
 
 #endif

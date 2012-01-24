@@ -21,16 +21,16 @@
 #define _GrafoMatriciIncidenza_H
 
 /*
-GRAFO - SPECIFICA SINTATTICA
-CREAGRAFO	: () -> -
-GRAFOVUOTO	: () -> BOOLEAN
-INSNODO		: (NODO,TIPONODO) ->  -
-INSARCO		: (NODO,NODO) ->  -
-CANCNODO	: (NODO) ->  -
-CANCARCO	: (NODO,NODO) ->  -
-ADIACENTI	: (NODO) -> LISTA
-ESISTENODO	: (NODO) -> BOOLEAN
-ESISTEARCO	: (NODO,NODO) -> BOOLEAN
+ GRAFO - SPECIFICA SINTATTICA
+ CREAGRAFO	: () -> -
+ GRAFOVUOTO	: () -> BOOLEAN
+ INSNODO		: (NODO,TIPONODO) ->  -
+ INSARCO		: (NODO,NODO) ->  -
+ CANCNODO	: (NODO) ->  -
+ CANCARCO	: (NODO,NODO) ->  -
+ ADIACENTI	: (NODO) -> LISTA
+ ESISTENODO	: (NODO) -> BOOLEAN
+ ESISTEARCO	: (NODO,NODO) -> BOOLEAN
  */
 
 #include <stdlib.h>
@@ -43,53 +43,51 @@ typedef bool boolean;
 
 #include "grafo.h"          //Classe virtuale di Grafo
 #include "nodoGrafo.h"      //Classe del nodo grafo,  necessita di allegare un "tipoNodo"
-
 #include "arcoGrafo.h"
 
 #include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
-
 template <class tipoNodo, class tipoArco>
-class GrafoListeMatriceIncidenza : public Grafo< tipoNodo, tipoArco > {
+class GrafoListeMatriceIncidenza: public Grafo<tipoNodo, tipoArco> {
 	//LISTA NODI
 	/*assumiamo una lista ordinata dove le posizioni 0 >= i >= n
-	* corrispondono alle RIGHE della matrice di incidenza
-	*/
-	Lista < nodoGrafo < tipoNodo > > listaNodi;
+	 * corrispondono alle RIGHE della matrice di incidenza
+	 */
+	Lista<nodoGrafo<tipoNodo> > listaNodi;
 
 	//LISTA ARCHI
 	/*assumiamo una lista ordinata dove le posizioni 0 >= i >= n
-	* corrispondono alle COLONNE della matrice di incidenza
-	*/
-	Lista < arcoGrafo < tipoArco > > listaArchi;
+	 * corrispondono alle COLONNE della matrice di incidenza
+	 */
+	Lista<arcoGrafo<tipoArco> > listaArchi;
 
 	//MATRICE ADIACENZA (1,0)
 	/**
-	* Matrice rettangolare nXm ,n numero di nodi, m numero di archi
-	* i esima riga corrisponde all'iesimo nodi della lista ordinata
-	* j esima colonna corrisponde all'j-esima colonna della lista ordinata
-	* la posizione A[ij] corrisponde all'informazione se il nodo i-esimo è
-	* collegato al j-esimo arco.
-	*/
+	 * Matrice rettangolare nXm ,n numero di nodi, m numero di archi
+	 * i esima riga corrisponde all'iesimo nodi della lista ordinata
+	 * j esima colonna corrisponde all'j-esima colonna della lista ordinata
+	 * la posizione A[ij] corrisponde all'informazione se il nodo i-esimo è
+	 * collegato al j-esimo arco.
+	 */
 	bool matriceIncidenza[RIGHE][COLONNE];
-	
+
 	//METODI di base
 	void creaGrafo();
 	boolean grafoVuoto();
-	void setOrientato( boolean setOrientato );
-	void setPesato( boolean setPesato );
+	void setOrientato(boolean setOrientato);
+	void setPesato(boolean setPesato);
 
-	void insNodo(nodoGrafo< tipoNodo >, tipoNodo);
-	void cancNodo(nodoGrafo< tipoNodo >);
-	boolean esisteNodo(nodoGrafo< tipoNodo >);
-	tipoNodo leggiNodo(nodoGrafo< tipoNodo >);
+	void insNodo(nodoGrafo<tipoNodo>, tipoNodo);
+	void cancNodo(nodoGrafo<tipoNodo>);
+	boolean esisteNodo(nodoGrafo<tipoNodo>);
+	tipoNodo leggiNodo(nodoGrafo<tipoNodo>);
 
-	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-	void insArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >, arcoGrafo < tipoArco >);
-	void cancArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-	boolean esisteArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoNodo >);
-	arcoGrafo < tipoArco > leggiArco(nodoGrafo< tipoNodo >, nodoGrafo< tipoArco >);
+	void insArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
+	void insArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>, arcoGrafo<tipoArco>);
+	void cancArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
+	boolean esisteArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
+	arcoGrafo<tipoArco> leggiArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoArco>);
 
-	Lista< Nodo< tipoNodo > > *adiacenti(nodoGrafo< tipoNodo >);
+	Lista<Nodo<tipoNodo> > *adiacenti(nodoGrafo<tipoNodo>);
 
 }
 

@@ -20,21 +20,24 @@
 #include <iostream>
 #include "testo.h"
 
-Testo::Testo(string s, int i){
-    setTesto(s,i);
+Testo::Testo(string s, int i) {
+	setTesto(s, i);
 }
-Testo::Testo(){
+Testo::Testo() {
 }
-    
-void Testo::setTesto(string s, int i){
-    titolo=s;
-    codice=i;
-};
 
-int Testo::getCodice(){
-    return codice;
-};
+void Testo::setTesto(string s, int i) {
+	titolo = s;
+	codice = i;
+}
+;
 
-string Testo::getTitolo(){
-    return titolo;
-};
+int Testo::getCodice() {
+	return codice;
+}
+;
+
+string Testo::getTitolo() {
+	return titolo;
+}
+;
