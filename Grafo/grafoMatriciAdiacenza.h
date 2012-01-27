@@ -17,76 +17,206 @@
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
 
-#ifndef _GrafoMatriciAdiacenza_H
-#define _GrafoMatriceAdiacenza_H
-
 /*
- GRAFO - SPECIFICA SINTATTICA
- CREAGRAFO	: () -> -
- GRAFOVUOTO	: () -> BOOLEAN
- INSNODO		: (NODO,TIPONODO) ->  -
- INSARCO		: (NODO,NODO) ->  -
- CANCNODO	: (NODO) ->  -
- CANCARCO	: (NODO,NODO) ->  -
- ADIACENTI	: (NODO) -> LISTA
- ESISTENODO	: (NODO) -> BOOLEAN
- ESISTEARCO	: (NODO,NODO) -> BOOLEAN
+ * grafoMatriciAdiacenza.h
+ *      Author: Domenico Monaco
+ *      Descrizione: Grafo orientato con Matrice di Adiacenza
  */
 
-#include <stdlib.h>
-#define RIGHe 100
-#define COLONNE 100
+#ifndef GRAFOMATRICE_ADIACENZA_H
+#define GRAFOMATRICE_ADIACENZA_H
 
+#include <iostream>
 using namespace std;
 typedef bool boolean;
 
-#include "grafo.h" //Classe virtuale di Grafo
-#include "nodoGrafo.h" //Classe del nodo grafo, necessita di allegare un "tipoNodo"
+//#include "grafo.h"
+#include "cellaGrafo.h"
 #include "arcoGrafo.h"
+#include "../Lista/listaBidirezionale.h"
 
-#include "../Lista/lista.h" //Utile per creare la lista di nodi del grafo
-template <class tipoNodo, class tipoArco>
-class GrafoListeMatriceIncidenza: public Grafo<tipoNodo, tipoArco> {
+#define RIGHE 100
+#define COLONNE 100
+
+template<class tipoNodo, class tipoArco>
+class GrafoMatriceAdiacenza {
 public:
-	//LISTA NODI
-	/*
-	 * Lista ordinata di nodi dove le posizioni 0 > i > n
-	 * corrispondono alle 0 > i > n righe e colonne della mat. adiacenza
-	 **/
-	Lista < nodoGrafo < tipoNodo > > > listaNodi;
 
-	//LISTA ARCHI
-	//TODO non so ancora come collegare l'informazione arco
-	//alla matrice di incidenza
-	//
-	Lista < arcoGrafo < tipoArco > > > listaArchi;
+	int occupy_pos;
 
-	//MATRICE INCIDENZA (1,0)
-	/*
-	 * matrice quadrata n X n dove righe e colonne corrispondono ai nodi
-	 * ordinati nella lista nodi
-	 **/
-	bool matriceIncidenza[RIGHE][COLONNE];
+	typedef cellaGrafo<tipoNodo> nodoGrafo;
 
-	//METODI di base
+	arcoGrafo<tipoArco>* matriceAdiacenza[RIGHE][COLONNE];
+	nodoGrafo* Nodi[RIGHE];
+
+	GrafoMatriceAdiacenza();
+
 	void creaGrafo();
 	boolean grafoVuoto();
-	void setOrientato(boolean setOrientato);
-	void setPesato(boolean setPesato);
 
-	void insNodo(nodoGrafo<tipoNodo>, tipoNodo);
-	void cancNodo(nodoGrafo<tipoNodo>);
-	boolean esisteNodo(nodoGrafo<tipoNodo>);
-	tipoNodo leggiNodo(nodoGrafo<tipoNodo>);
+	void insNodo(int indice, tipoNodo);
+	void insArco(int indiceA, int indiceB, tipoArco);
 
-	void insArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
-	void insArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>, arcoGrafo<tipoArco>);
-	void cancArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
-	boolean esisteArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoNodo>);
-	arcoGrafo<tipoArco> leggiArco(nodoGrafo<tipoNodo>, nodoGrafo<tipoArco>);
+	void cancNodo(int indice);
+	void cancArco(int indiceA, int indiceB);
 
-	Lista<Nodo<tipoNodo> > *adiacenti(nodoGrafo<tipoNodo>);
+	ListaBidirezionale<cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>*> adiacenti(
+			int indice);
 
+	boolean esisteNodo(int indice);
+	boolean esisteArco(int indiceA, int indiceB);
+};
+
+template<class tipoNodo, class tipoArco>
+GrafoMatriceAdiacenza<tipoNodo, tipoArco>::GrafoMatriceAdiacenza() {
 }
 
-#endif
+/*
+ * creaGrafo()
+ *		inizializza il grafo forzando a null array di nodi e matriceadiacenza
+ */
+template<class tipoNodo, class tipoArco>
+void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::creaGrafo() {
+
+	occupy_pos = 0;
+	int i = 0, j = 0;
+
+	for (i = 0; i < RIGHE; i++) {
+		Nodi[i] = NULL;
+		for (j = 0; j < COLONNE; j++) {
+			matriceAdiacenza[i][j] = NULL;
+		}
+	}
+}
+
+template<class tipoNodo, class tipoArco>
+boolean GrafoMatriceAdiacenza<tipoNodo, tipoArco>::grafoVuoto() {
+	boolean out;
+	if (occupy_pos == 0) {
+		out = true;
+	} else {
+		out = false;
+	}
+	return out;
+}
+
+template<class tipoNodo, class tipoArco>
+void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::insNodo(int indice,
+		tipoNodo datoNodo) {
+
+	//Creao nuovo nodo
+	cellaGrafo<tipoNodo>* nuovoNodo;
+	nuovoNodo = new cellaGrafo<tipoNodo>;
+	nuovoNodo->setInfo(datoNodo);
+
+	//lo inserisco nella posizione indicata
+	//O = nessun nodo
+	//le righe vanno da 0->n allora (n+1)= occupy_pos se fino a n è occupato
+	if (occupy_pos < (RIGHE + 1)) {
+
+		Nodi[indice] = nuovoNodo;
+		//incremento posizione occupate
+		occupy_pos++;
+	}
+}
+
+template<class tipoNodo, class tipoArco>
+void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::insArco(int indiceA,
+		int indiceB, tipoArco datoArco) {
+
+	if (esisteNodo(indiceA) && esisteNodo(indiceB)) {
+		arcoGrafo<tipoArco>* nuovoArco;
+		nuovoArco = new arcoGrafo<tipoArco>;
+		nuovoArco->setInfo(datoArco);
+
+		matriceAdiacenza[indiceA][indiceB] = nuovoArco;
+	}
+}
+
+template<class tipoNodo, class tipoArco>
+void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::cancNodo(int indice) {
+	if (esisteNodo(indice)) {
+
+		int i;
+
+		for (i = 0; i < RIGHE; i++) {
+			if (esisteArco(i, indice)) {
+				cancArco(i, indice);
+			}
+			if (esisteArco(indice, i)) {
+				cancArco(indice, i);
+			}
+		}
+
+		//Cancello la locazione di memoria del nodo
+		delete Nodi[indice];
+		//Forzo la presenza di NULL
+		Nodi[indice] = NULL;
+
+		//Drecremento posizione occupate
+		occupy_pos--;
+
+	}
+}
+
+template<class tipoNodo, class tipoArco>
+void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::cancArco(int indiceA,
+		int indiceB) {
+
+	if (esisteArco(indiceA, indiceB)) {
+		delete matriceAdiacenza[indiceA][indiceB];
+		matriceAdiacenza[indiceA][indiceB] = NULL;
+	}
+}
+
+template<class tipoNodo, class tipoArco>
+ListaBidirezionale<cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>*> GrafoMatriceAdiacenza<
+		tipoNodo, tipoArco>::adiacenti(int indice) {
+
+	ListaBidirezionale<cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>*> ListaNodi;
+	ListaNodi.creaLista();
+
+	if (esisteNodo(indice)) {
+		int i;
+		NodoLista<cellaGrafo<tipoNodo>*>* pos;
+
+		for (i = 0; i < RIGHE; i++) {
+
+			if (esisteArco(indice, i)) {
+				pos = ListaNodi.primoLista();
+				ListaNodi.insLista(Nodi[i], pos);
+			}
+		}
+	}
+
+	return ListaNodi;
+}
+
+template<class tipoNodo, class tipoArco>
+boolean GrafoMatriceAdiacenza<tipoNodo, tipoArco>::esisteNodo(int indice) {
+	boolean out;
+
+	if (Nodi[indice] != NULL) {
+		out = true;
+	} else {
+		out = false;
+	}
+
+	return out;
+}
+
+template<class tipoNodo, class tipoArco>
+boolean GrafoMatriceAdiacenza<tipoNodo, tipoArco>::esisteArco(int indiceA,
+		int indiceB) {
+	boolean out;
+
+	if (esisteNodo(indiceA) && esisteNodo(indiceB)
+			&& matriceAdiacenza[indiceA][indiceB]) {
+		out = true;
+	} else {
+		out = false;
+	}
+	return out;
+}
+
+#endif /* GRAFOMATRICE_ADIACENZA_H */

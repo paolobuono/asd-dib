@@ -25,7 +25,20 @@ typedef bool boolean;
 
 template<class T>
 class arcoGrafo {
+public:
+	void setInfo(T);
+	T getInfo();
+private:
 	T infoArco;
+
 };
 
+template<class T>
+void arcoGrafo<T>::setInfo(T info) {
+	infoArco = info;
+}
+template<class T>
+T arcoGrafo<T>::getInfo() {
+	return infoArco;
+}
 #endif

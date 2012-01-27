@@ -17,41 +17,31 @@
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
 
-#ifndef _GRAFOVIRTUAL_h
-#define _GRAFOVIRTUAL_h
+#ifndef _cellaGrafo_h
+#define _cellaGrafo_h
 
-#include <iostream>
+#include <stdlib.h>
+
 using namespace std;
 typedef bool boolean;
 
-#include "cellaGrafo.h"
-#include "arcoGrafo.h"
-#include "../Lista/listaBidirezionale.h"
-
-template<class tipoNodo, class tipoArco>
-class GrafoVirtual {
+template<class T>
+class cellaGrafo {
+	//int etichetta;
 public:
-	GrafoVirtual();
-
-	virtual void creaGrafo()=0;
-	virtual boolean grafoVuoto()=0;
-	virtual void insNodo(cellaGrafo<tipoNodo>*, tipoNodo)=0;
-
-	virtual void insArco(cellaGrafo<tipoNodo>*, cellaGrafo<tipoNodo>*,
-			tipoArco)=0;
-	virtual void cancNodo(cellaGrafo<tipoNodo>*)=0;
-	virtual void cancArco(cellaGrafo<tipoNodo>*, cellaGrafo<tipoNodo>*)=0;
-
-	//virtual ListaBidirezionale<cellaGrafo<tipoNodo>,NodoLista<cellaGrafo<tipoNodo> >*> adiacenti( cellaGrafo<tipoNodo>*)=0;
-
-	virtual boolean esisteNodo(cellaGrafo<tipoNodo>*)=0;
-	virtual boolean esisteArco(cellaGrafo<tipoNodo>*, cellaGrafo<tipoNodo>*)=0;
-
+	void setInfo(T);
+	T getInfo();
+private:
+	T infoNodo;
 };
 
-template<class tipoNodo, class tipoArco>
-GrafoVirtual<tipoNodo, tipoArco>::GrafoVirtual() {
-	//ciao
+template<class T>
+void cellaGrafo<T>::setInfo(T info) {
+	infoNodo = info;
+}
+template<class T>
+T cellaGrafo<T>::getInfo() {
+	return infoNodo;
 }
 
 #endif
