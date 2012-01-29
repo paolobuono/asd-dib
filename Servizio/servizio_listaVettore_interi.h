@@ -2,7 +2,7 @@
  * servizio_listaVettore.h
  *
  *  Created on: 13/gen/2012
- *      Author: kiuzhack
+ *      Author: Domenico Monaco
  */
 
 #ifndef _SERVIZIO_LISTAVETTOREINTERI_H_
@@ -135,6 +135,7 @@ void servizio_listaVettore_interi() {
 	//cercaSostituisci(ListaInteri, int interodacercare, int interodasostituire);
 	cercaSostituisci(&ListaVI, 102, 1222);
 	stampaTutto(ListaVI);
+
 
 	cercaSostituisci(&ListaVI, 4003, 999);
 	stampaTutto(ListaVI);

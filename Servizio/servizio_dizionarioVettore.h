@@ -2,7 +2,7 @@
  * servizio_dizionarioVettore.h
  *
  *  Created on: 16/gen/2012
- *      Author: kiuzhack
+ *      Author: Domenico Monaco
  */
 
 #ifndef SERVIZIO_DIZIONARIOVETTORE_H_
@@ -101,8 +101,9 @@ void caricaTutto(Corso& CorsoInit) {
 	//	return CorsoInit;
 }
 
-void cercaCancella(Corso& CorsoInformatica, int matricola) {
+void cercaCancella(Corso& CorsoInformatica, int matricola){
 	CorsoInformatica.cancella(matricola);
 }
+
 
 #endif /* SERVIZIO_DIZIONARIOVETTORE_H_ */

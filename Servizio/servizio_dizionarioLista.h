@@ -2,7 +2,7 @@
  * servizio_dizionarioVettore.h
  *
  *  Created on: 16/gen/2012
- *      Author: kiuzhack
+ *      Author: Domenico Monaco
  */
 
 #ifndef SERVIZIO_DIZIONARIOLISTA_H_

@@ -29,16 +29,23 @@ ListaBInteri caricaTutto(ListaBInteri ListaI) {
 
 	NodoInteri* posizione = ListaI.primoLista();
 	ListaI.insLista(10, posizione);
+
+	posizione = ListaI.primoLista();
 	ListaI.insLista(345, posizione);
-	posizione = NULL;
+
+	posizione = ListaI.primoLista();
 	ListaI.insLista(460, posizione);
-	posizione = NULL;
+
+	posizione = ListaI.primoLista();
 	ListaI.insLista(478, posizione);
-	posizione = NULL;
+
+	posizione = ListaI.primoLista();
 	ListaI.insLista(49805, posizione);
-	posizione = NULL;
+
+	posizione = ListaI.primoLista();
 	ListaI.insLista(5, posizione);
-	posizione = NULL;
+
+	posizione = ListaI.primoLista();
 	ListaI.insLista(96, posizione);
 
 	return ListaI;
@@ -46,12 +53,29 @@ ListaBInteri caricaTutto(ListaBInteri ListaI) {
 
 void stampaTutto(ListaBInteri ListaI) {
 	NodoInteri* posizione = ListaI.primoLista();
+	NodoInteri* pre_posizione;
+	NodoInteri* suc_posizione;
+
 	int i = 0;
 	int element;
 	cout << "# INIZIO Stampo tutta la Lista" << endl;
+
 	while (posizione != NULL) {
+
 		element = ListaI.leggiLista(posizione);
+		pre_posizione = ListaI.predLista(posizione);
+		suc_posizione = ListaI.succLista(posizione);
+
 		cout << "Nodo " << i << ": " << element << endl;
+		if (pre_posizione != NULL) {
+			cout << "Prec: " << pre_posizione->leggiElem() << endl;
+
+		}
+		if (suc_posizione != NULL) {
+			cout << "Succ: " << suc_posizione->leggiElem() << endl;
+
+		}
+
 		posizione = ListaI.succLista(posizione);
 		i++;
 	}
@@ -128,6 +152,41 @@ void servizio_listaBidirezionale_interi() {
 
 	cercaSostituisci(ListaI, 49805, 66);
 	stampaTutto(ListaI);
+
+	NodoInteri* cercapos;
+	/*cercapos = cerca(ListaI, 11);
+	 ListaI.cancLista(cercapos);
+
+	 cercapos = cerca(ListaI, 64);
+	 ListaI.cancLista(cercapos);
+
+
+	 cercapos = cerca(ListaI, 96);
+	 ListaI.cancLista(cercapos);*/
+
+	cercapos = cerca(ListaI, 11);
+	ListaI.cancLista(cercapos);
+
+	cercapos = cerca(ListaI, 345);
+	ListaI.cancLista(cercapos);
+
+	cercapos = cerca(ListaI, 96);
+	ListaI.cancLista(cercapos);
+
+	cercapos = cerca(ListaI, 64);
+	ListaI.cancLista(cercapos);
+
+	cercapos = cerca(ListaI, 66);
+	ListaI.cancLista(cercapos);
+
+	cercapos = cerca(ListaI, 5);
+	ListaI.cancLista(cercapos);
+
+	cercapos = cerca(ListaI, 478);
+	ListaI.cancLista(cercapos);
+
+	stampaTutto(ListaI);
+
 }
 
 #endif
