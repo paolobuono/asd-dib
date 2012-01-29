@@ -138,11 +138,11 @@ void listaVettore<tipoelem, posizione>::insLista(tipoelem v, posizione& p) {
 template<class tipoelem, class posizione>
 void listaVettore<tipoelem, posizione>::cancLista(posizione n) {
 	if (!listaVuota()) {
-		if (n < (lunghezza - 1)) {
+		if (n < (lunghezza-1)) {
 			for (int i = n; i < lunghezza; i++)
 				scriviLista(vet[i + 1].leggi_valore(), i);
 			lunghezza--;
-		} else if (n == (lunghezza - 1))
+		} else if (n == (lunghezza-1))
 			lunghezza--;
 	}
 }

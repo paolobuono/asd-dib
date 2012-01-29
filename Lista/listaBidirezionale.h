@@ -111,7 +111,6 @@ void ListaBidirezionale<tipoelem, posizione>::insLista(tipoelem t,
 
 	temp->scriviElem(t);
 	temp->scriviSucc(p);
-	temp->scriviPrec(NULL);
 
 	if (p == primoLista()) {
 		testa = temp;
@@ -156,9 +155,32 @@ void ListaBidirezionale<tipoelem, posizione>::insLista(tipoelem t,
 
 template<class T, class posizione>
 void ListaBidirezionale<T, posizione>::cancLista(posizione p) {
-	NodoLista<T> *temp;
-	temp = predLista(p);
-	temp->scriviSucc(p->leggiSucc());
+
+	NodoLista<T> *tempprec;
+	NodoLista<T> *tempsucc;
+
+	if (!(p == primoLista() || fineLista(p))) {
+
+		tempprec = predLista(p);
+		tempsucc = succLista(p);
+
+		tempprec->scriviSucc(tempsucc);
+		tempsucc->scriviPrec(tempprec);
+
+	} else if ((p == primoLista() && fineLista(p))) {
+		testa = NULL;
+
+	} else if ((p == primoLista() && !fineLista(p))) {
+
+		tempsucc = succLista(p);
+		testa = tempsucc;
+		tempsucc->scriviPrec(NULL);
+
+	} else if ((!(p == primoLista()) && fineLista(p))) {
+		tempprec = predLista(p);
+		tempprec->scriviSucc(NULL);
+	}
+
 	delete p;
 }
 
@@ -177,4 +199,4 @@ posizione ListaBidirezionale<T, posizione>::predLista(posizione p) {
 	return p->leggiPrec();
 }
 
-#endif //listabidir_h
+#endif //_listabidirezionale_h
