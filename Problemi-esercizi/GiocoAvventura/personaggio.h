@@ -1,22 +1,49 @@
-#ifndef PERSONAGGIO_H
-#define PERSONAGGIO_H
+/*
+ * personaggio.h
+ *      Autore: Domenico Monaco - domenico.monaco@kiuz.it
+ *      Descrizione: Gioco di avventura da traccia Appello di Laboratorio
+ *      Data prova laboratorio: 12 / 01 / 2012
+ *
+ */
+
+#ifndef PERSONAGGIO_H_
+#define PERSONAGGIO_H_
+
+#include <string>
+
+#include "../../Lista/lista.h"
+#include "../../Lista/nodolista.h"
+#include "../../Lista/listaBidirezionale.h"
+
+#include "oggetto.h"
+
+#include <iostream>
+using namespace std;
+typedef bool boolean;
 
 class Personaggio {
 public:
-	Personaggio();
-	Personaggio(string);
-	Cella<string> * getLista();
+	Personaggio(string name);
+	void addObject(Oggetto object);
+
+	typedef NodoLista<Oggetto> Object;
+	ListaBidirezionale<Oggetto, Object*> Objects;
+
 private:
-	string nome;
-	ListaPunt<string> oggetti;
+	string name;
+
+
 };
 
-Personaggio::Personaggio(string s) {
-	nome = s;
+Personaggio::Personaggio(string nameIn) {
+	Objects.creaLista();
+	name = nameIn;
+}
+void Personaggio::addObject(Oggetto object) {
+	NodoLista<Oggetto>* Object_Pos;
+	Object_Pos = Objects.primoLista();
+
+	Objects.insLista(object, Object_Pos);
 }
 
-Cella<string> * Personaggio::getLista() {
-	return oggetti.primolista();
-}
-
-#endif
+#endif /* PERSONAGGIO_H_ */
