@@ -7,7 +7,7 @@
 void caricaGrafo(GrafoListeAd<Stanza *, Direzione *> &);
 void stampaAdiacenti(ListaPunt< GNodo<Stanza *, Direzione *> *> &);
 
-int main(int argc, char *argv[])
+int main_gioco(int argc, char *argv[])
 {
 	GrafoListeAd<Stanza *, Direzione *> g;
 	caricaGrafo(g);

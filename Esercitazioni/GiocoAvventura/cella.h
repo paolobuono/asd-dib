@@ -2,7 +2,7 @@
 #define CELLA_H
 #include <cstdlib>
 #include <iostream>
-#include "bnodo.h"
+//#include "bnodo.h"
 
 using namespace std;
 
