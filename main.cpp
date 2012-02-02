@@ -48,6 +48,9 @@
 #include "Servizio/servizioTemplate.h"
 //#include "Servizio/testDizionario.h"
 
+// inclusione dello svolgimento esercizio "Network"
+#include "Esercitazioni/Network/templateServ.h"
+
 using namespace std;
 
 int main(int argc, char *argv[]) {
@@ -116,6 +119,11 @@ int main(int argc, char *argv[]) {
 	 else
 	 cout << "Elemento non trovato in dizionario alberobin" << endl;
 	 */
+
+	cout<<endl <<"Output dell'esercizio 'Network' della prova del 31/01/12:" <<endl<<endl;
+
+	testNetwork();
+
 	//system("PAUSE");
 	return EXIT_SUCCESS;
 }
