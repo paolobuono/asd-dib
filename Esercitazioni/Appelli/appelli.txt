@@ -1,7 +1,7 @@
 Si realizzi una classe che consenta la memorizzazione sequenziale delle tracce degli appelli di un corso universitario. Per ogni appello si memorizzi la data, la traccia e l’elenco degli studenti prenotati. Gli studenti sono caratterizzati da matricola, nome e cognome.
 
 Si realizzi i seguenti metodi:
-- prenotaStudente(Studente, data), che inserisce un nuovo studente all’elenco dei prenotati;
-- cancellaPrenotato(Matricola, data), che elimina uno studente prenotato
-- ottieniPrenotati(data), che restituisce l'elenco degli studenti prenotati all’appello identificato dalla data
+- prenotaStudente(Studente, Appello), che inserisce un nuovo studente all’elenco dei prenotati;
+- cancellaPrenotato(Matricola, Appello), che elimina uno studente prenotato
+- ottieniPrenotati(Appello), che restituisce l'elenco degli studenti prenotati all’appello identificato dalla data
 cercaMatricola(Cognome), che restituisce la lista di studenti con il cognome passato in ingresso
