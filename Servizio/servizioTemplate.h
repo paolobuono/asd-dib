@@ -44,7 +44,6 @@ void Messaggio(ListaUnidirezionale<T, K> l) {
 	messaggio = l.listaVuota() ? "Lista vuota" : "Lista piena";
 	cout << endl << messaggio << endl;
 }
-;
 
 //funzioni di caricamento
 template<class elemento, class chiave>
