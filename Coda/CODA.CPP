@@ -3,7 +3,6 @@
 Coda::Coda() {
 	creacoda();
 }
-;
 
 void Coda::creacoda() {
 	testa = 0;
@@ -11,6 +10,7 @@ void Coda::creacoda() {
 	numero = 0;
 	cont = 0;
 }
+
 void Coda::set_cont(int c) {
 	cont = c;
 }
@@ -22,11 +22,9 @@ bool Coda::codavuota() {
 
 Tipoelem Coda::leggicoda() {
 	if (!codavuota())
-
 		//cout<<"TESTA IN LEGGICODA:   "<<testa<<endl; 
 		return elementi[testa];
 }
-;
 
 void Coda::fuoricoda() {
 
@@ -40,9 +38,7 @@ void Coda::fuoricoda() {
 		numero--;
 		cont--;
 	}
-
 }
-;
 
 void Coda::incoda(Tipoelem t) {
 
@@ -52,21 +48,16 @@ void Coda::incoda(Tipoelem t) {
 	if (cont <= MAX_LUNG) {
 		numero++;
 	}
-
 }
-;
 
 int Coda::leggi_numero() {
-
 	return numero;
 }
 
 int Coda::leggi_fondo() {
-
 	if (cont < MAX_LUNG)
 		fondo = cont;
 	else
 		fondo = cont % MAX_LUNG;
 	return fondo;
 }
-
