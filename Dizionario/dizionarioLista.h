@@ -41,31 +41,25 @@ public:
 private:
 	typedef Dato<elemento> DatoDiz;
 	typedef NodoLista<DatoDiz>* posizione;
-
 	ListaBidirezionale<DatoDiz, posizione> lista;
 
 };
 
 template<class elemento, class chiave>
 void DizionarioLista<elemento, chiave>::inserisci(elemento e, chiave k) {
-
 	bool trovato = false;
-
 	posizione pos = lista.primoLista();
 	NodoLista<DatoDiz> nodo;
 	DatoDiz dato;
 
 	while (pos != NULL && trovato != true) {
-
 		dato = lista.leggiLista(pos);
-
 		if (k == dato.chiaveDato) {
 			trovato = true;
 		} else {
 			pos = lista.succLista(pos);
 		}
 	}
-
 	if (!trovato) {
 		dato.chiaveDato = k;
 		dato.elementoDato = e;
@@ -99,10 +93,8 @@ void DizionarioLista<elemento, chiave>::cancella(chiave k) {
 
 template<class elemento, class chiave>
 elemento DizionarioLista<elemento, chiave>::cerca(chiave k) {
-
-	elemento risposta;
+	elemento risposta;//TODO: possibile errore di inizializzazione
 	bool trovato;
-
 	posizione pos = lista.primoLista();
 	NodoLista<DatoDiz> nodo;
 	DatoDiz dato;
@@ -116,8 +108,6 @@ elemento DizionarioLista<elemento, chiave>::cerca(chiave k) {
 			pos = lista.succLista(pos);
 		}
 	}
-
 	return risposta;
 }
-
 #endif

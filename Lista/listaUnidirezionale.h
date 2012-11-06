@@ -35,35 +35,24 @@ class ListaUnidirezionale: public Lista<tipoelem, posizione> {
 public:
 	//posizione come untatore a nodo
 	//typedef NodoLista<tipoelem> * posizione;
-
 	ListaUnidirezionale();
-
 	void creaLista();
-
 	boolean listaVuota();
-
 	tipoelem leggiLista(posizione);
-
 	void scriviLista(tipoelem, posizione);
-
 	void insLista(tipoelem, posizione&);
-
 	posizione primoLista();
-
 	boolean fineLista(posizione);
-
 	posizione succLista(posizione);
-
 	posizione predLista(posizione);
-
 	void cancLista(posizione);
 
 private:
 	posizione testa;
 };
 
-template<class T, class posizione>
-ListaUnidirezionale<T,posizione>::ListaUnidirezionale() {
+template<class tipoelem, class posizione>
+ListaUnidirezionale<tipoelem,posizione>::ListaUnidirezionale() {
 	creaLista();
 }
 
@@ -124,7 +113,7 @@ void ListaUnidirezionale<T,posizione>::cancLista(posizione p) {
 
 template<class T, class posizione>
 boolean ListaUnidirezionale<T,posizione>::fineLista(posizione p) {
-	return (succLista(p) == NULL) ? true : false; //todo: da specifiche: vero se posizione è oltre l'ultimo elemento (n+1)
+	return (succLista(p) == NULL) ? true : false; //todo: da specifiche: vero se posizione ÔøΩ oltre l'ultimo elemento (n+1)
 }
 
 

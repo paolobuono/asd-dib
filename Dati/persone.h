@@ -26,12 +26,13 @@ using namespace std;
 class Persona {
 private:
 	string nome;
-
+	//altri dati
 public:
 	Persona();
 	Persona(string);
 	string getNome();
 	void setNome(string);
+	//altri metodi
 };
 
 #endif

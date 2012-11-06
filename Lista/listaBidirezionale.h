@@ -34,29 +34,17 @@ class ListaBidirezionale: public Lista<tipoelem, posizione> {
 public:
 	//posizione come untatore a nodo
 	//typedef NodoLista<tipoelem> * posizione;
-
 	ListaBidirezionale();
-
 	void creaLista();
-
 	boolean listaVuota();
-
 	tipoelem leggiLista(posizione);
-
 	void scriviLista(tipoelem, posizione);
-
 	void insLista(tipoelem, posizione&);
-
 	posizione primoLista();
-
 	boolean fineLista(posizione);
-
 	posizione succLista(posizione);
-
 	posizione predLista(posizione);
-
 	void cancLista(posizione);
-
 private:
 	posizione testa;
 };

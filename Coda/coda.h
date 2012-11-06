@@ -57,10 +57,10 @@ T Coda<T>::leggiCoda() {
 template<class T>
 void Coda<T>::inCoda(T a) {
 	if (codaVuota()) {
-		fondo = new (Nodo<T> );
+		fondo = new (Nodo<T>);
 		testa = fondo;
 	} else {
-		fondo->scriviSucc(new (Nodo<T> ));
+		fondo->scriviSucc(new (Nodo<T>));
 		fondo = fondo->leggiSucc();
 	}
 	fondo->scriviElem(a);

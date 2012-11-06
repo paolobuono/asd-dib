@@ -103,8 +103,11 @@ int main(int argc, char *argv[]) {
 		cout << "Trovato elemento dizionario hash: " << eh << endl;
 	else
 		cout << "Elemento non trovato in dizionario hash" << endl;
+		cout<<endl <<"Output dell'esercizio 'Network' della prova del 31/01/12:" <<endl<<endl;
 
-	//COMMENTATO perchè da errori di compilazione, decommentare solo se si
+	testNetwork();
+
+	//COMMENTATO perch da errori di compilazione, decommentare solo se si
 	//risolve il problema ho commentato anche alcuni inlucde
 	//#include "Dizionario/dizionarioAlberoBinario.h"
 	//#include "Servizio/servizioAlberobin.h"

@@ -94,17 +94,13 @@ void ottieniRegistrazioni(ListaPunt<Programma *> &reg)
 void testNetwork()
 {
 	ListaVett<Canale> Rete;
-
-	// caricaPalinsesto(), che carica il palinsesto della rete
+	cout << "Esecuzione di caricaPalinsesto(), funzione che carica il palinsesto della rete" << endl;
 	caricaPalinsesto(Rete);
-
-	// elencoCanali(), che restituisce l'elenco di canali messi a disposizione dalla rete televisiva
+	cout << "Esecuzione di elencoCanali(), funzione che restituisce l'elenco di canali messi a disposizione dalla rete televisiva" << endl;
 	elencoCanali(Rete);
-
-	// elencoProgrammi(canale), che restituisce l'elenco dei programmi disponibili nel canale specificato
+	cout << "Esecuzione di elencoProgrammi(canale), funzione che restituisce l'elenco dei programmi disponibili nel canale specificato" << endl;
 	elencoProgrammi(Rete, "Rai Due");
-
-	// ottieniProgramma(codiceProgramma), che restituisce il programma per stamparne titolo e descrizione
+	cout << "Esecuzione di ottieniProgramma(codiceProgramma), funzione che restituisce il programma per stamparne titolo e descrizione" << endl;
 	Programma* puntAprog = ottieniProgramma(Rete, 2010);
 	if( puntAprog != NULL ){
 		cout << "Programma con codice " << puntAprog->getCodice() << ":" <<endl;
@@ -114,15 +110,48 @@ void testNetwork()
 		cout << "Programma con codice xxx non trovato!" <<endl;
 	}
 	cout << endl;
+};
 
-	// registraProgramma(codiceProgramma), che memorizza il programma passato al metodo ad una lista contenente i programmi in registrazione
-	ListaPunt<Programma *> Registrazioni;
-	registraProgramma(Rete, 1010, Registrazioni);
-	registraProgramma(Rete, 1020, Registrazioni);
-	registraProgramma(Rete, 2020, Registrazioni);
-
-	// ottieniRegistrazioni(), che restituisce l'elenco di film in registrazione
-	ottieniRegistrazioni(Registrazioni);
-}
-
+//void testNetwork()
+//{
+//	ListaVett<Canale> Rete;
+//
+//	// caricaPalinsesto(), che carica il palinsesto della rete
+//	caricaPalinsesto(Rete);
+//
+//	// elencoCanali(), che restituisce l'elenco di canali messi a disposizione dalla rete televisiva
+//	elencoCanali(Rete);
+//	cout << "Esecuzione di registraProgramma(codiceProgramma), funzione che memorizza il programma passato al metodo ad una lista contenente i programmi in registrazione" << endl;
+//	ListaPunt<Programma *> Registrazioni;
+//	registraProgramma(Rete, 1010, Registrazioni);
+//	registraProgramma(Rete, 1020, Registrazioni);
+//	registraProgramma(Rete, 2020, Registrazioni);
+//
+//	cout << "Esecuzione di ottieniRegistrazioni(), funzione che restituisce l'elenco di film in registrazione" << endl;
+//	ottieniRegistrazioni(Registrazioni);
+//}
+//
+//	// elencoProgrammi(canale), che restituisce l'elenco dei programmi disponibili nel canale specificato
+//	elencoProgrammi(Rete, "Rai Due");
+//
+//	// ottieniProgramma(codiceProgramma), che restituisce il programma per stamparne titolo e descrizione
+//	Programma* puntAprog = ottieniProgramma(Rete, 2010);
+//	if( puntAprog != NULL ){
+//		cout << "Programma con codice " << puntAprog->getCodice() << ":" <<endl;
+//		cout<< puntAprog->getTitolo() << " -> ";
+//		cout<< puntAprog->getDescrizione() << endl;
+//	} else {
+//		cout << "Programma con codice xxx non trovato!" <<endl;
+//	}
+//	cout << endl;
+//
+//	// registraProgramma(codiceProgramma), che memorizza il programma passato al metodo ad una lista contenente i programmi in registrazione
+//	ListaPunt<Programma *> Registrazioni;
+//	registraProgramma(Rete, 1010, Registrazioni);
+//	registraProgramma(Rete, 1020, Registrazioni);
+//	registraProgramma(Rete, 2020, Registrazioni);
+//
+//	// ottieniRegistrazioni(), che restituisce l'elenco di film in registrazione
+//	ottieniRegistrazioni(Registrazioni);
+//}
 #endif
