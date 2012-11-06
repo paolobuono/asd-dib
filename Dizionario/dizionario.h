@@ -26,10 +26,6 @@ using namespace std;
 
 #include "datoDizionario.h"
 
-//typedef int chiave;
-//TODO:fare in modo che chiave sia un tipo generico
-//typedef string elemento;
-
 template<class elemento, class chiave>
 class Dizionario {
 public:
@@ -40,7 +36,7 @@ public:
 };
 
 template<class elemento, class chiave>
-Dizionario<elemento, chiave>::Dizionario() {
+	Dizionario<elemento, chiave>::Dizionario() {
 }
 
 #endif
