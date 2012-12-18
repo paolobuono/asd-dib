@@ -49,25 +49,21 @@ private:
 };
 
 //Implementazione
-
 template<class tipoelem>
 CellaAlbero<tipoelem>::CellaAlbero() {
 	//	etichetta = 0;
 	sinistro = destro = genitore = NULL;
 }
-;
 
 template<class tipoelem>
 void CellaAlbero<tipoelem>::setEtichetta(tipoelem elem) {
 	etichetta = elem;
 }
-;
 
 template<class tipoelem>
 tipoelem CellaAlbero<tipoelem>::getEtichetta() {
 	return etichetta;
 }
-;
 
 template<class tipoelem>
 void CellaAlbero<tipoelem>::setSinistro(CellaAlbero *sx) {
@@ -76,13 +72,11 @@ void CellaAlbero<tipoelem>::setSinistro(CellaAlbero *sx) {
 	else
 		sinistro = sx;
 }
-;
 
 template<class tipoelem>
 CellaAlbero<tipoelem> * CellaAlbero<tipoelem>::getSinistro() {
 	return sinistro;
 }
-;
 
 template<class tipoelem>
 void CellaAlbero<tipoelem>::setDestro(CellaAlbero *dx) {
@@ -90,26 +84,22 @@ void CellaAlbero<tipoelem>::setDestro(CellaAlbero *dx) {
 		delete destro;
 	destro = dx;
 }
-;
 
 template<class tipoelem>
 CellaAlbero<tipoelem> * CellaAlbero<tipoelem>::getDestro() {
 	return destro;
 }
-;
 
 template<class tipoelem>
 void CellaAlbero<tipoelem>::setGenitore(CellaAlbero *father) {
 	//per definizione non bisogna settare il genitore del  nodo radice !!!
 	genitore = father;
 }
-;
 
 template<class tipoelem>
 CellaAlbero<tipoelem> * CellaAlbero<tipoelem>::getGenitore() {
 	return genitore;
 }
-;
 
 template<class tipoelem>
 CellaAlbero<tipoelem>::~CellaAlbero() {
@@ -117,6 +107,5 @@ CellaAlbero<tipoelem>::~CellaAlbero() {
 	delete destro;
 	delete genitore;
 }
-;
 
 #endif //CELLA_ALBERO_H

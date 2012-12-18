@@ -52,25 +52,21 @@ template<class T>
 Binalberopunt<T>::Binalberopunt() {
 	creaBinalbero();
 }
-;
 
 template<class T>
 Binalberopunt<T>::~Binalberopunt() {
 }
-;
 
 template<class T>
 void Binalberopunt<T>::creaBinalbero() {
 	//rispetta le specifiche, ma va controllato.
 	albero = NULL;
 }
-;
 
 template<class T>
 boolean Binalberopunt<T>::binalberoVuoto() {
 	return (albero == NULL);
 }
-;
 
 template<class tipoelem>
 CellaAlbero<tipoelem> * Binalberopunt<tipoelem>::binRadice() {
@@ -79,7 +75,6 @@ CellaAlbero<tipoelem> * Binalberopunt<tipoelem>::binRadice() {
 	else
 		return NULL;
 }
-;
 
 template<class tipoelem>
 CellaAlbero<tipoelem> * Binalberopunt<tipoelem>::binPadre(NodoAlbero u) {
@@ -88,7 +83,6 @@ CellaAlbero<tipoelem> * Binalberopunt<tipoelem>::binPadre(NodoAlbero u) {
 	else
 		return NULL;
 }
-;
 
 template<class tipoelem>
 CellaAlbero<tipoelem> * Binalberopunt<tipoelem>::figlioSinistro(NodoAlbero u) {
@@ -97,7 +91,6 @@ CellaAlbero<tipoelem> * Binalberopunt<tipoelem>::figlioSinistro(NodoAlbero u) {
 	else
 		return NULL;
 }
-;
 
 template<class tipoelem>
 CellaAlbero<tipoelem> * Binalberopunt<tipoelem>::figlioDestro(NodoAlbero u) {
@@ -124,20 +117,17 @@ template<class tipoelem>
 tipoelem Binalberopunt<tipoelem>::leggiNodo(CellaAlbero<tipoelem> * u) {
 	return u->getEtichetta();
 }
-;
 
 template<class tipoelem>
 void Binalberopunt<tipoelem>::scriviNodo(tipoelem elem, NodoAlbero u) {
 	u->setEtichetta(elem);
 }
-;
 
 template<class T>
 void Binalberopunt<T>::insRadice() {
 	if (binalberoVuoto())
 		albero = new CellaAlbero<T>;
 }
-;
 
 template<class T>
 void Binalberopunt<T>::insFiglioSinistro(NodoAlbero u) {
@@ -148,7 +138,6 @@ void Binalberopunt<T>::insFiglioSinistro(NodoAlbero u) {
 		temp->setGenitore(u);
 	};
 }
-;
 
 template<class T>
 void Binalberopunt<T>::insFiglioDestro(NodoAlbero u) {
@@ -159,7 +148,6 @@ void Binalberopunt<T>::insFiglioDestro(NodoAlbero u) {
 		temp->setGenitore(u);
 	};
 }
-;
 
 /**
  restituisce il nodo padre del nodo u da cancellare, se u è radice allora restituisce NULL

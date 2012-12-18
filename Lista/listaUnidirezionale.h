@@ -126,8 +126,8 @@ posizione ListaUnidirezionale<T,posizione>::succLista(posizione p) {
 template<class T, class posizione>
 posizione ListaUnidirezionale<T,posizione>::predLista(posizione p) {
 	posizione p1 = primoLista();
-	while (!fineLista(p1) && (p1->leggiSucc() != p)) {
-		p1 = succLista(p1);
+	while (!fineLista(p1) && (succLista(p1)!= p)) {
+		p1 = succLista(p1);//si assume che p sia un elemento della lista
 	}
 	return p1;
 }

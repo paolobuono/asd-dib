@@ -184,7 +184,7 @@ posizione ListaBidirezionale<T, posizione>::succLista(posizione p) {
 
 template<class T, class posizione>
 posizione ListaBidirezionale<T, posizione>::predLista(posizione p) {
-	return p->leggiPrec();
+	return p->leggiPrec();//si assume che il precedente del primo nodo della lista sia null
 }
 
 #endif //_listabidirezionale_h

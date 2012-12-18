@@ -12,8 +12,8 @@
 using namespace std;
 
 #include "../Albero/alberon.h"
-#include "../Albero/cella_alberon.h"
-#include "../Albero/alberon_impl.h"
+//#include "../Albero/cella_alberon.h"
+//#include "../Albero/alberon_impl.h"
 
 void servizio_alberon_int();
 void servizio_alberon_int() {
@@ -26,7 +26,6 @@ void servizio_alberon_int() {
 	} else {
 		cout << "L'albero NON  vuoto" << endl;
 	}
-
 	cout << "Inserisco Radice 45" << endl;
 	AlberoInteri.insRadice(45);
 
