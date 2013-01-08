@@ -30,7 +30,6 @@ public:
 	T getInfo();
 private:
 	T infoArco;
-
 };
 
 template<class T>
