@@ -43,13 +43,12 @@ public:
 	bool listaVuota();
 	tipoelem leggiLista(posizione);
 	void scriviLista(tipoelem, posizione);
+	void insLista(tipoelem, posizione&);
+	void cancLista(posizione);
 	posizione primoLista();
-	bool fineLista(posizione);
 	posizione succLista(posizione);
 	posizione predLista(posizione);
-	void insLista(tipoelem, posizione&);
-
-	void cancLista(posizione);
+	bool fineLista(posizione);
 
 	//CLASSI AGGIUNTIVE
 	int lunghezzaLista();
