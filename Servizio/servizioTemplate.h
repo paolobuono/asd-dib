@@ -87,7 +87,6 @@ void CaricaLista(Lista<Testo, NodoLista<Testo>*> & l) {
 	t.setTesto("Architetture degli elaboratori", 3);
 	l.insLista(t, p);
 }
-;
 
 void CaricaLista(Lista<Persona, NodoLista<Persona>*> & l) {
 	Persona persona;
@@ -104,7 +103,6 @@ void CaricaLista(Lista<Persona, NodoLista<Persona>*> & l) {
 	p = l.succLista(p);
 	l.insLista(persona, p);
 }
-;
 
 void caricaCoda(Coda<Persona> & c) {
 	Persona persona("Antonio");
