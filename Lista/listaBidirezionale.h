@@ -32,7 +32,7 @@ typedef bool boolean;
 template<class tipoelem, class posizione>
 class ListaBidirezionale: public Lista<tipoelem, posizione> {
 public:
-	//posizione come untatore a nodo
+	//posizione come puntatore a nodo
 	//typedef NodoLista<tipoelem> * posizione;
 	ListaBidirezionale();
 	void creaLista();
