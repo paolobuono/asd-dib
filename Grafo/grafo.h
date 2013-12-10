@@ -37,8 +37,7 @@ public:
 	virtual boolean grafoVuoto()=0;
 	virtual void insNodo(cellaGrafo<tipoNodo>*, tipoNodo)=0;
 
-	virtual void insArco(cellaGrafo<tipoNodo>*, cellaGrafo<tipoNodo>*,
-			tipoArco)=0;
+	virtual void insArco(cellaGrafo<tipoNodo>*, cellaGrafo<tipoNodo>*, tipoArco)=0;
 	virtual void cancNodo(cellaGrafo<tipoNodo>*)=0;
 	virtual void cancArco(cellaGrafo<tipoNodo>*, cellaGrafo<tipoNodo>*)=0;
 
@@ -46,7 +45,6 @@ public:
 
 	virtual boolean esisteNodo(cellaGrafo<tipoNodo>*)=0;
 	virtual boolean esisteArco(cellaGrafo<tipoNodo>*, cellaGrafo<tipoNodo>*)=0;
-
 };
 
 template<class tipoNodo, class tipoArco>
