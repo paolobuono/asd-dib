@@ -1,7 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2011 by Paolo Buono - IVU Lab.                          *
  *   http://ivu.di.uniba.it - buono@di.uniba.it                            *
- *                                                                         *
+ *   Credits:                                                              *
+ *   Domenico Monaco                                                       *
  *   This file is part of ASD-dib.                                         *
  *   ASD-dib is free software; you can redistribute it and/or modify       *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,8 +20,7 @@
 
 /*
  * grafoMatriciAdiacenza.h
- *      Author: Domenico Monaco
- *      Descrizione: Grafo orientato con Matrice di Adiacenza
+ * Descrizione: Grafo orientato con Matrice di Adiacenza
  */
 
 #ifndef GRAFOMATRICE_ADIACENZA_H
@@ -42,7 +42,7 @@ template<class tipoNodo, class tipoArco>
 class GrafoMatriceAdiacenza {
 public:
 
-	int occupy_pos;
+	int posizioniOccupate;
 
 	typedef cellaGrafo<tipoNodo> nodoGrafo;
 
@@ -77,7 +77,7 @@ GrafoMatriceAdiacenza<tipoNodo, tipoArco>::GrafoMatriceAdiacenza() {
 template<class tipoNodo, class tipoArco>
 void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::creaGrafo() {
 
-	occupy_pos = 0;
+	posizioniOccupate = 0;
 	int i = 0, j = 0;
 
 	for (i = 0; i < RIGHE; i++) {
@@ -90,18 +90,18 @@ void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::creaGrafo() {
 
 template<class tipoNodo, class tipoArco>
 boolean GrafoMatriceAdiacenza<tipoNodo, tipoArco>::grafoVuoto() {
-	boolean out;
-	if (occupy_pos == 0) {
+
+	boolean out = false;
+
+	if (posizioniOccupate == 0) {
 		out = true;
-	} else {
-		out = false;
 	}
+
 	return out;
 }
 
 template<class tipoNodo, class tipoArco>
-void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::insNodo(int indice,
-		tipoNodo datoNodo) {
+void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::insNodo(int indice, tipoNodo datoNodo) {
 
 	//Creao nuovo nodo
 	cellaGrafo<tipoNodo>* nuovoNodo;
@@ -110,18 +110,17 @@ void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::insNodo(int indice,
 
 	//lo inserisco nella posizione indicata
 	//O = nessun nodo
-	//le righe vanno da 0->n allora (n+1)= occupy_pos se fino a n è occupato
-	if (occupy_pos < (RIGHE + 1)) {
+	//le righe vanno da 0->n allora (n+1) = posizioniOccupate se fino a n è occupato
+	if (posizioniOccupate < (RIGHE + 1)) {
 
 		Nodi[indice] = nuovoNodo;
 		//incremento posizione occupate
-		occupy_pos++;
+		posizioniOccupate++;
 	}
 }
 
 template<class tipoNodo, class tipoArco>
-void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::insArco(int indiceA,
-		int indiceB, tipoArco datoArco) {
+void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::insArco(int indiceA, int indiceB, tipoArco datoArco) {
 
 	if (esisteNodo(indiceA) && esisteNodo(indiceB)) {
 		arcoGrafo<tipoArco>* nuovoArco;
@@ -134,11 +133,9 @@ void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::insArco(int indiceA,
 
 template<class tipoNodo, class tipoArco>
 void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::cancNodo(int indice) {
+
 	if (esisteNodo(indice)) {
-
-		int i;
-
-		for (i = 0; i < RIGHE; i++) {
+		for (int i = 0; i < RIGHE; i++) {
 			if (esisteArco(i, indice)) {
 				cancArco(i, indice);
 			}
@@ -150,11 +147,9 @@ void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::cancNodo(int indice) {
 		//Cancello la locazione di memoria del nodo
 		delete Nodi[indice];
 		//Forzo la presenza di NULL
-		Nodi[indice] = NULL;
-
-		//Drecremento posizione occupate
-		occupy_pos--;
-
+		Nodi[indice] = NULL;//TODO: verificare che si possa eliminare
+		//Drecremento posizioniOccupate
+		posizioniOccupate--;
 	}
 }
 
@@ -164,23 +159,19 @@ void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::cancArco(int indiceA,
 
 	if (esisteArco(indiceA, indiceB)) {
 		delete matriceAdiacenza[indiceA][indiceB];
-		matriceAdiacenza[indiceA][indiceB] = NULL;
+		matriceAdiacenza[indiceA][indiceB] = NULL;//TODO: verificare l'eliminazione di questa riga
 	}
 }
 
 template<class tipoNodo, class tipoArco>
-ListaBidirezionale<cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>*> GrafoMatriceAdiacenza<
-		tipoNodo, tipoArco>::adiacenti(int indice) {
+ListaBidirezionale < cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>* > GrafoMatriceAdiacenza<tipoNodo, tipoArco>::adiacenti(int indice) {
 
 	ListaBidirezionale<cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>*> ListaNodi;
 	ListaNodi.creaLista();
 
 	if (esisteNodo(indice)) {
-		int i;
 		NodoLista<cellaGrafo<tipoNodo>*>* pos;
-
-		for (i = 0; i < RIGHE; i++) {
-
+		for (int i = 0; i < RIGHE; i++) {
 			if (esisteArco(indice, i)) {
 				pos = ListaNodi.primoLista();
 				ListaNodi.insLista(Nodi[i], pos);
@@ -192,28 +183,26 @@ ListaBidirezionale<cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>*> Gra
 
 template<class tipoNodo, class tipoArco>
 boolean GrafoMatriceAdiacenza<tipoNodo, tipoArco>::esisteNodo(int indice) {
-	boolean out;
+
+	boolean out=false;
 
 	if (Nodi[indice] != NULL) {
 		out = true;
-	} else {
-		out = false;
 	}
+
 	return out;
 }
 
 template<class tipoNodo, class tipoArco>
 boolean GrafoMatriceAdiacenza<tipoNodo, tipoArco>::esisteArco(int indiceA,
 		int indiceB) {
-	boolean out;
+	boolean out=false;
 
 	if (esisteNodo(indiceA) && esisteNodo(indiceB)
 			&& matriceAdiacenza[indiceA][indiceB]) {
 		out = true;
-	} else {
-		out = false;
 	}
 	return out;
 }
 
-#endif /* GRAFOMATRICE_ADIACENZA_H */
+#endif /* Grafo matrice adiacenza */
