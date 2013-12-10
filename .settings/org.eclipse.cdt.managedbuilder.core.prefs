@@ -1,5 +1,13 @@
-#Thu Feb 02 22:00:24 CET 2012
+#Sat Mar 02 22:57:26 CET 2013
 eclipse.preferences.version=1
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.macosx.exe.debug.1706422906/CPATH/delimiter=\:
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.macosx.exe.debug.1706422906/CPATH/operation=remove
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.macosx.exe.debug.1706422906/CPLUS_INCLUDE_PATH/delimiter=\:
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.macosx.exe.debug.1706422906/CPLUS_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.macosx.exe.debug.1706422906/C_INCLUDE_PATH/delimiter=\:
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.macosx.exe.debug.1706422906/C_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.macosx.exe.debug.1706422906/append=true
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.macosx.exe.debug.1706422906/appendContributed=true
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.mingw.exe.debug.1750518262/CPATH/delimiter=;
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.mingw.exe.debug.1750518262/CPATH/operation=remove
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.mingw.exe.debug.1750518262/CPLUS_INCLUDE_PATH/delimiter=;
@@ -8,6 +16,10 @@ environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.mingw.exe.debug.
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.mingw.exe.debug.1750518262/C_INCLUDE_PATH/operation=remove
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.mingw.exe.debug.1750518262/append=true
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.mingw.exe.debug.1750518262/appendContributed=true
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.macosx.exe.debug.1706422906/LIBRARY_PATH/delimiter=\:
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.macosx.exe.debug.1706422906/LIBRARY_PATH/operation=remove
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.macosx.exe.debug.1706422906/append=true
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.macosx.exe.debug.1706422906/appendContributed=true
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.mingw.exe.debug.1750518262/LIBRARY_PATH/delimiter=;
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.mingw.exe.debug.1750518262/LIBRARY_PATH/operation=remove
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.mingw.exe.debug.1750518262/append=true
