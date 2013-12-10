@@ -60,8 +60,7 @@ public:
 	void cancNodo(int indice);
 	void cancArco(int indiceA, int indiceB);
 
-	ListaBidirezionale<cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>*> adiacenti(
-			int indice);
+	ListaBidirezionale<cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>*> adiacenti(int indice);
 
 	boolean esisteNodo(int indice);
 	boolean esisteArco(int indiceA, int indiceB);
@@ -73,7 +72,7 @@ GrafoMatriceAdiacenza<tipoNodo, tipoArco>::GrafoMatriceAdiacenza() {
 
 /*
  * creaGrafo()
- *		inizializza il grafo forzando a null array di nodi e matriceadiacenza
+ *		inizializza il grafo impostando a null gli array di nodi e matriceadiacenza
  */
 template<class tipoNodo, class tipoArco>
 void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::creaGrafo() {
@@ -188,7 +187,6 @@ ListaBidirezionale<cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>*> Gra
 			}
 		}
 	}
-
 	return ListaNodi;
 }
 
@@ -201,7 +199,6 @@ boolean GrafoMatriceAdiacenza<tipoNodo, tipoArco>::esisteNodo(int indice) {
 	} else {
 		out = false;
 	}
-
 	return out;
 }
 
