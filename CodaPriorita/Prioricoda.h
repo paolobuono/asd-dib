@@ -58,9 +58,7 @@ void Prioricoda<T>::INSERISCI(T elemento, int priorita) {
 				j = i / 2;
 			}
 		numeroNodi++;
-	} else
-		cout << "Coda piena!" << endl;
-
+	} else cout << "Coda piena!" << endl;
 }
 
 template<class T>
@@ -68,8 +66,7 @@ T Prioricoda<T>::MIN() {
 	NodoPrioricoda<T>* tmp = new NodoPrioricoda<T>;
 	if (!PRIORICODAVUOTA())
 		return heap[0]->getElemento;
-	else
-		cout << "Coda vuota!" << endl;
+	else cout << "Coda vuota!" << endl;
 	return tmp->getElemento;
 }
 
@@ -93,16 +90,12 @@ void Prioricoda<T>::CANCELLAMIN() {
 				i = j - 1;
 				j = (i + 1) * 2;
 			}
-	} else
-		cout << "Coda vuota!" << endl;
+	} else cout << "Coda vuota!" << endl;
 }
 
 template<class T>
 bool Prioricoda<T>::PRIORICODAVUOTA() {
-	if (numeroNodi == 0)
-		return true;
-	else
-		return false;
+	return (numeroNodi == 0);
 }
 
 template<class T>
@@ -118,13 +111,9 @@ T Prioricoda<T>::LegiElemNodo(int i) {
 		if (i <= numeroNodi)
 			if (heap[i]->getPriorita() != -1)
 				return heap[i]->getElemento();
-			else
-				cout << "Nodo inesistente!" << endl;
-		else
-			cout << "ERRORE: superata lunghezza massima in LegiElemNodo"
-					<< endl;
-	else
-		cout << "Coda vuota!" << endl;
+			else cout << "Nodo inesistente!" << endl;
+		else cout << "ERRORE: superata lunghezza massima in LegiElemNodo" << endl;
+	else cout << "Coda vuota!" << endl;
 	return tmp->getElemento();
 }
 
@@ -136,13 +125,9 @@ int Prioricoda<T>::LegiPrioNodo(int i) {
 		if (i <= numeroNodi)
 			if (heap[i]->getPriorita() != -1)
 				return heap[i]->getPriorita();
-			else
-				cout << "Nodo inesistente!" << endl;
-		else
-			cout << "ERRORE: superata lunghezza massima in LegiElemNodo"
-					<< endl;
-	else
-		cout << "Coda vuota!" << endl;
+			else cout << "Nodo inesistente!" << endl;
+		else cout << "ERRORE: superata lunghezza massima in LegiElemNodo" << endl;
+	else cout << "Coda vuota!" << endl;
 	return -1;
 }
 

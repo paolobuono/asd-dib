@@ -20,8 +20,6 @@
 #ifndef ASD_nodo_h
 #define ASD_nodo_h
 
-/*MODIFY BY Minerva Fabio ON 11-Dec-27*/
-
 template<class T>
 class Nodo {
 private:

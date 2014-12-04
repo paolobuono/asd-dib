@@ -25,28 +25,46 @@
 #include<iostream>
 #include<iomanip>
 #include<string>
-#define MAX 50
+#define MAX 59
 
 using namespace std;
 
 typedef bool boolean;
 typedef int attributo;
 
+//TODO: spostare funzione in altro file
+class Hash{
+public:
+	int dimensione();
+	int hashValue (string chiave){
+		return (string2int(chiave) % MAX);
+	}
+	int hashValue (int chiave){
+			return (chiave % MAX);
+	}
+private:
+	int string2int(string chiave){
+		int valore = 0;
+		//TODO: conversione stringa ad intero
+		return valore;
+	}
+};
+
 template<class elemento, class chiave>
 class DizionarioHash: public Dizionario<elemento, chiave> {
 private:
 	typedef elemento Vettore[MAX];
 	Vettore vettore;
+	Hash hash;
 public:
-	chiave H(chiave ch) //TODO: definire delle funzioni hash meno banali di questa
-			{
-		return (ch);
+	int H(chiave ch){ //TODO: definire delle funzioni hash meno banali di questa
+		return (hash.hashValue(ch));
 	}
 	void inserisci(elemento, chiave);
 	void cancella(chiave);
 	elemento cerca(chiave);
 
-	//funzioni aggiuntive
+	//funzioni aggiuntive: da eliminare
 	DizionarioHash();
 	boolean appartiene(chiave);
 	void mostravettore();
@@ -59,7 +77,10 @@ void DizionarioHash<elemento, chiave>::inserisci(elemento e, chiave c) {
 	chiave a = H(c);
 	if (vettore[a] == "") {
 		vettore[a] = e;
-	}
+	} //TODO: gestire collisione;
+	/*
+	 * scandire le posizioni (con modulo) finché non si trova quella libera
+	 * */
 }
 
 template<class elemento, class chiave>
@@ -67,7 +88,7 @@ void DizionarioHash<elemento, chiave>::cancella(chiave c) {
 	chiave a = H(c);
 	if (vettore[a] != "") {
 		vettore[a] = "";
-	}
+	}// TODO: trovare il dato con chiave c
 }
 
 template<class elemento, class chiave>

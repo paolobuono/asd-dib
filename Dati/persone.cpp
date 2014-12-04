@@ -25,6 +25,7 @@ using namespace std;
 Persona::Persona() {
 	nome = "";
 }
+
 Persona::Persona(string s) {
 	nome = s;
 }
@@ -32,9 +33,8 @@ Persona::Persona(string s) {
 string Persona::getNome() {
 	return nome;
 }
-;
 
 void Persona::setNome(string s) {
 	nome = s;
 }
-;
+

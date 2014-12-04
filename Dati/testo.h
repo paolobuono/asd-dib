@@ -35,4 +35,5 @@ public:
 	int getCodice();
 	string getTitolo();
 };
+
 #endif

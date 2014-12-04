@@ -24,7 +24,6 @@ public:
 	void setPriorita(int);
 	T getElemento();
 	int getPriorita();
-
 };
 
 template<class T>

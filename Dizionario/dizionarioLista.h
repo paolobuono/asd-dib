@@ -52,13 +52,11 @@ void DizionarioLista<elemento, chiave>::inserisci(elemento e, chiave k) {
 	NodoLista<DatoDiz> nodo;
 	DatoDiz dato;
 
-	while (pos != NULL && trovato != true) {
+	while (lista.fineLista(pos) && !trovato) {
 		dato = lista.leggiLista(pos);
 		if (k == dato.chiaveDato) {
 			trovato = true;
-		} else {
-			pos = lista.succLista(pos);
-		}
+		} else pos = lista.succLista(pos);
 	}
 	if (!trovato) {
 		dato.chiaveDato = k;

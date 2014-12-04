@@ -1,8 +1,3 @@
-/*
- * Pila.h
- * Autore:  De Tuglie Danilo
- */
-
 #ifndef PILA_H_
 #define PILA_H_
 

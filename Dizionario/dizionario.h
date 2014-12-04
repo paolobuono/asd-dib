@@ -26,17 +26,17 @@ using namespace std;
 
 #include "datoDizionario.h"
 
-template<class elemento, class chiave>
+template<class T, class K>
 class Dizionario {
 public:
 	Dizionario();
-	virtual void inserisci(elemento, chiave)=0;
-	virtual void cancella(chiave)=0;
-	virtual elemento cerca(chiave)=0;
+	virtual void inserisci(T, K)=0;
+	virtual void cancella(K)=0;
+	virtual T cerca(K)=0;
 };
 
-template<class elemento, class chiave>
-	Dizionario<elemento, chiave>::Dizionario() {
+template<class T, class K>
+	Dizionario<T, K>::Dizionario() {
 }
 
 #endif

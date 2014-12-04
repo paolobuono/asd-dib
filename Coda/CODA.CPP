@@ -27,7 +27,6 @@ Tipoelem Coda::leggicoda() {
 }
 
 void Coda::fuoricoda() {
-
 	int i = 0;
 	int app = numero;
 	if (!codavuota()) {
@@ -41,7 +40,6 @@ void Coda::fuoricoda() {
 }
 
 void Coda::incoda(Tipoelem t) {
-
 	int pos = cont % MAX_LUNG;
 	elementi[pos] = t;
 	cont++;
@@ -55,9 +53,8 @@ int Coda::leggi_numero() {
 }
 
 int Coda::leggi_fondo() {
-	if (cont < MAX_LUNG)
-		fondo = cont;
-	else
-		fondo = cont % MAX_LUNG;
+	if (cont < MAX_LUNG) fondo = cont;
+	else fondo = cont % MAX_LUNG;
+
 	return fondo;
 }

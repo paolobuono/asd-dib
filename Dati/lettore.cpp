@@ -25,10 +25,7 @@
 #include "../Lista/nodolista.h"
 #include "lettore.h"
 
-Lettore::Lettore() {
-
-}
-;
+Lettore::Lettore() {/*costruttore*/}
 
 void Lettore::presta(Testo t) {
 	NodoLista<Testo> * posizione = testi.primoLista();
@@ -41,12 +38,10 @@ Testo Lettore::restituisci(string titolo) {
 	while (!testi.fineLista(posizione)) {
 		if (testi.leggiLista(posizione).getTitolo() == titolo) {
 			libroDaRestituire = testi.leggiLista(posizione);
-			//testi.cancLista(posizione);        //TODO: qui da errore
-		} else {
-			posizione = testi.succLista(posizione);
-		}
+			//testi.cancLista(posizione);        //TODO: verificare
+		} else posizione = testi.succLista(posizione);
 	}
-	return libroDaRestituire; //TODO: implementare il controllo che il testo non sia presente
+	return libroDaRestituire; //TODO: implementare controllo libro non presente
 }
 
 ListaUnidirezionale<Testo, NodoLista<Testo>*> Lettore::getElencoLibri() {
