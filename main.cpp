@@ -51,6 +51,8 @@
 // inclusione dello svolgimento esercizio "Network"
 #include "Esercitazioni/Network/templateServ.h"
 
+#include "Esercitazioni/Network/soluzione-parziale-primo-esonero-1415.h"
+
 using namespace std;
 
 int main(int argc, char *argv[]) {
@@ -124,8 +126,9 @@ int main(int argc, char *argv[]) {
 	 */
 
 	cout<<endl <<"Output dell'esercizio 'Network' della prova del 31/01/12:" <<endl<<endl;
-
 	testNetwork();
+
+	soluzioneEsonero1415();
 
 	//system("PAUSE");
 	return EXIT_SUCCESS;

@@ -18,11 +18,6 @@
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
 
-/*
- * grafoMatriciAdiacenza.h
- * Descrizione: Grafo orientato con Matrice di Adiacenza
- */
-
 #ifndef GRAFOMATRICE_ADIACENZA_H
 #define GRAFOMATRICE_ADIACENZA_H
 
@@ -41,7 +36,6 @@ typedef bool boolean;
 template<class tipoNodo, class tipoArco>
 class GrafoMatriceAdiacenza {
 public:
-
 	int posizioniOccupate;
 
 	typedef cellaGrafo<tipoNodo> nodoGrafo;
@@ -57,10 +51,13 @@ public:
 	void insNodo(int indice, tipoNodo);
 	void insArco(int indiceA, int indiceB, tipoArco);
 
+	arcoGrafo<tipoArco>* arco(int indiceA, int indiceB);
+	nodoGrafo* nodo(int indiceNodo);
+
 	void cancNodo(int indice);
 	void cancArco(int indiceA, int indiceB);
 
-	ListaBidirezionale<cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>*> adiacenti(int indice);
+	ListaBidirezionale<int, NodoLista<int>*> adiacenti(int indice);
 
 	boolean esisteNodo(int indice);
 	boolean esisteArco(int indiceA, int indiceB);
@@ -132,6 +129,26 @@ void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::insArco(int indiceA, int indiceB
 }
 
 template<class tipoNodo, class tipoArco>
+arcoGrafo<tipoArco>* GrafoMatriceAdiacenza<tipoNodo, tipoArco>::arco(int indiceA, int indiceB) {
+
+	if (!(esisteNodo(indiceA) && esisteNodo(indiceB)))
+		cout << "arco inesistente" << endl;
+
+			return matriceAdiacenza[indiceA][indiceB];
+}
+
+template<class tipoNodo, class tipoArco>
+cellaGrafo<tipoNodo>* GrafoMatriceAdiacenza<tipoNodo, tipoArco>::nodo(int indiceNodo){
+
+	if (!(esisteNodo(indiceNodo)))
+		cout << "nodo inesistente" << endl;
+
+			return Nodi[indiceNodo];
+}
+
+
+
+template<class tipoNodo, class tipoArco>
 void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::cancNodo(int indice) {
 
 	if (esisteNodo(indice)) {
@@ -164,17 +181,18 @@ void GrafoMatriceAdiacenza<tipoNodo, tipoArco>::cancArco(int indiceA,
 }
 
 template<class tipoNodo, class tipoArco>
-ListaBidirezionale < cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>* > GrafoMatriceAdiacenza<tipoNodo, tipoArco>::adiacenti(int indice) {
+ListaBidirezionale <int, NodoLista<int>* >
+			GrafoMatriceAdiacenza<tipoNodo, tipoArco>::adiacenti(int indice) {
 
-	ListaBidirezionale<cellaGrafo<tipoNodo>*, NodoLista<cellaGrafo<tipoNodo>*>*> ListaNodi;
+	ListaBidirezionale<int, NodoLista<int>*> ListaNodi;
 	ListaNodi.creaLista();
 
 	if (esisteNodo(indice)) {
-		NodoLista<cellaGrafo<tipoNodo>*>* pos;
+		NodoLista<int>* pos;
 		for (int i = 0; i < RIGHE; i++) {
 			if (esisteArco(indice, i)) {
 				pos = ListaNodi.primoLista();
-				ListaNodi.insLista(Nodi[i], pos);
+				ListaNodi.insLista(i, pos);
 			}
 		}
 	}

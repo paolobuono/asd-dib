@@ -17,55 +17,18 @@
  *   along with ASD-dib; if not, see <http://www.gnu.org/licenses/>        *
  ***************************************************************************/
 
-#ifndef _nodo_lista_h
-#define _nodo_lista_h
+#ifndef nodoarco1415_h
+#define nodoarco1415_h
+#include <string.h>
 
-/*MODIFIED BY Minerva Fabio ON 11-Dec-27*/
-/*MODIFIED BY DomenicoMOnaco ON 12-Gen-12*/
-
-template<class T>
-class NodoLista {
-private:
-	T elemento;
-	NodoLista<T>* succ;
-	NodoLista<T>* prec;
+class arcoEsercizio {
 public:
-	T leggiElem();
-	NodoLista<T>* leggiSucc();
-	NodoLista<T>* leggiPrec();
-	void scriviElem(T);
-	void scriviSucc(NodoLista<T>*);
-	void scriviPrec(NodoLista<T>*);
+	int tempodurata;
+	int costoBiglietto; //si assume costo intero, per simulare valuta usare float
 };
 
-template<class T>
-T NodoLista<T>::leggiElem() {
-	return elemento;
-}
-
-template<class T>
-NodoLista<T>* NodoLista<T>::leggiSucc() {
-	return succ;
-}
-
-template<class T>
-NodoLista<T>* NodoLista<T>::leggiPrec() {
-	return prec;
-}
-
-template<class T>
-void NodoLista<T>::scriviElem(T e) {
-	elemento = e;
-}
-
-template<class T>
-void NodoLista<T>::scriviSucc(NodoLista<T>* s) {
-	succ = s;
-}
-
-template<class T>
-void NodoLista<T>::scriviPrec(NodoLista<T>* p) {
-	prec = p;
-}
-
+class nodoEsercizio {
+public:
+	string nomeCitta;
+};
 #endif

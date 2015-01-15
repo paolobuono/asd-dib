@@ -174,7 +174,7 @@ void ListaBidirezionale<T, posizione>::cancLista(posizione p) {
 
 template<class T, class posizione>
 boolean ListaBidirezionale<T, posizione>::fineLista(posizione p) {
-	return (succLista(p) == NULL) ? true : false;
+	return (p == NULL) ? true : false; //succLista(p)
 }
 
 template<class T, class posizione>
